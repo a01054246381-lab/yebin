@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>AI 면접 메이트</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="ins_main.css">
+</head>
+
+<body>
+<div id="header"></div>
+<section class="hero alt-hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <span class="badge">AI INTERVIEW ASSISTANT</span>
+            <h1>면접 준비를<br>체계적으로 관리하세요</h1>
+            <p>
+                면접 일정, 연습 기록, 피드백까지<br>
+                AI 면접 비서가 한 곳에서 관리합니다.
+            </p>
+
+            <div class="hero-actions">
+                <button onclick="location.href='/interview001/simulation/in_user_info.html'">
+                    면접 연습
+                </button>
+                <button class="outline"
+                        onclick="location.href='/interview001/calendar/in_calendar.html'">
+                    캘린더
+                </button>
+            </div>
+        </div>
+
+        <!-- 오른쪽 미니 카드 -->
+        <div class="hero-preview">
+            <div class="preview-card">
+                <strong>D-3</strong>
+                <span>AI 기업 기술면접</span>
+            </div>
+            <div class="preview-card">
+                <strong>모의 면접</strong>
+                <span>최근 연습 2회</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+fetch("/interview001/header/in_header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+</script>
+</body>
+</html>

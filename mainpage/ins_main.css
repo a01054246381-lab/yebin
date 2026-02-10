@@ -1,0 +1,117 @@
+/* 전체 배경 */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f6f8;
+}
+
+/* 🔹 HERO - 다른 디자인 */
+.alt-hero {
+    background: #f8faff;
+    padding: 80px 30px;
+    border-bottom: 1px solid #e5e9f2;
+}
+
+.hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+/* 왼쪽 텍스트 */
+.hero-text {
+    max-width: 520px;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a6cf7;
+    background: #e9edff;
+    padding: 6px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #1f2a44;
+}
+
+.hero-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 28px;
+}
+
+/* 버튼 */
+.hero-actions {
+    display: flex;
+    gap: 14px;
+}
+
+.hero-actions button {
+    padding: 12px 22px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+    background: #4a6cf7;
+    color: white;
+}
+
+.hero-actions .outline {
+    background: white;
+    color: #4a6cf7;
+    border: 1px solid #4a6cf7;
+}
+
+/* 오른쪽 미니 대시보드 */
+.hero-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.preview-card {
+    background: white;
+    padding: 18px 20px;
+    border-radius: 12px;
+    min-width: 240px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.preview-card strong {
+    display: block;
+    font-size: 18px;
+    color: #4a6cf7;
+    margin-bottom: 6px;
+}
+
+.preview-card span {
+    font-size: 14px;
+    color: #555;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+    .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

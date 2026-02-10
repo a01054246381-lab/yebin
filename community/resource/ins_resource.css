@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.layout {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+/* 사이드바 */
+.sidebar {
+    margin:0;
+    width: 140px;
+    height: auto;
+    background: #f5f6f8;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.sidebar li a {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar li:hover {
+    background: #ddd;
+}
+
+/* 숨김 상태 */
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+/* 콘텐츠 */
+
+/* 콘텐츠 */
+.content {
+    overflow-y: auto;
+    flex: 1;
+   margin:0;
+    padding-left: 10px;
+    height: 100%;
+}
+
+/* 전체 */
+.board-main {
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+   /* overflow-y: auto;*/
+}
+
+/* 제목 */
+.board-title h2 {
+    margin: 0;
+}
+
+.board-title p {
+    margin: 6px 0 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* 검색 */
+.board-search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.board-search select,
+.board-search input {
+    padding: 6px;
+    font-size: 14px;
+}
+
+.board-search button {
+    padding: 6px 12px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* 게시글 목록 */
+.board-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 2px solid #333;
+    overflow-y: auto;
+}
+
+.board-list li {
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 80px 1fr 120px 120px 80px;
+    padding: 12px 6px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    align-items: center;
+}
+
+.board-list li:hover {
+    background: #f9f9f9;
+}
+
+.board-list .subject {
+    cursor: pointer;
+    overflow-y: auto;
+}
+
+/* 공지 */
+.board-list .notice {
+    background: #f0f2f5;
+    font-weight: 600;
+}
+
+.board-list .title {
+    background: #f0f2f5;
+    font-weight: 600;
+}
+
+/* 하단 */
+.board-bottom {
+    text-align: right;
+    margin-top: 12px;
+}
+
+.write-btn {
+    padding: 8px 14px;
+    background: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* 페이지 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.pagination span {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.pagination .active {
+    background: #333;
+    color: white;
+}
+
+/* 게시판 + 사이드바 */
+.board-layout {
+    display: flex;
+    gap: 20px;
+}
+
+/* 메인 게시판 */
+.board-main {
+    flex: 1;
+}
+
+/* 사이드바 */
+.board-side {
+    margin-top: 40px;
+    margin-right: 40px;
+    width: 260px;
+    overflow-y: auto;
+}
+
+/* 공통 박스 */
+.side-box {
+    background: white;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+}
+
+.side-box h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+}
+
+/* 안내 */
+.side-box ul {
+    padding-left: 18px;
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+}
+
+/* 인기 게시글 */
+.rank-list {
+    padding-left: 18px;
+    margin: 0;
+    font-size: 13px;
+}
+
+.rank-list li {
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+/* 면접 버튼 */
+.practice-btn {
+  display: flex;
+  text-decoration: none;
+  width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background: #4a6cf7;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 8px;
+    justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: flex;
+  text-decoration: none;
+  width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background: #555;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 8px;
+    justify-content: center;
+  align-items: center;
+}
+
+/* 일정 */
+.schedule {
+    font-size: 13px;
+    margin: 6px 0;
+}
+
+/* 한마디 */
+.quote {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    background: #f5f6f8;
+}
+
+.board-main,
+.board-side,
+.content {
+    min-width: 0;
+}
+

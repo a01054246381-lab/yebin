@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>모드 선택</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="/interview001/simulation/ins_simul_mode.css">
+</head>
+<body>
+<div id="header"></div>
+
+<div class="mode-container">
+    <h2>당신의 면접 모드를 선택하세요</h2>
+
+    <div class="mode-cards">
+        <!-- 모드 1 -->
+        <div class="mode-card practice" data-link="/interview001/simulation/practice/in_practice.html">
+            <h3>모의 모드</h3>
+            <p>피드백 중심 면접 연습</p>
+        </div>
+
+        <!-- 모드 2 -->
+        <div class="mode-card real" data-link="/interview001/simulation/real/in_real.html">
+            <h3>실전 모드</h3>
+            <p>실제 면접처럼 진행</p>
+        </div>
+    </div>
+</div>
+<script>
+fetch("/interview001/header/in_header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+</script>
+<script src="/interview001/simulation/inj_simul_mode.js"></script>
+</body>
+</html>

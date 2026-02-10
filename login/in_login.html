@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
+<head>
+   <meta charset="UTF-8">
+   <title>Login Page</title>
+   <link rel="stylesheet" href="ins_login.css">
+</head>
+<body class="login-page">
+<div class="body">
+
+
+   <div class="login-box">
+       <h1 class="login-title">login</h1>
+       <p class="login-sub">로그인 후 메인 페이지로 이동합니다.</p>
+
+
+       <form name="myform" onsubmit="getInput(event)">
+           <div class="id_field">
+               <!--        <label>사용자 ID</label>-->
+               <input type="text" name="userId" placeholder="ID" required>
+           </div>
+           <div class="pass_field">
+               <!--        <label>패스워드</label>-->
+               <input type="password" name="passwd" placeholder="PASSWORD">
+               <div class="button">
+                   <button type="submit">log in</button>
+               </div>
+               <div class="find">
+                       <a href="../findid_pw/find_id/in_findid.html">아이디 찾기</a>
+                       <a href="../findid_pw/find_pw/in_findpw.html">비번 찾기</a>
+                       <a href="../signup/in_signup.html">회원가입</a>
+               </div>
+
+
+           </div>
+           <script src="inj_login.js"></script>
+       </form>
+   </div>
+</div>
+</body>
+</html>

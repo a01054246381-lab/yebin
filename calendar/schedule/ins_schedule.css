@@ -1,0 +1,123 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+#header {
+    flex-shrink: 0; /* 헤더 높이 고정 */
+}
+
+.layout {
+    flex: 1;               /* 🔥 여기 핵심 */
+    display: flex;
+    min-height: 0;         /* 스크롤 깨짐 방지 */
+}
+
+/* 사이드바 */
+.sidebar {
+    margin:0;
+    width: 140px;
+    height: 100%;
+    background: #f5f6f8;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.sidebar li a {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar li:hover {
+    background: #ddd;
+}
+
+/* 숨김 상태 */
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+/* 콘텐츠 */
+.content {
+    max-width: 1500px;
+    margin: 0;
+    flex: 1;
+    padding-left: 30px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.interview-form {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    background: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.schedule-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    justify-items: stretch;  /* ⭐ 이게 중요 */
+}
+
+.schedule-button {
+    display: grid;
+    place-items: center;
+    width: 300px;
+    margin: 0 auto;
+
+}
+
+

@@ -1,0 +1,114 @@
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f8;
+}
+
+.practice-mode {
+    margin: 80px auto;
+    text-align: center;
+    width: 400px;
+    padding: 50px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.practice-mode h2 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* 폼 그룹 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+/* 라벨 */
+.form-group label {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #44474c;
+}
+
+/* 라디오 그룹 */
+.radio-group {
+    margin-top: 10px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.option {
+    display: grid;
+    grid-template-columns: 30px 30px 1fr;
+    /*align-items: center;*/
+    font-size: 14px;
+    column-gap: 3px;
+    align-items: start;
+}
+
+.option input {
+    margin: 5px 0 0 0; /* 체크박스 세로 미세 정렬 */
+}
+
+.role {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.desc {
+    color: #666;
+}
+
+#startBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #fff;
+    background-color: #364fb5;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#startBtn:hover {
+    background-color: #3f5fe0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(74,108,247,0.3);
+}
+
+#startBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(74,108,247,0.25);
+}
+
+#startBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+

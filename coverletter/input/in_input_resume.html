@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이력서</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="/interview001/coverletter/input/ins_input_resume.css">
+
+</head>
+<body>
+<div id="header"></div>
+
+<div class="layout">
+
+    <!-- 왼쪽 사이드바 -->
+    <aside id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="/interview001/coverletter/input/in_input_resume.html">이력서 보기/수정</a></li>
+            <li><a href="/interview001/coverletter/ai/in_ai_coverletter.html">ai 자소서 피드백</a></li>
+        </ul>
+    </aside>
+
+    <!-- 오른쪽 콘텐츠 -->
+    <div class="content">
+        <form class="resume-form">
+
+            <h1>이력서 작성</h1>
+
+            <!-- 기본 정보 -->
+            <table class="resume-table">
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" name="name" required></td>
+                    <th>연락처</th>
+                    <td><input type="tel" name="phone"></td>
+                </tr>
+                <tr>
+                    <th>생년월일</th>
+                    <td><input type="text" name="birth" required></td>
+                    <th>성별</th>
+                    <td><input type="tel" name="gender"></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td colspan="3"><input type="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <th>주소</th>
+                    <td colspan="3"><input type="text" name="adress" required></td>
+                </tr>
+            </table>
+
+            <!-- 학력사항 -->
+            <h2>학력사항</h2>
+            <table class="resume-table">
+                <thead>
+                <tr>
+                    <th>학교명</th>
+                    <th>전공</th>
+                    <th>재학기간</th>
+                    <th>졸업여부</th>
+                    <th>최종학력</th>
+<!--                  <th>관리</th>-->
+                </tr>
+                </thead>
+                <tr>
+                    <td><input type="text" name="school"></td>
+                    <td><input type="text" name="major"></td>
+                    <td><input type="text" name="education_period"></td>
+                    <td><input type="text" name="graduation-status"></td>
+                    <td><input type="text" name="highest-education-level"></td>
+<!--                  <td>-->
+<!--                        <button type="button" class="remove-row">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+                <tr>
+                    <td><input type="text" name="school"></td>
+                    <td><input type="text" name="major"></td>
+                    <td><input type="text" name="education_period"></td>
+                    <td><input type="text" name="graduation-status"></td>
+                    <td><input type="text" name="highest-education-level"></td>
+<!--                    <td>-->
+<!--                        <button type="button" class="remove-row">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+                <tbody id="education-body">
+                <!-- 기준이 되는 한 줄 -->
+                <tr>
+                    <td><input type="text" name="school[]"></td>
+                    <td><input type="text" name="major[]"></td>
+                    <td><input type="text" name="education_period[]"></td>
+                    <td><input type="text" name="graduation_status[]"></td>
+                    <td><input type="text" name="highest_education_level[]"></td>
+<!--                    <td>-->
+<!--                        <button type="button" class="remove-education">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+                </tbody>
+            </table>
+            <button type="button" class="add-row" data-target="education-body">
+              ＋ 학력 추가</button>
+            <p class="limit-msg" data-target="education-body" style="display:none; color:red;">
+                학력사항은 최대 5개까지 입력할 수 있습니다.
+            </p>
+
+            <!-- 경력사항 -->
+            <h2>경력사항</h2>
+            <table class="resume-table">
+                <thead>
+                <tr>
+                    <th>회사명</th>
+                    <th>직무</th>
+                    <th>근무기간</th>
+<!--                    <th>관리</th>-->
+                </tr>
+                </thead>
+              <tr>
+                    <td><input type="text" name="company[]"></td>
+                    <td><input type="text" name="position[]"></td>
+                    <td><input type="text" name="career_period[]"></td>
+<!--                    <td>-->
+<!--                        <button type="button" class="remove-row">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+              <tr>
+                    <td><input type="text" name="company[]"></td>
+                    <td><input type="text" name="position[]"></td>
+                    <td><input type="text" name="career_period[]"></td>
+<!--                    <td>-->
+<!--                        <button type="button" class="remove-row">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+
+                <tbody id="career-body">
+                <tr>
+                    <td><input type="text" name="company[]"></td>
+                    <td><input type="text" name="position[]"></td>
+                    <td><input type="text" name="career_period[]"></td>
+<!--                    <td>-->
+<!--                        <button type="button" class="remove-row">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+                </tbody>
+            </table>
+
+            <button type="button" class="add-row" data-target="career-body">
+                ＋ 경력 추가
+            </button>
+            <p class="limit-msg" data-target="career-body" style="display:none; color:red;">
+                경력사항은 최대 5개까지 입력할 수 있습니다.
+            </p>
+
+            <!-- 자격증 -->
+            <h2>자격증</h2>
+            <table class="resume-table">
+                <thead>
+                <tr>
+                    <th>자격증명</th>
+                    <th>발급기관</th>
+                    <th>취득일</th>
+<!--                    <th>관리</th>-->
+                </tr>
+                </thead>
+               <tr>
+                    <td><input type="text" name="certificate[]"></td>
+                    <td><input type="text" name="certificate_org[]"></td>
+                    <td><input type="date" name="certificate_date[]"></td>
+<!--                    <td>-->
+<!--                        <button type="button" class="remove-row">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+               <tr>
+                    <td><input type="text" name="certificate[]"></td>
+                    <td><input type="text" name="certificate_org[]"></td>
+                    <td><input type="date" name="certificate_date[]"></td>
+<!--                    <td>-->
+<!--                        <button type="button" class="remove-row">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+
+                <tbody id="certificate-body">
+                <tr>
+                    <td><input type="text" name="certificate[]"></td>
+                    <td><input type="text" name="certificate_org[]"></td>
+                    <td><input type="date" name="certificate_date[]"></td>
+<!--                    <td>-->
+<!--                        <button type="button" class="remove-row">삭제</button>-->
+<!--                    </td>-->
+                </tr>
+                </tbody>
+            </table>
+
+            <button type="button" class="add-row" data-target="certificate-body">
+                ＋ 자격증 추가
+            </button>
+            <p class="limit-msg" data-target="certificate-body" style="display:none; color:red;">
+                자격증은 최대 5개까지 입력할 수 있습니다.
+            </p>
+            <!-- 자기소개서 -->
+            <h2>자기소개서</h2>
+            <table class="resume-table">
+                <tr>
+                    <td>
+        <textarea
+                name="cover_letter"
+                rows="10"
+                placeholder="지원 동기, 경험, 역량 등을 작성하세요."
+                required
+        ></textarea>
+                    </td>
+                </tr>
+            </table>
+
+            <button type="submit" class="submit-btn">제출하기</button>
+
+        </form>
+
+
+    </div>
+
+</div>
+</body>
+<script>
+    fetch("/interview001/header/in_header.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("header").innerHTML = data;
+        });
+</script>
+<script src="inj_input_resume.js"></script>
+</html>

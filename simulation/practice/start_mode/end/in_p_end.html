@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>모의 모드</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="/interview001/simulation/practice/start_mode/end/ins_p_end.css">
+</head>
+<body>
+<div id="header"></div>
+
+<!-- Progress -->
+<div class="content">
+    <h1>모의 면접</h1>
+<section class="progress-wrap">
+    <div class="progress-text">
+        질문 4 / 4 · 시간 제한 없음
+    </div>
+    <div class="progress-bar">
+        <div class="progress"></div>
+    </div>
+</section>
+
+<!-- Main Layout -->
+<main class="practice-layout">
+
+    <!-- Left: Question + Answer -->
+    <section class="answer-area">
+        <div class="question-card">
+            <h2>Q4. 가장 어려웠던 문제를 어떻게 해결했나요?</h2>
+        </div>
+
+        <textarea
+                class="answer-input"
+                placeholder="답변을 입력하세요. (텍스트 기반 모의 면접)"
+        ></textarea>
+    </section>
+
+    <!-- Right: PSAR + AI Coach -->
+    <aside class="guide-area">
+
+        <!-- PSAR Guide -->
+        <div class="psar-box">
+            <h3>🧩 답변 구조 가이드 (PSAR)</h3>
+            <ul>
+                <li class="active">P · 문제 / 상황</li>
+                <li>S · 당시 맥락</li>
+                <li>A · 나의 행동</li>
+                <li>R · 결과 / 성과</li>
+            </ul>
+        </div>
+
+        <!-- AI Signal -->
+        <div class="ai-signal">
+            ⚠️ 지금 상황 설명이 길어지고 있어요.<br/>
+            본인의 <b>해결 행동(Action)</b>으로 넘어가 보세요!
+        </div>
+
+    </aside>
+
+
+</main>
+
+<!-- Bottom Actions -->
+<footer class="action-bar">
+    <button class="sub">🔍 키워드 보기</button>
+    <button class="sub">🧩 PSAR 가이드</button>
+    <a href="/interview001/simulation/practice/start_mode/result/in_p_result.html" class="result-btn">결과 보기 →</a>
+</footer>
+ </div>
+
+<script>
+    fetch("/interview001/header/in_header.html")
+       .then(res => res.text())
+       .then(data => {
+           document.getElementById("header").innerHTML = data;
+       });
+</script>
+<!--<script src="/interview001/simulation/practice/inj_practice.js"></script>-->
+</body>
+</html>

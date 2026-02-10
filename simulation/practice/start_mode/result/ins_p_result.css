@@ -1,0 +1,169 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f6f8;
+  color: #222;
+}
+
+/* Header */
+/*.header {
+  background: white;
+  padding: 16px 24px;
+  border-bottom: 1px solid #ddd;
+}*/
+
+.practice-report h1 {
+    padding-left: 30px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* Layout */
+.result-layout {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* Summary */
+.summary-list {
+  list-style: none;
+  padding: 0;
+}
+
+.summary-list li {
+  margin-bottom: 6px;
+}
+
+/* Answers */
+.answer-box {
+  background: #f5f6f8;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.answer-box.ai {
+  background: #eaf0ff;
+}
+
+/* PSAR */
+.psar-analysis {
+  list-style: none;
+  padding: 0;
+}
+
+.psar-analysis li {
+  margin-bottom: 6px;
+}
+
+/* Quote */
+.quote {
+  background: #f0f2f5;
+  padding: 14px;
+  border-left: 4px solid #4a6cf7;
+  margin: 12px 0;
+}
+
+/* Knowledge */
+.knowledge-list {
+  padding-left: 20px;
+}
+
+/* Interviewer */
+.interviewer-view {
+  font-style: italic;
+  background: #fff3f3;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.score-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.score-list li {
+  margin-bottom: 6px;
+}
+
+/* Habits */
+.habit-list {
+  padding-left: 20px;
+}
+
+.persona {
+  background: #f5f6f8;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+/* Footer */
+.action-bar {
+  display: flex;
+  gap: 10px;
+  padding: 16px 24px;
+  background: white;
+  border-top: 1px solid #ddd;
+  justify-content: center;
+}
+
+.action-bar button {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.action-bar .sub {
+  background: #e4e6eb;
+}
+
+.action-bar .main {
+  background: #4a6cf7;
+  color: white;
+}
+
+.action-bar .restart-btn {
+  /*display: flex;
+  justify-content: center;*/
+  padding: 10px 14px;
+  background-color: #4a6cf7;
+  color: #fff;
+  text-decoration: none; /* 밑줄 제거 */
+  border-radius: 6px;
+  font-size: 14px;
+  margin-left: 0;
+}
+
+.action-bar .real-btn {
+padding: 10px 14px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none; /* 밑줄 제거 */
+  border-radius: 6px;
+  font-size: 14px;
+  margin-left: 0;
+}

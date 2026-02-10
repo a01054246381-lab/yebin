@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>면접 시뮬레이션</title>
+  <link rel="stylesheet" href="/interview001/header/ins_header.css">
+  <link rel="stylesheet" href="/interview001/simulation/ins_user_info.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div class="info-container">
+      <h2>사용자 입력 정보</h2>
+        <form class="interview-form" action="/interview001/simulation/in_simul_mode.html" method="post" >
+
+        <!-- 면접 목적 -->
+        <div class="form-group">
+            <label for="purpose">면접 목적</label>
+            <select id="purpose" name="purpose">
+                <option value="">선택하세요</option>
+                <option>취업</option>
+                <option>인턴</option>
+                <option>전환형 인턴</option>
+                <option>기타</option>
+            </select>
+        </div>
+
+        <!-- 면접 분야 -->
+        <div class="form-group">
+            <label for="field">면접 분야</label>
+            <input type="text" id="field" placeholder="예) 백엔드 개발, 마케팅">
+        </div>
+
+        <!-- 모집 공고 -->
+        <div class="form-group">
+            <label for="job">모집 공고</label>
+            <textarea id="job" placeholder="모집 공고 내용을 입력하세요"></textarea>
+        </div>
+
+        <!-- 이력서 -->
+        <div class="form-group">
+            <label for="resume">이력서</label>
+            <textarea id="resume" placeholder="이력서 내용을 붙여주세요"></textarea>
+        </div>
+
+        <!-- 기업 링크 -->
+        <div class="form-group">
+            <label for="companyLink">기업 링크</label>
+            <input type="url" id="companyLink" placeholder="https://www...">
+        </div>
+
+        <!-- 지역 -->
+        <div class="form-group">
+            <label for="location">국내 지점 / 지역</label>
+            <input type="text" id="location" placeholder="예) 서울 강남구">
+        </div>
+
+        <!-- 버튼 -->
+        <button type="submit" class="submit-btn">면접 시뮬레이션 시작</button>
+        </form>
+
+  </div>
+
+<script>
+fetch("/interview001/header/in_header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+</script>
+</body>
+</html>

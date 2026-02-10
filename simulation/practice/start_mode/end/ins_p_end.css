@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f6f8;
+  color: #222;
+}
+
+/*Header*/
+/*.header {
+  background: white;
+  padding: 16px 24px;
+  border-bottom: 1px solid #ddd;
+}
+*/
+
+/* Progress */
+.content {
+    overflow-y: auto;
+    flex: 1;
+   margin:0;
+    /*padding-top: 30px;
+    padding-left: 90px;*/
+    height: 100%;
+}
+.content h1 {
+    padding-left: 20px;
+}
+.progress-wrap {
+  background: white;
+  padding: 12px 24px;
+}
+
+.progress-text {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #e4e6eb;
+  border-radius: 4px;
+}
+
+.progress {
+  width: 100%;
+  height: 100%;
+  background: #4a6cf7;
+  border-radius: 4px;
+}
+
+/* Layout */
+.practice-layout {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  min-height: calc(100vh - 200px);
+}
+
+/* Left Area */
+.answer-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.question-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.answer-input {
+  flex: 1;
+  resize: none;
+  padding: 16px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  line-height: 1.6;
+}
+
+/* Right Guide */
+.guide-area {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* PSAR */
+.psar-box {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.psar-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.psar-box li {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  color: #555;
+}
+
+.psar-box li.active {
+  background: #eaf0ff;
+  color: #4a6cf7;
+  font-weight: bold;
+}
+
+/* AI Signal */
+.ai-signal {
+  background: #fff3f3;
+  border-left: 4px solid #ff4d4f;
+  padding: 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+}
+
+/* Bottom Action Bar */
+.action-bar {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  background: white;
+  border-top: 1px solid #ddd;
+}
+
+.action-bar button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.action-bar .sub {
+  background: #e4e6eb;
+}
+
+/*.action-bar .main {
+  background: #4a6cf7;
+  color: white;
+  margin-left: auto;
+}*/
+
+.result-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #4a6cf7;
+  color: white;
+  text-decoration: none; /* 밑줄 제거 */
+  border-radius: 6px;
+  font-size: 16px;
+  margin-left: auto;
+}

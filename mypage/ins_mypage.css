@@ -1,0 +1,146 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+#header {
+    flex-shrink: 0; /* 헤더 높이 고정 */
+}
+
+.layout {
+     flex: 1;               /* 🔥 여기 핵심 */
+    display: flex;
+    min-height: 0;         /* 스크롤 깨짐 방지 */
+}
+
+/* 사이드바 */
+.sidebar {
+    margin:0;
+    width: 140px;
+    height: 100%;
+    background: #f5f6f8;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.sidebar li a {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar li:hover {
+    background: #ddd;
+}
+
+/* 숨김 상태 */
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+/* 콘텐츠 */
+.content {
+    /*align-items: center;      !* 세로 가운데 *!*/
+    display: flex;
+    gap: 20px;
+    flex: 1;
+
+    margin:0;
+    padding-left: 30px;
+
+    height: calc(100vh - 120px); /* 🔥 헤더 높이만큼 빼기 */
+    overflow-y: auto;
+    /*!* 화면 중앙 정렬 *!*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*height: 100vh;*/
+}
+
+
+.profile-box {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.profile-box label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+input:disabled {
+    background: #f3f3f3;
+    border: 1px solid #ccc;
+}
+
+input {
+    margin-top: 12px;
+    padding: 6px;
+}
+
+.profile-box input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 6px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.profile-box input.editing {
+    border: 2px solid #4a6cf7;
+    box-shadow: 0 0 6px rgba(74,108,247,0.4);
+}
+
+/* 버튼 */
+button {
+    width: 100%;
+    height: 42px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+.profile-image {
+    /*background: url("");*/
+    flex-shrink: 0;           /* 줄어들지 않게 */
+    position: relative;   /* 기준 */
+    width: 300px;
+    height: 300px;
+
+}
+
+.profile-image img {
+    position: absolute;
+    top: 180px;    /* ↓ 아래로 */
+    left: 400px;   /* → 오른쪽으로 */
+
+    width: 240px;
+    /*!* 화면 중앙 정렬 *!*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}

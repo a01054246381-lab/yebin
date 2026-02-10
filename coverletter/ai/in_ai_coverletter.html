@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>AI 자소서 피드백</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="/interview001/coverletter/ai/ins_ai_coverletter.css">
+
+</head>
+<body>
+<div id="header"></div>
+
+<div class="layout">
+
+    <!-- 왼쪽 사이드바 -->
+    <aside id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="/interview001/coverletter/input/in_input_resume.html">이력서 보기/수정</a></li>
+            <li><a href="/interview001/coverletter/ai/in_ai_coverletter.html">AI 자소서 피드백</a></li>
+        </ul>
+    </aside>
+
+    <!-- 오른쪽 콘텐츠 -->
+    <div class="content">
+      <h2>AI 자소서 피드백</h2>
+      <p>피드백 출력</p>
+
+
+    </div>
+
+</div>
+</body>
+<script>
+        fetch("/interview001/header/in_header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+    </script>
+<script src="inj_ai_coverletter.js"></script>
+</html>

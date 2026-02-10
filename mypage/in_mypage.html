@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>나의 페이지</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="ins_mypage.css">
+
+</head>
+<body>
+<div id="header"></div>
+
+<div class="layout">
+
+    <!-- 왼쪽 사이드바 -->
+    <aside id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="/interview001/mypage/in_mypage.html">나의 정보</a></li>
+            <li><a href="/interview001/mypage/in_alarm.html">알림 설정</a></li>
+        </ul>
+    </aside>
+
+    <!-- 오른쪽 콘텐츠 -->
+    <div class="content">
+
+        <!-- 개인정보 표시 영역 -->
+        <div class="profile-box">
+            <h2>나의 정보</h2>
+            <label>
+                이름
+                <input type="text" id="name" value="홍길동" disabled>
+            </label>
+            <label>
+                생년월일
+                <input type="text" id="birth" value="20260205" disabled>
+            </label>
+            <label>
+                전화번호
+                <input type="text" id="phone" value="010-1234-5678" disabled>
+            </label>
+            <label>
+                아이디
+                <input type="text" id="id" value="hong123" disabled>
+            </label>
+            <label>
+                비밀번호
+                <input type="password" id="pw" value="hong123@" disabled>
+            </label>
+            <label>
+                비밀번호 재확인
+                <input type="password" id="pw_re" value="hong123@" disabled>
+            </label>
+            <label>
+                성별
+                <input type="text" id="gender" value="남성" disabled>
+            </label>
+            <label>
+                학력
+                <input type="text" id="education" value="대학교 졸업" disabled>
+            </label>
+            <label>
+                전공
+                <input type="text" id="major" value="컴퓨터공학" disabled>
+            </label>
+            <label>
+                이메일
+                <input type="email" id="email" value="hong@test.com" disabled>
+            </label>
+            <label>
+                경력
+                <input type="text" id="career" value="인턴 경험" disabled>
+            </label>
+
+
+
+            <button type="button" id="editBtn">변경</button>
+            <button type="button" id="saveBtn" style="display:none;">저장</button>
+        </div>
+        <div class="profile-image">
+            <img src="/interview001/user.png" alt="프로필">
+        </div>
+    </div>
+
+</div>
+</body>
+<script>
+        fetch("/interview001/header/in_header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+    </script>
+<script src="inj_mypage.js"></script>
+</html>

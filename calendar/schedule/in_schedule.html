@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>일정 입력</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="ins_schedule.css">
+
+</head>
+<body>
+<div id="header"></div>
+
+<div class="layout">
+
+    <!-- 왼쪽 사이드바 -->
+    <aside id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="/interview001/calendar/schedule/in_schedule.html">일정 입력</a></li>
+            <li><a href="/interview001/calendar/in_calendar.html">캘린더</a></li>
+        </ul>
+    </aside>
+
+    <!-- 오른쪽 콘텐츠 -->
+    <div class="content">
+
+        <h2>일정 입력</h2>
+        <p>당신의 면접일정을 입력하세요.</p>
+        <div class="schedule-wrapper">
+            <form class="interview-form">
+                <h3>면접 일정 입력</h3>
+
+                <div class="form-group">
+                    <label for="company">기업명</label>
+                    <input type="text" id="company" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="position">지원 직무</label>
+                    <input type="text" id="position" placeholder="예: 백엔드 개발자" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">면접 날짜</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">면접 시간</label>
+                    <input type="time" id="time" required>
+                </div>
+
+                <div class="form-group">
+                    <label>면접 방식</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="type" value="offline" checked> 대면</label>
+                        <label><input type="radio" name="type" value="online"> 비대면</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="place">장소 / 링크</label>
+                    <input type="text" id="place" placeholder="회사 주소 또는 Zoom 링크">
+                </div>
+
+                <div class="form-group">
+                    <label for="memo">메모</label>
+                    <textarea id="memo" rows="3"></textarea>
+                </div>
+                <div class="button">
+                    <button type="submit">면접 일정 저장</button>
+                </div>
+
+            </form>
+            <div class="schedule-button">
+                    <button type="submit">면접 일정 추가</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+<script>
+    fetch("/interview001/header/in_header.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("header").innerHTML = data;
+        });
+</script>
+<script src="inj_schedule.js"></script>
+</html>

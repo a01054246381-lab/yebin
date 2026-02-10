@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>캘린더</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="ins_calendar.css">
+
+</head>
+<body>
+<div id="header"></div>
+
+<div class="layout">
+
+    <!-- 왼쪽 사이드바 -->
+    <aside id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="/interview001/calendar/schedule/in_schedule.html">일정 입력</a></li>
+            <li><a href="/interview001/calendar/in_calendar.html">캘린더</a></li>
+        </ul>
+    </aside>
+
+    <!-- 오른쪽 콘텐츠 -->
+    <div class="content">
+      <h2>캘린더</h2>
+      <div class="calendar">
+    <div class="calendar-header">
+        <button id="prevBtn">◀</button>
+        <span id="monthYear"></span>
+        <button id="nextBtn">▶</button>
+    </div>
+
+    <div class="calendar-days">
+        <div>일</div><div>월</div><div>화</div><div>수</div>
+        <div>목</div><div>금</div><div>토</div>
+    </div>
+
+    <div id="calendarDates" class="calendar-dates"></div>
+</div>
+
+
+
+    </div>
+
+</div>
+</body>
+<script>
+        fetch("/interview001/header/in_header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+    </script>
+<script src="inj_calendar.js"></script>
+</html>

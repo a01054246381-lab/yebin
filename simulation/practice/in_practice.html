@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>모의 모드</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="/interview001/simulation/practice/ins_practice.css">
+</head>
+<body>
+    <div id="header"></div>
+    <div class="practice-mode">
+        <h2>모의 모드</h2>
+        <!-- 면접관 선택 -->
+        <div class="form-group">
+    <p class="title">당신의 면접관을 선택하세요</p>
+
+    <div class="radio-group">
+        <label class="option">
+            <input type="checkbox" name="interviewer" value="hr">
+            <span class="role">과장(실무형)</span>
+            <span class="desc">기술 · 실무 적합성 평가</span>
+        </label>
+
+        <label class="option">
+            <input type="checkbox" name="interviewer" value="manager">
+            <span class="role">차장(검증형)</span>
+            <span class="desc">논리 · 판단 근거 평가</span>
+        </label>
+
+        <label class="option">
+            <input type="checkbox" name="interviewer" value="leader">
+            <span class="role">팀장(균형형)</span>
+            <span class="desc">인성 · 책임 · 리더십 평가</span>
+        </label>
+
+        <label class="option">
+            <input type="checkbox" name="interviewer" value="executive">
+            <span class="role">임원(최종형)</span>
+            <span class="desc">비전 · 로열티 · 태도 평가</span>
+        </label>
+    </div>
+</div>
+
+<button id="startBtn">모의 모드 시작</button>
+
+    </div>
+<script>
+fetch("/interview001/header/in_header.html")
+   .then(res => res.text())
+   .then(data => {
+       document.getElementById("header").innerHTML = data;
+   });
+</script>
+<script src="/interview001/simulation/practice/inj_practice.js"></script>
+</body>
+</html>

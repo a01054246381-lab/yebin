@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자유게시판</title>
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="ins_commu_main.css">
+</head>
+<body>
+
+<div id="header"></div>
+
+<div class="layout">
+    <!-- 왼쪽 사이드바 -->
+    <aside id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="/interview001/community/commu_main/in_commu_main.html">자유게시판</a></li>
+            <li><a href="/interview001/community/mentor/in_mentor.html">멘토멘티</a></li>
+            <li><a href="/interview001/community/resource/in_resource.html">자료실</a></li>
+            <li><a href="/interview001/community/qna/in_qna.html">문의사항</a></li>
+            <li><a href="/interview001/community/job/in_job.html">채용공고</a></li>
+        </ul>
+    </aside>
+
+    <!-- 오른쪽 콘텐츠 -->
+    <div class="content">
+        <div class="board-layout">
+        <div class="board-main">
+
+
+            <!-- 게시판 제목 -->
+            <div class="board-title">
+                <h2>자유게시판</h2>
+                <p>면접, 취업, 일상 이야기를 자유롭게 나누세요.</p>
+            </div>
+
+            <!-- 검색 -->
+            <div class="board-search">
+                <select>
+                    <option>제목</option>
+                    <option>작성자</option>
+                </select>
+                <input type="text" placeholder="검색어를 입력하세요">
+                <button>검색</button>
+            </div>
+
+            <!-- 게시글 목록 -->
+            <ul class="board-list">
+                <li class="title">
+                    <span class="no">게시글</span>
+                    <span class="subject">게시글 제목</span>
+                    <span class="writer">작성자</span>
+                    <span class="date">날짜</span>
+                    <span class="view">조회수</span>
+                </li>
+                <li class="notice">
+                    <span class="no">공지</span>
+                    <span class="subject">[필독] 커뮤니티 이용 안내</span>
+                    <span class="writer">관리자</span>
+                    <span class="date">2026-02-01</span>
+                    <span class="view">120</span>
+                </li>
+
+                <li>
+                    <span class="no">1</span>
+                    <span class="subject">면접 너무 떨리는데 팁 좀 주세요</span>
+                    <span class="writer">취준생1</span>
+                    <span class="date">2026-02-06</span>
+                    <span class="view">23</span>
+                </li>
+
+                <li>
+                    <span class="no">2</span>
+                    <span class="subject">AI 면접 후기 공유합니다</span>
+                    <span class="writer">면접러</span>
+                    <span class="date">2026-02-05</span>
+                    <span class="view">18</span>
+                </li>
+            </ul>
+
+            <!-- 글쓰기 -->
+            <div class="board-bottom">
+                <button class="write-btn">글쓰기</button>
+            </div>
+
+            <!-- 페이지네이션 -->
+            <div class="pagination">
+                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>›</span>
+            </div>
+
+        </div>
+
+        <aside class="board-side">
+
+            <!-- 커뮤니티 안내 -->
+            <div class="side-box">
+                <h3>📢 커뮤니티 안내</h3>
+                <ul>
+                    <li>욕설·비방 금지</li>
+                    <li>광고 글 삭제</li>
+                    <li>신고 누적 시 이용 제한</li>
+                </ul>
+            </div>
+
+            <!-- 인기 게시글 -->
+            <div class="side-box">
+                <h3>🔥 인기 게시글</h3>
+                <ol class="rank-list">
+                    <li>AI 면접 후기 공유</li>
+                    <li>면접 질문 정리</li>
+                    <li>실전 모드 후기</li>
+                </ol>
+            </div>
+
+            <!-- AI 면접 바로가기 -->
+            <div class="side-box highlight">
+                <h3>🎤 AI 면접</h3>
+                <a href="/interview001/simulation/in_user_info.html" class="practice-btn">모의 면접 시작</a>
+                <a href="/interview001/simulation/in_user_info.html" class="btn">실전 면접 시작</a>
+            </div>
+
+            <!-- 일정 요약 -->
+            <div class="side-box">
+                <h3>📅 나의 면접 일정</h3>
+                <p class="schedule">02/10 · 삼성 SDI</p>
+                <p class="schedule">02/15 · 네이버</p>
+            </div>
+
+            <!-- 오늘의 한마디 -->
+            <div class="side-box quote">
+                <p>“답변보다 중요한 건 태도입니다.”</p>
+            </div>
+
+        </aside>
+        </div>
+    </div>
+</div>
+    <script>
+        fetch("/interview001/header/in_header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+    </script>
+    <script src="inj_commu_main.js"></script>
+
+    </body>
+</html>

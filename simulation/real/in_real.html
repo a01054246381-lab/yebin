@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>실전 면접 모드</title>
+<!--    <link rel="stylesheet" href="/interview001/header/ins_header.css">-->
+  <link rel="stylesheet" href="/interview001/simulation/real/ins_real.css">
+</head>
+
+<body>
+<!--<div id="header"></div>-->
+<!-- 실전 모드 시작 모달 -->
+<div class="modal-overlay" id="practiceStartModal">
+  <div class="modal">
+    <h3>실전 모드 시작</h3>
+    <p>잠시 후 질문이 시작됩니다</p>
+    <div class="countdown" id="practiceCountdown">3</div>
+  </div>
+</div>
+<div class="real-container">
+
+  <!-- 상단 바 -->
+  <header class="real-header">
+    <span class="mode">실전 모드</span>
+    <span class="timer">⏱ 01:00</span>
+    <span class="recording">● 답변 시작</span>
+  </header>
+
+  <!-- 면접관 영역 (AI TTS + 립싱크) -->
+  <section class="interviewer-section">
+    <div class="interviewer-avatar">
+      <!-- AI 얼굴 / 캐릭터 -->
+      <div class="avatar-circle"></div>
+    </div>
+    <div class="interviewer-text">
+      <p class="question-label">질문</p>
+      <p class="question-text">
+        자기소개를 해주세요.
+      </p>
+    </div>
+  </section>
+
+  <!-- 질문 텍스트 영역 -->
+  <section class="question-section">
+    <h2>Q1.</h2>
+    <p>자기소개를 해주세요. (60초)</p>
+  </section>
+
+  <!-- 음성 인식 상태 -->
+  <section class="stt-section">
+    <div class="mic-status">
+      🎤 음성 인식 중...
+    </div>
+    <div class="stt-text">
+      <p>“저는 컴퓨터공학과에 재학 중이며...”</p>
+    </div>
+  </section>
+
+  <!-- 하단 버튼 -->
+  <footer class="control-section">
+    <button class="control-btn primary">답변 시작</button>
+    <button class="control-btn">일시정지</button>
+  </footer>
+
+</div>
+<!-- 타이머 종료 모달 -->
+<div class="modal-overlay" id="timerModal">
+  <div class="modal">
+    <h3>답변 종료</h3>
+    <p>답변 시간이 종료되었습니다.</p>
+    <button id="modalConfirm">결과 확인 →</button>
+  </div>
+</div>
+<!--<script>-->
+<!--    fetch("/interview001/header/in_header.html")-->
+<!--       .then(res => res.text())-->
+<!--       .then(data => {-->
+<!--           document.getElementById("header").innerHTML = data;-->
+<!--       });-->
+<!--</script>-->
+<script src="inj_real.js"></script>
+
+</body>
+</html>

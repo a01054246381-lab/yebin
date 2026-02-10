@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>면접 결과 리포트</title>
+  <link rel="stylesheet" href="/interview001/header/ins_header.css">
+  <link rel="stylesheet" href="/interview001/simulation/practice/start_mode/result/ins_p_result.css" />
+</head>
+<body>
+<div id="header"></div>
+<div class="practice-report">
+  <h1>면접 결과 리포트</h1>
+
+
+<main class="result-layout">
+
+  <!-- 1. 요약 -->
+  <section class="card summary">
+    <h2>🎉 모의 면접 종료</h2>
+    <ul class="summary-list">
+      <li>✔ 답변 구조 안정도: <b>높음</b></li>
+      <li>✔ PSAR 활용률: <b>3 / 4</b></li>
+      <li>✔ 논리 흐름: <b>명확</b></li>
+      <li>✔ 면접관 관점 위험 요소: <b>결과 수치 부족</b></li>
+    </ul>
+  </section>
+
+  <!-- 2. 질문별 답변 비교 -->
+  <section class="card">
+    <h2>Q1. 가장 어려웠던 문제를 어떻게 해결했나요?</h2>
+
+    <div class="answer-box">
+      <h3>📝 내 답변</h3>
+      <p>
+        프로젝트 진행 중 일정 지연 문제가 발생했습니다.
+        팀원들과 협의하여 문제를 해결하려고 노력했습니다.
+      </p>
+    </div>
+
+    <div class="answer-box ai">
+      <h3>✨ AI 전문가 답변</h3>
+      <p>
+        프로젝트 일정이 지연되는 상황에서 문제의 원인을 분석하고,
+        팀원들과 역할을 재정비하여 일정 관리 방식을 개선했습니다.
+        그 결과 마감 기한 내 프로젝트를 완료할 수 있었습니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. PSAR 구조 분석 -->
+  <section class="card">
+    <h2>🧩 답변 구조 분석 (PSAR)</h2>
+    <ul class="psar-analysis">
+      <li>P · 문제 설명 <span>●●●●○</span></li>
+      <li>S · 상황 맥락 <span>●●●○○</span></li>
+      <li>A · 행동 설명 <span>●●○○○</span></li>
+      <li>R · 결과 제시 <span>●○○○○</span></li>
+    </ul>
+  </section>
+
+  <!-- 4. 모범 답안 & 지식 구조 -->
+  <section class="card">
+    <h2>📚 모범 답안 피드백</h2>
+
+    <div class="quote">
+      “이 질문에서 면접관은
+      문제 인식 → 판단 기준 → 행동 → 결과
+      의 흐름을 보고자 합니다.”
+    </div>
+
+    <h3>보완이 필요한 지식 구조</h3>
+    <ol class="knowledge-list">
+      <li><b>[우선]</b> 성과 수치화 능력</li>
+      <li><b>[중요]</b> 의사결정 기준 설명</li>
+      <li><b>[보완]</b> 직무 연관성 연결</li>
+    </ol>
+  </section>
+
+  <!-- 5. 리버스 엔지니어링 -->
+  <section class="card">
+    <h2>🕵️ 면접관 시선 분석</h2>
+
+    <p class="interviewer-view">
+      “이 지원자는 문제 인식은 빠르지만,
+      결과를 통해 역량을 증명하는 데는 아직 익숙하지 않다.”
+    </p>
+
+    <ul class="score-list">
+      <li>논리력 <span>★★★★☆</span></li>
+      <li>주도성 <span>★★★☆☆</span></li>
+      <li>설득력 <span>★★☆☆☆</span></li>
+      <li>신뢰감 <span>★★★☆☆</span></li>
+    </ul>
+  </section>
+
+  <!-- 6. 실전 모드 전용 -->
+  <section class="card real-only">
+    <h2>🎙 사용자 답변 습관 분석 (실전 모드)</h2>
+
+    <ul class="habit-list">
+      <li>말의 도입부가 길어지는 경향</li>
+      <li>결론보다 배경 설명을 먼저 말함</li>
+      <li>추상적인 표현 반복 사용</li>
+    </ul>
+
+    <div class="persona">
+      <h3>🧑‍💼 AI 면접관 페르소나 매칭</h3>
+      <p>
+        당신은 <b>결과 중심 · 숫자 중시형 면접관</b>에게
+        특히 약한 경향을 보입니다.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- 하단 액션 -->
+<footer class="action-bar">
+  <button class="sub">🔁 다시 연습</button>
+  <button class="sub">🎯 약점 집중 훈련</button>
+  <button class="sub">📌 답변 저장</button>
+  <a href="/interview001/simulation/practice/start_mode/in_practice.html" class="restart-btn">▶ 모의 모드 다시 시작</a>
+  <a href="/interview001/simulation/real/in_real.html" class="real-btn">▶ 실전 모드 도전</a>
+</footer>
+</div>
+<script>
+fetch("/interview001/header/in_header.html")
+   .then(res => res.text())
+   .then(data => {
+       document.getElementById("header").innerHTML = data;
+   });
+</script>
+<!--<script src="/interview001/simulation/practice/inj_practice.js"></script>-->
+</body>
+</html>

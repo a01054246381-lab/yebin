@@ -1,0 +1,141 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+#header {
+    flex-shrink: 0; /* 헤더 높이 고정 */
+}
+
+.layout {
+     flex: 1;               /* 🔥 여기 핵심 */
+    display: flex;
+    min-height: 0;         /* 스크롤 깨짐 방지 */
+}
+
+/* 사이드바 */
+.sidebar {
+    margin:0;
+    width: 140px;
+    height: 100%;
+    background: #f5f6f8;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.sidebar li a {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar li:hover {
+    background: #ddd;
+}
+
+/* 숨김 상태 */
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+/* 콘텐츠 */
+.content {
+    flex: 1;
+   margin:0;
+    padding-left: 30px;
+    height: 100%;
+    overflow-y: auto;
+    /*!* 화면 중앙 정렬 *!*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*height: 100vh;*/
+}
+
+body {
+  background: white;
+  font-family: Arial, sans-serif;
+}
+
+.resume-form {
+  width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin: 30px 0 10px;
+}
+
+.resume-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.resume-table th,
+.resume-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.resume-table th {
+  background: #f0f0f0;
+  width: 20%;
+  text-align: center;
+}
+
+.resume-table input,
+.resume-table textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+    margin-top: 10px;
+  width: 100%;
+  padding: 15px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.remove-education {
+  background: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+
+
