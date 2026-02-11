@@ -1,132 +1,131 @@
-let time = 60;
-let timerInterval = null;
-let isRunning = false;
-
-const timerEl = document.querySelector(".timer");
-const startBtn = document.querySelector(".control-btn.primary");
-const recordingEl = document.querySelector(".recording");
-
-const modal = document.getElementById("timerModal");
-//const modalConfirm = document.getElementById("modalConfirm");
-
-const practiceModal = document.getElementById("practiceStartModal");
-
-/* 상태 변경 : “지금 답변 중이다”라는 화면 상태를 한 번에 바꾸는 함수 */
-function setAnsweringState() {
-  startBtn.textContent = "답변 중";
-  startBtn.disabled = true;
-  startBtn.classList.add("answering");
-
-  recordingEl.textContent = "● 답변 중";
-  recordingEl.className = "recording recording-on";
-}
-
-function setAnswerDoneState() {
-  startBtn.textContent = "답변 완료";
-  startBtn.classList.remove("answering");
-  startBtn.classList.add("done");
-
-  recordingEl.textContent = "● 답변 완료";
-  recordingEl.className = "recording recording-done";
-}
-
-/* 타이머 표시 함수 : 숫자(time)를 사람이 보는 시계 형식으로 바꿔서 화면에 보여줌*/
-function updateTimer() {
-  const minutes = String(Math.floor(time / 60)).padStart(2, "0");
-  const seconds = String(time % 60).padStart(2, "0");
-  timerEl.textContent = `⏱ ${minutes}:${seconds}`;
-//경고 처리
-  if (time <= 5) {
-    timerEl.classList.add("warning");
-  }
-}
-
-/* 타이머 시작 로직 (핵심) */
-function startTimer() {
-  if (isRunning) return;
-//타이머 시작 로직 (핵심)
-  isRunning = true;
-  setAnsweringState();
-
-  timerInterval = setInterval(() => {
-    if (time <= 0) {
-      clearInterval(timerInterval);
-      isRunning = false;
-
-      setAnswerDoneState();
-      onTimeEnd();              // ⭐ 추가
-      showTimerEndModal();      // ⭐ 추가
-      return;
-    }
-
-    time--;
-    updateTimer();
-  }, 1000);
-}
-
-//모달 전부 닫는 함수
-function closeAllModals() {
-  document.querySelectorAll(".modal-overlay").forEach(m => {
-    m.classList.remove("active");
-  });
-}
-//버튼 이벤트 연결 : 버튼 누르면 startTimer() 실행
-startBtn.addEventListener("click", startTimer);
-
-
-
-/* 초기 */
-updateTimer();
-
-//페이지 처음 로드될 때 실행되는 코드 : HTML이 전부 로딩된 후 실행
 document.addEventListener("DOMContentLoaded", () => {
-    const modalConfirm = document.getElementById("modalConfirm");
+  let time = 60;
+  let timerInterval = null;
+  let isRunning = false;
 
-  modalConfirm.addEventListener("click", () => {
-  location.href = "/interview001/simulation/practice/start_mode/result/in_p_result.html";
-});
-  closeAllModals(); // ⭐ 기존 모달 다 닫고
+  const timerEl = document.querySelector(".timer");
+  const startBtn = document.querySelector(".control-btn.primary");
+  const pauseBtn = document.getElementById("pauseBtn");
+  const recordingEl = document.querySelector(".recording");
 
   const startModal = document.getElementById("practiceStartModal");
-  startModal.style.display = "flex";
+  const timerModal = document.getElementById("timerModal");
+  const modalConfirm = document.getElementById("modalConfirm");
 
-  let count = 3;
-  const countdownEl = document.querySelector("#practiceStartModal .countdown");
+  const video = document.getElementById("webcam");
 
-  const timer = setInterval(() => {
-    count--;
-    countdownEl.textContent = count;
+  // ===== 모달 함수 =====
+  function openModal(modal) { modal.classList.add("active"); }
+  function closeModal(modal) { modal.classList.remove("active"); }
+  function closeAllModals() {
+    document.querySelectorAll(".modal-overlay").forEach(m => m.classList.remove("active"));
+  }
 
-    if (count === 0) {
-      clearInterval(timer);
-      startModal.style.display = "none";
-      // 0 되면 모달 닫고 실전 시작
+  // ===== 타이머 표시 =====
+  function updateTimer() {
+    const minutes = String(Math.floor(time / 60)).padStart(2,"0");
+    const seconds = String(time % 60).padStart(2,"0");
+    timerEl.textContent = `⏱ ${minutes}:${seconds}`;
+    if(time <=5){
+      timerEl.classList.add("warning");
+    } else {
+      timerEl.classList.remove("warning");
     }
-  }, 1000);
+  }
+
+  // ===== 상태 표시 =====
+  function setAnsweringState() {
+    startBtn.textContent = "일시정지";
+    startBtn.disabled = false;
+    startBtn.classList.add("answering");
+
+    recordingEl.textContent = "● 답변 중";
+    recordingEl.className = "recording recording-on";
+  }
+
+  function setAnswerPausedState() {
+    startBtn.textContent = "재개";
+    startBtn.disabled = false;
+    startBtn.classList.remove("answering");
+
+    recordingEl.textContent = "● 일시정지";
+    recordingEl.className = "recording";
+  }
+
+  function setAnswerDoneState() {
+    startBtn.textContent = "답변 완료";
+    startBtn.classList.remove("answering");
+    startBtn.classList.add("done");
+    startBtn.disabled = true;
+    if(pauseBtn) pauseBtn.disabled = true;
+
+    recordingEl.textContent = "● 답변 완료";
+    recordingEl.className = "recording recording-done";
+  }
+
+  // ===== 타이머 제어 =====
+  function startTimer() {
+    if(isRunning) return; // 이미 실행 중이면 무시
+    isRunning = true;
+    setAnsweringState();
+
+    timerInterval = setInterval(()=>{
+      if(time <= 0){
+        clearInterval(timerInterval);
+        isRunning = false;
+        setAnswerDoneState();
+        closeAllModals();
+        openModal(timerModal);
+        return;
+      }
+      time--;
+      updateTimer();
+    },1000);
+  }
+
+  function pauseTimer() {
+    if(!isRunning) return;
+    clearInterval(timerInterval);
+    isRunning = false;
+    setAnswerPausedState();
+  }
+
+  function resumeTimer() {
+    startTimer(); // isRunning 체크로 중복 실행 방지
+  }
+
+  // ===== 버튼 이벤트 =====
+  startBtn.addEventListener("click", () => {
+    if(isRunning){
+      pauseTimer(); // 실행 중이면 일시정지
+    } else {
+      resumeTimer(); // 멈춰있으면 재개
+    }
+  });
+  if(pauseBtn) pauseBtn.addEventListener("click", pauseTimer);
+
+  if(modalConfirm) modalConfirm.addEventListener("click", ()=>{
+    location.href = "/interview001/simulation/practice/start_mode/result/in_p_result.html";
+  });
+
+  // ===== 시작 모달 카운트다운 =====
+  let count = 3;
+  const countdownEl = startModal.querySelector(".countdown");
+  openModal(startModal);
+
+  const countdown = setInterval(()=>{
+    countdownEl.textContent = count;
+    count--;
+    if(count < 0){
+      clearInterval(countdown);
+      closeModal(startModal);
+    }
+  },1000);
+
+  updateTimer();
+
+  // ===== 웹캠 연결 =====
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => video.srcObject = stream)
+    .catch(err => console.error("웹캠 연결 실패:", err));
 });
-
-function showTimerEndModal() {
-  closeAllModals();
-  modal.classList.add("active");
-}
-
-/*
-function onTimeEnd() {
-  const actionBar = document.getElementById("actionBar");
-  if (!actionBar) return;
-
-  // 중복 생성 방지
-  if (document.getElementById("resultBtn")) return;
-
-  const btn = document.createElement("button");
-  btn.id = "resultBtn";
-  btn.className = "main";
-  btn.textContent = "결과 보기 →";
-
-  btn.onclick = () => {
-    location.href = "/interview001/practice/result.html";
-  };
-
-  actionBar.appendChild(btn);
-}
-*/

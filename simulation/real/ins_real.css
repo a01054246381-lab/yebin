@@ -56,12 +56,6 @@ body {
   flex-shrink: 0;
 }
 
-.avatar-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #4a6cf7, #6a8cff);
-}
 
 .interviewer-text {
   flex: 1;
@@ -125,7 +119,7 @@ body {
 }
 
 .control-btn {
-  min-width: 120px;
+  min-width: 220px;
   padding: 10px 16px;
   border: none;
   border-radius: 999px;
@@ -251,4 +245,98 @@ color: white;
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ===== 면접관 + 웹캠 영역 (반반 레이아웃) ===== */
+.interviewer-section {
+  background: #161a32;
+  border-radius: 14px;
+}
+
+/* 반반 레이아웃 */
+.interviewer-section.split {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+flex: 1;             /* 부모 컨테이너 높이에 맞춰 유연하게 확장 */
+  min-height: 320px;
+}
+
+/* 좌/우 공통 패널 */
+.interviewer-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  height: 100%;       /* 부모 flex 높이에 맞춤 */
+}
+
+/* ===== AI 면접관 이미지 ===== */
+.interviewer-panel.ai {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 실제 이미지 박스 */
+.avatar-circle {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background-image: url("/interview001/interviewer3.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; /* cover → contain으로 변경하면 이미지 전체가 보임 */
+  border-radius: 10px;
+}
+
+
+/* 텍스트 */
+.interviewer-text {
+  flex: 1;
+}
+
+/* ===== 웹캠 ===== */
+.interviewer-panel.webcam {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.interviewer-panel.webcam video,
+.interviewer-panel.webcam canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transform: scaleX(-1);
+}
+
+/* canvas 오버레이 */
+#webcamCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 웹캠 라벨 */
+.webcam-label {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  background: rgba(0,0,0,0.6);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.interviewer-panel.ai,
+.interviewer-panel.webcam {
+  aspect-ratio: 16 / 9; /* 가로:세로 비율 */
 }
