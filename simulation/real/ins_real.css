@@ -302,6 +302,20 @@ flex: 1;             /* 부모 컨테이너 높이에 맞춰 유연하게 확장
 
 /* ===== 웹캠 ===== */
 .interviewer-panel.webcam {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#flaskWebcam {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.interviewer-panel.webcam {
   position: relative;
   display: flex;
   align-items: center;

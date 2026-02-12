@@ -95,18 +95,52 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== 버튼 이벤트 =====
-  startBtn.addEventListener("click", () => {
-    if(isRunning){
-      pauseTimer(); // 실행 중이면 일시정지
-    } else {
-      resumeTimer(); // 멈춰있으면 재개
-    }
-  });
-  if(pauseBtn) pauseBtn.addEventListener("click", pauseTimer);
+// ===== 버튼 이벤트 =====
+startBtn.addEventListener("click", () => {
+  if (isRunning) {
+    // ⏸ 타이머 일시정지
+    pauseTimer();
 
-  if(modalConfirm) modalConfirm.addEventListener("click", ()=>{
-    location.href = "/interview001/simulation/practice/start_mode/result/in_p_result.html";
+    // 📸 캡쳐 OFF
+    fetch("/capture/stop", {
+      method: "POST"
+    });
+
+  } else {
+    // ▶️ 타이머 재개
+    resumeTimer();
+
+    // 📸 캡쳐 ON
+    fetch("/capture/start", {
+      method: "POST"
+    });
+  }
+});
+
+// 일시정지 버튼이 따로 있는 경우
+if (pauseBtn) {
+  pauseBtn.addEventListener("click", () => {
+    pauseTimer();
+
+    // 📸 캡쳐 OFF
+    fetch("/capture/stop", {
+      method: "POST"
+    });
   });
+}
+
+// ===== 면접 종료 =====
+if (modalConfirm) {
+  modalConfirm.addEventListener("click", () => {
+    // 🛑 캡쳐 완전 종료
+    fetch("/capture/stop", {
+      method: "POST"
+    }).finally(() => {
+      location.href = "/interview001/simulation/practice/start_mode/result/in_p_result.html";
+    });
+  });
+}
+
 
   // ===== 시작 모달 카운트다운 =====
   let count = 3;
