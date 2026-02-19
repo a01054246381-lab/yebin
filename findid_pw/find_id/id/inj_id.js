@@ -1,8 +1,10 @@
 // find_id.js
 
-// 예시 데이터 (실제로는 서버에서 받아온 값)
-const name = "홍길동";
-const id = "hong123";
+// 예시 데이터 (실제로는 서버에서 받아오면 됨)
 
-document.getElementById("userName").innerText = name;
-document.getElementById("userId").innerText = id;
+const userName = "홍길동";
+const userId = "hong1234";
+
+document.getElementById("userName").textContent = userName;
+document.getElementById("userId").textContent = userId;
+

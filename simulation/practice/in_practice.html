@@ -2,55 +2,159 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>모의 모드</title>
+    <title>모의 면접 설정</title>
+
     <link rel="stylesheet" href="/interview001/header/ins_header.css">
     <link rel="stylesheet" href="/interview001/simulation/practice/ins_practice.css">
 </head>
+
 <body>
+
+    <!-- 공통 헤더 -->
     <div id="header"></div>
-    <div class="practice-mode">
-        <h2>모의 모드</h2>
-        <!-- 면접관 선택 -->
-        <div class="form-group">
-    <p class="title">당신의 면접관을 선택하세요</p>
 
-    <div class="radio-group">
-        <label class="option">
-            <input type="checkbox" name="interviewer" value="hr">
-            <span class="role">과장(실무형)</span>
-            <span class="desc">기술 · 실무 적합성 평가</span>
-        </label>
+    <!-- =========================
+         메인 래퍼
+    ========================== -->
+    <main class="practice-wrapper">
 
-        <label class="option">
-            <input type="checkbox" name="interviewer" value="manager">
-            <span class="role">차장(검증형)</span>
-            <span class="desc">논리 · 판단 근거 평가</span>
-        </label>
+        <section class="practice-panel">
 
-        <label class="option">
-            <input type="checkbox" name="interviewer" value="leader">
-            <span class="role">팀장(균형형)</span>
-            <span class="desc">인성 · 책임 · 리더십 평가</span>
-        </label>
+            <!-- =========================
+                 상단 헤더
+            ========================== -->
+            <header class="panel-header">
+                <div class="mode-badge">PREPARE YOUR INTERVIEW</div>
+                <h2>모의 면접 설정</h2>
+                <p>면접관을 선택하면 실제 면접 흐름이 구성됩니다.</p>
+            </header>
 
-        <label class="option">
-            <input type="checkbox" name="interviewer" value="executive">
-            <span class="role">임원(최종형)</span>
-            <span class="desc">비전 · 로열티 · 태도 평가</span>
-        </label>
-    </div>
-</div>
 
-<button id="startBtn">모의 모드 시작</button>
+            <!-- =========================
+                 중앙 메인 영역
+            ========================== -->
+            <div class="panel-main">
 
-    </div>
-<script>
+                <!-- =========================
+                     왼쪽 : 선택 영역
+                ========================== -->
+                <section class="select-area">
+
+                    <p class="section-title">면접관 선택</p>
+
+                    <div class="radio-grid">
+
+                        <label class="option">
+                            <input type="checkbox" name="interviewer" value="hr" data-name="과장" data-role="실무형" data-img="/interview001/img/hr.png">
+                            <div class="option-card">
+                                <span class="role">과장 (실무형)</span>
+                                <span class="desc">기술 · 실무 적합성 평가</span>
+                            </div>
+                        </label>
+
+                        <label class="option">
+                            <input type="checkbox" name="interviewer" value="manager" data-name="차장" data-role="검증형" data-img="/interview001/img/manager.png">
+                            <div class="option-card">
+                                <span class="role">차장 (검증형)</span>
+                                <span class="desc">논리 · 판단 근거 평가</span>
+                            </div>
+                        </label>
+
+                        <label class="option">
+                            <input type="checkbox" name="interviewer" value="leader" data-name="팀장" data-role="균형형" data-img="/interview001/img/leader.png">
+                            <div class="option-card">
+                                <span class="role">팀장 (균형형)</span>
+                                <span class="desc">인성 · 책임 · 리더십 평가</span>
+                            </div>
+                        </label>
+
+                        <label class="option">
+                            <input type="checkbox" name="interviewer" value="executive" data-name="임원" data-role="최종형" data-img="/interview001/img/executive.png">
+                            <div class="option-card">
+                                <span class="role">임원 (최종형)</span>
+                                <span class="desc">비전 · 로열티 · 태도 평가</span>
+                            </div>
+                        </label>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     오른쪽 : 미리보기 영역
+                ========================== -->
+                <aside class="preview-area">
+
+                    <p class="section-title">선택 미리보기</p>
+
+                    <div id="previewPanel" class="preview-panel">
+                        <p class="empty">면접관을 선택하세요</p>
+                    </div>
+
+                </aside>
+
+            </div>
+
+
+            <!-- =========================
+                 하단 버튼
+            ========================== -->
+            <footer class="panel-footer">
+                <button id="startBtn" disabled>모의 면접 시작</button>
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         헤더 로드
+    ========================== -->
+ <script>
 fetch("/interview001/header/in_header.html")
-   .then(res => res.text())
-   .then(data => {
-       document.getElementById("header").innerHTML = data;
-   });
+.then(res => res.text())
+.then(data => {
+
+    const headerEl = document.getElementById("header");
+    headerEl.innerHTML = data;
+
+    /* 햄버거 */
+    const hamburger = headerEl.querySelector('.hamburger');
+    const menu = headerEl.querySelector('.menu');
+
+    if(hamburger){
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
+
+    /* =========================
+       ACTIVE 표시 (폴더 기준)
+    ========================= */
+
+    const currentPath = window.location.pathname;
+
+    headerEl.querySelectorAll(".menu a").forEach(link => {
+
+        const linkPath = new URL(link.href).pathname;
+
+        // 폴더 기준 포함 비교
+        const linkFolder = linkPath.substring(0, linkPath.lastIndexOf("/"));
+
+        if(currentPath.startsWith(linkFolder)){
+            link.classList.add("active_attach");
+        }
+
+    });
+
+});
+
 </script>
-<script src="/interview001/simulation/practice/inj_practice.js"></script>
+
+    <!-- 선택 로직 -->
+    <script src="/interview001/simulation/practice/inj_practice.js"></script>
+
 </body>
 </html>

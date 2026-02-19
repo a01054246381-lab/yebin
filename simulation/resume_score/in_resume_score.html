@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>AI 직무 적합도 분석 리포트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="ins_resume_score.css">
+</head>
+
+<body>
+<div id="header"></div>
+<div class="container">
+  <div class="form-header">
+        <div class="mode-badge">INTERVIEW RESUME REPORT</div>
+        <h2>이력서 평가 레포트</h2>
+        <p>입력한 이력서를 기반으로 직무 적합성을 예측하여 분석 결과를 제공합니다.</p>
+    </div>
+
+
+<!-- ===== 상단 ===== -->
+<div class="top-grid">
+
+  <!-- 점수 -->
+  <section class="card gauge-box">
+
+    <div class="card-title">직무 적합도</div>
+
+    <div class="gauge">
+      <svg width="220" height="220">
+        <defs>
+          <linearGradient id="gradient">
+            <stop offset="0%" stop-color="#6366f1"/>
+            <stop offset="100%" stop-color="#8b5cf6"/>
+          </linearGradient>
+        </defs>
+
+        <circle class="bg" cx="110" cy="110" r="70"/>
+        <circle class="progress" cx="110" cy="110" r="70"/>
+      </svg>
+
+      <div class="score-text">
+        <span id="score">0</span>
+        <small>/ 100</small>
+      </div>
+    </div>
+
+    <div id="grade" class="grade"></div>
+    <div id="passRate" class="pass-rate"></div>
+
+  </section>
+
+  <!-- AI 요약 -->
+  <section class="card">
+    <div class="card-title">AI 종합 평가</div>
+    <div class="summary">
+      지원자의 기술 스택과 실무 경험은 직무 요구사항과 높은 수준으로 일치합니다.
+      프로젝트 경험의 질이 우수하며 문제 해결 과정이 명확합니다.
+      다만 성과를 수치로 표현하는 부분이 부족하여 설득력이 다소 제한됩니다.
+      성과 지표를 강화하면 합격 가능성이 크게 상승할 것으로 판단됩니다.
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== 세부 점수 ===== -->
+<section class="card">
+<div class="card-title">세부 역량 평가</div>
+
+<div class="bar-row">
+  <div class="bar-label"><span>기술 스택 일치도</span><b>92</b></div>
+  <div class="bar"><div class="fill" data-score="92"></div></div>
+</div>
+
+<div class="bar-row">
+  <div class="bar-label"><span>실무 경험 연관성</span><b>80</b></div>
+  <div class="bar"><div class="fill" data-score="80"></div></div>
+</div>
+
+<div class="bar-row">
+  <div class="bar-label"><span>프로젝트 완성도</span><b>85</b></div>
+  <div class="bar"><div class="fill" data-score="85"></div></div>
+</div>
+
+<div class="bar-row">
+  <div class="bar-label"><span>성과 표현력</span><b>60</b></div>
+  <div class="bar"><div class="fill" data-score="60"></div></div>
+</div>
+
+<div class="bar-row">
+  <div class="bar-label"><span>성장 잠재력</span><b>88</b></div>
+  <div class="bar"><div class="fill" data-score="88"></div></div>
+</div>
+
+</section>
+
+<!-- ===== 강점 / 약점 ===== -->
+<section class="card analysis-grid">
+
+<div>
+  <div class="badge strength">✔ 주요 강점</div>
+  <ul>
+    <li>직무 핵심 기술 실무 적용 경험</li>
+    <li>협업 중심 프로젝트 수행 능력</li>
+    <li>문제 해결 접근 방식 구조화</li>
+  </ul>
+</div>
+
+<div>
+  <div class="badge weak">⚠ 보완 필요</div>
+  <ul>
+    <li>성과 수치 및 결과 정량화 부족</li>
+    <li>클라우드 인프라 경험 부족</li>
+    <li>직무 전문 키워드 밀도 낮음</li>
+  </ul>
+</div>
+
+</section>
+
+<!-- ===== 요구사항 매칭 ===== -->
+<section class="card">
+<div class="card-title">직무 요구사항 매칭</div>
+
+<div class="match-item">
+  <span>REST API 설계 및 구현 경험</span>
+  <span class="ok">충족</span>
+</div>
+
+<div class="match-item">
+  <span>AWS 배포 경험</span>
+  <span class="no">부족</span>
+</div>
+
+<div class="match-item">
+  <span>협업 프로젝트 경험</span>
+  <span class="ok">충족</span>
+</div>
+
+<div class="match-item">
+  <span>성능 최적화 경험</span>
+  <span class="no">부분 충족</span>
+</div>
+
+</section>
+
+<!-- ===== 개선 전략 ===== -->
+<section class="card">
+<div class="card-title">이력서 개선 전략</div>
+<ol class="improve">
+  <li>프로젝트 결과를 정량 지표로 표현 (예: 처리 속도 30% 개선)</li>
+  <li>클라우드 배포 경험 추가 또는 학습 진행</li>
+  <li>직무 기술 키워드 명시적 기재</li>
+  <li>문제 해결 과정 → 결과 구조로 작성</li>
+</ol>
+</section>
+
+<!-- ===== 액션 ===== -->
+<section class="card actions">
+<div>
+  다음 단계 추천 : <b>성과 중심 이력서 구조 개선</b>
+</div>
+
+<div class="btn-box">
+  <button class="btn btn-outline">이력서 수정</button>
+  <button class="btn btn-main">다른 직무 분석</button>
+</div>
+
+
+</section>
+  <section class="action-section">
+
+  <div class="action-title">
+    <h2>면접 시뮬레이션 시작</h2>
+    <p>원하는 모드를 선택하고 AI 면접을 시작하세요.</p>
+  </div>
+
+  <div class="action-grid">
+
+    <!-- 모의 모드 -->
+    <a href="/interview001/simulation/practice/in_practice.html"
+       class="action-card outline">
+
+        <!--<div class="action-icon">📊</div>-->
+        <div class="action-name">역량 평가</div>
+        <div class="action-desc">
+          편하게 연습하면서<br> AI 피드백을 받아보세요.<br>
+          역량 강화를 위한 모의 면접 모드입니다.
+        </div>
+
+        <div class="action-button">
+          모의 모드 시작 →
+        </div>
+
+    </a>
+
+
+    <!-- 실전 면접 -->
+    <a href="/interview001/simulation/real/in_real.html"
+       class="action-card main">
+
+        <!--<div class="action-icon">🚀</div>-->
+        <div class="action-name">태도 평가</div>
+        <div class="action-desc">
+          실제 면접처럼 진행되는<br> 면접 실전 모드입니다.<br>
+          긴장감 있는 환경에서 테스트하세요.
+        </div>
+
+        <div class="action-button">
+          실전 면접 시작 →
+        </div>
+
+    </a>
+    <!--AI 종합 평가 결과-->
+    <!-- AI 종합 평가 결과 -->
+    <a href="/interview001/mypage/final_report/in_final_report.html"
+       class="action-card result">
+
+        <!--<div class="action-icon">🧠</div>-->
+        <div class="action-name">AI 종합 평가 결과</div>
+        <div class="action-desc">
+          이력서 · 역량 · 태도 평가를 <br>종합 분석합니다.<br>
+          AI가 최종 점수와 피드백을 제공합니다.
+        </div>
+
+        <div class="action-button">
+          종합 결과 보기 →
+        </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+</div>
+
+<script>
+fetch("/interview001/header/in_header.html")
+.then(res => res.text())
+.then(data => {
+
+    const headerEl = document.getElementById("header");
+    headerEl.innerHTML = data;
+
+    /* 햄버거 */
+    const hamburger = headerEl.querySelector('.hamburger');
+    const menu = headerEl.querySelector('.menu');
+
+    if(hamburger){
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
+
+    /* =========================
+       ACTIVE 표시 (폴더 기준)
+    ========================= */
+
+    const currentPath = window.location.pathname;
+
+headerEl.querySelectorAll(".menu a").forEach(link => {
+
+    const linkPath = new URL(link.href).pathname;
+
+    // simulation 폴더면 무조건 active
+    if(currentPath.includes("/simulation/") && linkPath.includes("/simulation/")){
+        link.classList.add("active_attach");
+    }
+
+});
+
+
+});
+
+</script>
+<script src="inj_resume_score.js"></script>
+
+</body>
+</html>

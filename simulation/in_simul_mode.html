@@ -10,9 +10,20 @@
 <div id="header"></div>
 
 <div class="mode-container">
+   <div class="mode-header">
+    <div class="mode-badge">INTERVIEW SIMULATION</div>
     <h2>당신의 면접 모드를 선택하세요</h2>
-
+    <p class="mode-sub">
+        원하는 진행 방식을 선택하면 바로 연습을 시작할 수 있습니다.
+    </p>
+</div>
+<div class="mode-section">
     <div class="mode-cards">
+        <!-- 모드 0-->
+        <div class="mode-card resume" data-link="/interview001/simulation/resume_score/in_resume_score.html">
+            <h3>이력서 평가</h3>
+            <p>직무 적합성 평가</p>
+        </div>
         <!-- 모드 1 -->
         <div class="mode-card practice" data-link="/interview001/simulation/practice/in_practice.html">
             <h3>모의 모드</h3>
@@ -26,12 +37,47 @@
         </div>
     </div>
 </div>
+</div>
 <script>
 fetch("/interview001/header/in_header.html")
-    .then(res => res.text())
-    .then(data => {
-        document.getElementById("header").innerHTML = data;
+.then(res => res.text())
+.then(data => {
+
+    const headerEl = document.getElementById("header");
+    headerEl.innerHTML = data;
+
+    /* 햄버거 */
+    const hamburger = headerEl.querySelector('.hamburger');
+    const menu = headerEl.querySelector('.menu');
+
+    if(hamburger){
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
+
+    /* =========================
+       ACTIVE 표시 (폴더 기준)
+    ========================= */
+
+    const currentPath = window.location.pathname;
+
+    headerEl.querySelectorAll(".menu a").forEach(link => {
+
+        const linkPath = new URL(link.href).pathname;
+
+        // 폴더 기준 포함 비교
+        const linkFolder = linkPath.substring(0, linkPath.lastIndexOf("/"));
+
+        if(currentPath.startsWith(linkFolder)){
+            link.classList.add("active_attach");
+        }
+
     });
+
+});
+
+
 </script>
 <script src="/interview001/simulation/inj_simul_mode.js"></script>
 </body>

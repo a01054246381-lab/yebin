@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>면접 시뮬레이션</title>
-  <link rel="stylesheet" href="/interview001/header/ins_header.css">
-  <link rel="stylesheet" href="/interview001/simulation/ins_user_info.css">
+    <link rel="stylesheet" href="/interview001/header/ins_header.css">
+    <link rel="stylesheet" href="/interview001/simulation/ins_user_info.css">
 </head>
 <body>
-  <div id="header"></div>
-  <div class="info-container">
-      <h2>사용자 입력 정보</h2>
-        <form class="interview-form" action="/interview001/simulation/in_simul_mode.html" method="post" >
+<div id="header"></div>
+<div class="info-container">
+
+    <div class="form-header">
+        <div class="mode-badge">INTERVIEW INFORMATION</div>
+        <h2>면접 정보를 입력해주세요</h2>
+        <p>입력한 정보를 기반으로 맞춤형 면접 질문이 생성됩니다</p>
+    </div>
+
+    <form class="interview-form" action="/interview001/simulation/in_simul_mode.html" method="post">
 
         <!-- 면접 목적 -->
         <div class="form-group">
@@ -56,15 +62,37 @@
 
         <!-- 버튼 -->
         <button type="submit" class="submit-btn">면접 시뮬레이션 시작</button>
-        </form>
-
-  </div>
+    </form>
+</div>
 
 <script>
 fetch("/interview001/header/in_header.html")
     .then(res => res.text())
     .then(data => {
-        document.getElementById("header").innerHTML = data;
+
+        const headerEl = document.getElementById("header");
+        headerEl.innerHTML = data;
+
+        // 햄버거 메뉴
+        const hamburger = headerEl.querySelector('.hamburger');
+        const menu = headerEl.querySelector('.menu');
+
+        if(hamburger){
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        }
+
+        // ⭐⭐⭐ 현재 페이지 active 표시 (핵심)
+        const currentPage = window.location.pathname.split("/").pop();
+
+        headerEl.querySelectorAll(".menu a").forEach(link => {
+            const linkPage = link.getAttribute("href").split("/").pop();
+            if(currentPage === linkPage){
+                link.classList.add("active_attach");
+            }
+        });
+
     });
 </script>
 </body>

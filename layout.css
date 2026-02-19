@@ -1,0 +1,116 @@
+/* =========================
+   RESET
+========================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Noto Sans KR",
+    sans-serif;
+    background: white;
+}
+
+/* =========================
+   전체 레이아웃 (고정)
+========================= */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+/* =========================
+   왼쪽 사이드바 (모든 페이지 동일)
+========================= */
+
+.sidebar {
+    width: 200px;
+    background: white;
+    border-right: 1px solid #e5e7eb;
+    padding: 24px 16px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #374151;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    font-weight: 580;
+}
+
+.sidebar a:hover {
+    background: rgba(99, 102, 241, 0.08);
+    color: #6366f1;
+}
+
+/* =========================
+   콘텐츠 영역 (완전 고정)
+========================= */
+
+.content {
+    /*width: 100%;*/
+    /*max-width: 1600px;*/
+    flex: 1;
+    padding: 30px 30px;
+}
+
+/* 중앙 컨테이너 (모든 페이지 동일 폭) */
+.page-container {
+    width: 100%;
+    /*max-width: none;*/
+    margin: 0 auto;
+
+}
+
+/* 메인 + 오른쪽 사이드 구조 */
+.page-layout {
+    display: flex;
+    gap: 32px;
+    max-width: 1500px;
+    margin: 0 auto;
+    overflow: hidden;
+
+}
+
+/* 메인 카드 공통 */
+.page-main {
+    flex: 1;
+
+}
+
+/* 오른쪽 사이드 공통 */
+.page-side {
+    width: 300px;
+    flex-shrink: 0;   /* ⭐ 이거 추가 */
+
+    overflow: hidden;   /* 핵심 */
+}
+
+/* 카드 공통 디자인 */
+.card {
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #edf1f7;
+    padding: 36px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+/* ⭐⭐⭐ 핵심 (이거 없으면 100% 튀어나옴) */
+.side-card,
+.side-card * {
+    min-width: 0;
+    max-width: 100%;
+}

@@ -16,40 +16,133 @@
     <aside id="sidebar" class="sidebar">
         <ul>
             <li><a href="/interview001/calendar/schedule/in_schedule.html">일정 입력</a></li>
-            <li><a href="/interview001/calendar/in_calendar.html">캘린더</a></li>
+            <li><a href="/interview001/calendar/in_calendar.html" class="active">캘린더</a></li>
         </ul>
     </aside>
 
     <!-- 오른쪽 콘텐츠 -->
-    <div class="content">
-      <h2>캘린더</h2>
-      <div class="calendar">
-    <div class="calendar-header">
-        <button id="prevBtn">◀</button>
-        <span id="monthYear"></span>
-        <button id="nextBtn">▶</button>
+    <div class="app">
+        <main class="main">
+            <div class="calendar-title">
+                <div class="topbar">
+                    <!-- ⭐ 왼쪽 묶음 -->
+                    <div class="topbar-left">
+                        <button onclick="prevMonth()">◀</button>
+
+                        <div class="month-title" id="monthTitle"></div>
+                        <button onclick="nextMonth()">▶</button>
+                    </div>
+                    <!-- ⭐ 오른쪽 끝 -->
+                    <div class="today-btn">
+                        <button onclick="goToday()">오늘로 이동</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="week">
+                <div>SUN</div>
+                <div>MON</div>
+                <div>TUE</div>
+                <div>WED</div>
+                <div>THU</div>
+                <div>FRI</div>
+                <div>SAT</div>
+            </div>
+
+            <div class="calendar" id="calendar"></div>
+        </main>
     </div>
 
-    <div class="calendar-days">
-        <div>일</div><div>월</div><div>화</div><div>수</div>
-        <div>목</div><div>금</div><div>토</div>
-    </div>
+    <!-- ===== 모달 ===== -->
+    <!-- ===== 모달 ===== -->
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <div class="day-detail" id="dayDetail">
 
-    <div id="calendarDates" class="calendar-dates"></div>
+                <!-- 헤더 -->
+                <div class="day-header">
+                    <h3 id="dayTitle">오늘 하루 일정</h3>
+
+                    <div class="day-header-buttons">
+                        <!-- 일정 추가 버튼 -->
+                        <button class="add-circle" onclick="openAddForm()">+</button>
+
+                        <!-- 닫기 버튼 -->
+                        <button class="close-day" onclick="closeDayDetail()">✕</button>
+                    </div>
+                </div>
+
+                <!-- 일정 목록 -->
+                <div id="dayEventList"></div>
+
+                <!-- ⭐ 일정 입력 폼 (기본 숨김) -->
+                <div class="day-add-form" id="dayAddForm" style="display:none;">
+                    <label>일정 내용</label>
+                    <input id="eventText" placeholder="무슨 일정인가요?">
+
+                    <label>시작 날짜</label>
+                    <input type="date" id="startDate">
+
+                    <label>종료 날짜</label>
+                    <input type="date" id="endDate">
+
+                    <label>색상</label>
+                    <select id="eventColor">
+                        <option value="#818cf8">라벤더 퍼플</option>
+                        <option value="#34d399">민트 그린</option>
+                        <option value="#fb7185">코랄 핑크</option>
+                        <option value="#facd5b">소프트 옐로</option>
+                        <option value="#60a5fa">스카이 블루</option>
+                        <option value="#f694c7">소프트 핑크</option>
+                        <option value="#93c5fd">파스텔 블루</option>
+                        <option value="#86efac">라이트 그린</option>
+                        <option value="#fde68a">크림 옐로</option>
+                    </select>
+
+                    <div class="modal-buttons">
+                        <button class="save" onclick="saveEvent()">저장</button>
+                        <button class="delete" onclick="deleteEvent()">삭제</button>
+                        <button class="cancel" onclick="closeAddForm()">취소</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
 </div>
 
-
-
-    </div>
-
-</div>
 </body>
 <script>
-        fetch("/interview001/header/in_header.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("header").innerHTML = data;
+    fetch("/interview001/header/in_header.html")
+        .then(res => res.text())
+        .then(data => {
+
+            const headerEl = document.getElementById("header");
+            headerEl.innerHTML = data;
+
+            // 햄버거 메뉴
+            const hamburger = headerEl.querySelector('.hamburger');
+            const menu = headerEl.querySelector('.menu');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+
+            // ⭐⭐⭐ 현재 페이지 active 표시 (핵심)
+            const currentPage = window.location.pathname.split("/").pop();
+
+            headerEl.querySelectorAll(".menu a").forEach(link => {
+                const linkPage = link.getAttribute("href").split("/").pop();
+                if (currentPage === linkPage) {
+                    link.classList.add("active_attach");
+                }
             });
-    </script>
+
+        });
+</script>
 <script src="inj_calendar.js"></script>
 </html>

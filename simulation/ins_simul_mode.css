@@ -1,91 +1,276 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f6f8;
+/* =========================
+   기본 설정
+   ========================= */
+
+* {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+    background: linear-gradient(135deg, #f7f8fb 0%, #eef1f7 100%);
+}
+.menu a{
+    position:relative;
+    color:#374151;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.menu a.active_attach{
+    color:#6366f1;
+    font-weight:600;
+}
+/* =========================
+   전체 컨테이너
+   ========================= */
+
 .mode-container {
-    max-width: 1000px;
-    margin: 80px auto;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 70px 20px 50px;
     text-align: center;
 }
 
+/* 제목 */
 .mode-container h2 {
-    margin-bottom: 80px;
-    color: black;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #1f2937;
 }
+.mode-container p {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 50px;
+    color: #1f2937;
+}
+
+/* =========================
+   카드 영역
+   ========================= */
 
 .mode-cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+
+    /* 카드 자동 개수 + 자동 축소 */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 30px;
+    justify-items: center;
 }
 
+
+/* =========================
+   카드 디자인
+   ========================= */
+
 .mode-card {
-     position: relative;
-    width: 260px;
-    padding:160px 30px 40px; /* ⬅ 위 padding 크게 */
-    /*border: 2px solid black;*/
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    position: relative;
+
+    width: 100%;        /* ⭐ 핵심 */
+    max-width: 350px;   /* 최대만 제한 */
+
+    padding: 170px 30px 10px;
+    border-radius: 20px;
+    background-color: white;
     cursor: pointer;
     overflow: hidden;
-    background-color: white;
 
     background-repeat: no-repeat;
-    background-position: center 30px;
-    background-size: 140px auto;
+    background-position: center 40px;
+    background-size: clamp(90px, 35%, 150px); /* ⭐ 이미지 자동 축소 */
 
-    transition: all 0.25s ease;}
-/* 모의 모드 */
+    /*background: rgba(99,102,241,0.05);*/
+ border: 1px solid rgba(99,102,241,0.2);
+
+    box-shadow:
+        0 20px 70px rgba(99,102,241,0.3),
+        0 6px 18px rgba(0,0,0,0.05);
+
+    transition: all 0.25s ease;
+}
+
+
+/* hover */
+.mode-card:hover {
+    transform: translateY(-10px);
+    border: 1px solid rgba(99,102,241,0.2);
+
+    box-shadow:
+        0 20px 70px rgba(69, 74, 237, 0.4),
+        0 6px 18px rgba(0,0,0,0.05);
+
+}
+
+/* 클릭 느낌 */
+.mode-card:active {
+    transform: translateY(-4px) scale(0.98);
+}
+
+/* =========================
+   모드 이미지
+   ========================= */
+.mode-card.resume {
+    background-image: url("/interview001/document.gif");
+}
+
 .mode-card.practice {
     background-image: url("/interview001/notebook.gif");
 }
 
-/* 실전 모드 */
 .mode-card.real {
     background-image: url("/interview001/tech-support.gif");
 }
-.mode-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    /*background: rgba(0,0,0,0.2);*/
-    z-index: 0;
-}
-.mode-card:hover {
-    transform: translateY(-8px);
-    /*background: rgba(0,0,0,0);*/
-}
+
+/* =========================
+   텍스트
+   ========================= */
 
 .mode-card h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #111;
+    margin-bottom: 0;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #474ad1;
 }
 
 .mode-card p {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.5;
+    margin-top: 3px;
+    font-size: 16px;
+    color: #6b7280;
+    line-height: 1.6;
 }
 
-/* 선택된 카드 */
+/* =========================
+   선택 상태
+   ========================= */
+
 .mode-card.selected {
-    border: 1px solid black;
-    box-shadow: 0 8px 20px rgba(74,108,247,0.45);
+    border: 3px solid #818cf8;
+    box-shadow: 0 12px 35px rgba(79,70,229,0.35);
 }
 
-.mode-card h3,
-.mode-card p {
+/* =========================
+   반응형
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .mode-container {
+        padding-top: 60px;
+    }
+
+    .mode-container h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .mode-card {
+        width: 100%;
+        max-width: 320px;
+        padding: 160px 25px 35px;
+    }
+}
+
+@media (max-width: 480px){
+  .mode-card{
+    padding-top: 150px;
+  }
+}
+
+/* =========================
+   카드 영역 강조 배경
+   ========================= */
+
+.mode-container {
     position: relative;
     z-index: 1;
 }
 
+/* 큰 배경 글로우 */
+.mode-container::before {
+    content: "";
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 450px;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(79,70,229,0.08) 0%,
+        rgba(79,70,229,0.04) 40%,
+        transparent 70%
+    );
+    z-index: -1;
+}
 
-/*.mode-card::after {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    inset: 0;*/
-/*    backdrop-filter: blur(2px);*/
-/*}*/
+/* 은은한 패턴 */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 0);
+    background-size: 24px 24px;
+    pointer-events: none;
+}
+
+/* =========================
+   카드 섹션 박스
+   ========================= */
+
+.mode-section {
+    padding: 50px;
+    border-radius: 28px;
+
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(0,0,0,0.05);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+}
+/* =========================
+   상단 헤더 영역
+   ========================= */
+
+.mode-header {
+    margin-bottom: 60px;
+}
+
+/* 작은 라벨 */
+.mode-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+
+    color: #4f46e5;
+    background: rgba(79,70,229,0.08);
+    border-radius: 999px;
+
+    margin-bottom: 18px;
+}
+
+/* 큰 제목 */
+.mode-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+}
+
+/* 설명 */
+.mode-sub {
+    font-size: 17px;
+    color: #6b7280;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+}

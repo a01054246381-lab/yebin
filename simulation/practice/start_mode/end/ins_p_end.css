@@ -1,168 +1,300 @@
+/* =========================
+   RESET
+========================= */
+
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f6f8;
-  color: #222;
-}
-
-/*Header*/
-/*.header {
-  background: white;
-  padding: 16px 24px;
-  border-bottom: 1px solid #ddd;
-}
-*/
-
-/* Progress */
-.content {
-    overflow-y: auto;
-    flex: 1;
-   margin:0;
-    /*padding-top: 30px;
-    padding-left: 90px;*/
-    height: 100%;
-}
-.content h1 {
-    padding-left: 20px;
-}
-.progress-wrap {
-  background: white;
-  padding: 12px 24px;
-}
-
-.progress-text {
-  font-size: 14px;
-  margin-bottom: 6px;
-  color: #555;
-}
-
-.progress-bar {
-  height: 6px;
-  background: #e4e6eb;
-  border-radius: 4px;
-}
-
-.progress {
-  width: 100%;
+html, body {
   height: 100%;
-  background: #4a6cf7;
-  border-radius: 4px;
+  margin: 0;
+}
+.menu a{
+    position:relative;
+    color:#374151;
+    text-decoration:none;
+    transition:.25s;
 }
 
-/* Layout */
-.practice-layout {
+.menu a.active_attach{
+    color:#6366f1;
+    font-weight:600;
+}
+/* =========================
+   APP BASE
+========================= */
+
+.app {
   display: flex;
-  gap: 24px;
-  padding: 24px;
-  min-height: calc(100vh - 200px);
+  flex-direction: column;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f1f3f6;
+  color: #111;
 }
 
-/* Left Area */
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* =========================
+   HEADER (제목 + 진행률)
+========================= */
+
+.interview-header {
+  background: white;
+  padding: 16px 22px 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header-step {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.header-progress {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.header-progress .progress {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    #6b6ef3,
+    #6366f1
+);
+  transition: .3s ease;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.practice-layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* =========================
+   LEFT PANEL
+========================= */
+
 .answer-area {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  background: white;
+  border-right: 1px solid #e5e7eb;
 }
+
+/* =========================
+   INTERVIEWER BAR
+========================= */
+
+.interviewer-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #eee;
+}
+
+/* 프로필 목록 */
+.interviewer-list {
+  display: flex;
+  gap: 10px;
+}
+
+/* JS에서 쓰는 클래스 이름 맞춤 */
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: .2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.avatar.active {
+  border-color: #6366f1;
+}
+
+/* 텍스트 */
+.interviewer-detail .name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.interviewer-detail .role {
+  font-size: 13px;
+  color: #666;
+}
+
+/* =========================
+   QUESTION
+========================= */
 
 .question-card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 2px 24px;
+  border-bottom: 1px solid #eee;
 }
 
-.answer-input {
-  flex: 1;
-  resize: none;
-  padding: 16px;
-  font-size: 15px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  line-height: 1.6;
-}
-
-/* Right Guide */
-.guide-area {
-  width: 320px;
+.question-row {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 14px;
 }
 
-/* PSAR */
-.psar-box {
-  background: white;
-  padding: 16px;
-  border-radius: 10px;
-}
-
-.psar-box ul {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0;
-}
-
-.psar-box li {
-  padding: 8px;
-  font-size: 14px;
-  border-radius: 6px;
-  color: #555;
-}
-
-.psar-box li.active {
-  background: #eaf0ff;
-  color: #4a6cf7;
-  font-weight: bold;
-}
-
-/* AI Signal */
-.ai-signal {
-  background: #fff3f3;
-  border-left: 4px solid #ff4d4f;
-  padding: 14px;
-  font-size: 14px;
-  border-radius: 6px;
+.question-text {
+  font-size: 20px;
+  font-weight: 600;
   line-height: 1.5;
 }
 
-/* Bottom Action Bar */
+/* =========================
+   ANSWER INPUT
+========================= */
+
+.answer-input {
+  flex: 1;
+  border: none;
+  padding: 24px;
+  font-size: 15px;
+  resize: none;
+  outline: none;
+  line-height: 1.7;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.guide-area {
+  width: 340px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e5e7eb;
+}
+
+/* =========================
+   PSAR
+========================= */
+
+.psar-box {
+  padding: 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.psar-box h3 {
+  margin: 0 0 18px;
+  font-size: 16px;
+}
+
+.psar-box .active {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  margin-left: 28px;
+}
+
+.step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+   background: linear-gradient(
+    180deg,
+    #6b6ef3,
+    #6366f1
+);
+  color: white;
+}
+
+/* =========================
+   AI SIGNAL
+========================= */
+
+.ai-signal {
+  padding: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #b91c1c;
+}
+
+/* =========================
+   ACTION BAR
+========================= */
+
 .action-bar {
   display: flex;
-  gap: 12px;
-  padding: 16px 24px;
+  gap: 10px;
+  padding: 12px 20px;
   background: white;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e5e7eb;
 }
 
 .action-bar button {
-  padding: 10px 16px;
-  border-radius: 6px;
-  border: none;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 8px 14px;
+  font-size: 13px;
   cursor: pointer;
+}
+
+.action-bar button:hover {
+  background: #eee;
+}
+
+.next-btn {
+  margin-left: auto;
+  padding: 9px 18px;
+  background:  #6366f1;
+  color: white;
+  text-decoration: none;
   font-size: 14px;
+  border-radius: 10px;
 }
 
-.action-bar .sub {
-  background: #e4e6eb;
+.next-btn:hover {
+  background: #5b5eea;
 }
 
-/*.action-bar .main {
-  background: #4a6cf7;
-  color: white;
-  margin-left: auto;
-}*/
-
-.result-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: #4a6cf7;
-  color: white;
-  text-decoration: none; /* 밑줄 제거 */
-  border-radius: 6px;
-  font-size: 16px;
-  margin-left: auto;
-}

@@ -1,81 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>모의 모드</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/interview001/header/ins_header.css">
     <link rel="stylesheet" href="/interview001/simulation/practice/start_mode/end/ins_p_end.css">
 </head>
-<body>
+
+<body class="app">
+
 <div id="header"></div>
 
-<!-- Progress -->
 <div class="content">
-    <h1>모의 면접</h1>
-<section class="progress-wrap">
-    <div class="progress-text">
-        질문 4 / 4 · 시간 제한 없음
-    </div>
-    <div class="progress-bar">
-        <div class="progress"></div>
-    </div>
-</section>
 
-<!-- Main Layout -->
-<main class="practice-layout">
+    <!-- ✅ 선택된 면접관 표시 -->
+    <div class="interviewer-bar">
+        <div class="interviewer-list" id="interviewerList"></div>
 
-    <!-- Left: Question + Answer -->
-    <section class="answer-area">
-        <div class="question-card">
-            <h2>Q4. 가장 어려웠던 문제를 어떻게 해결했나요?</h2>
+        <div class="interviewer-detail">
+            <div id="interviewerName" class="name"></div>
+            <div id="interviewerRole" class="role"></div>
+        </div>
+    </div>
+
+
+    <!-- 제목 + 진행률 -->
+    <header class="interview-header">
+        <div class="header-top">
+            <div class="header-title">모의 면접 모드</div>
+            <div class="header-step">질문 4 / 4 · 시간 제한 없음</div>
         </div>
 
-        <textarea
+        <div class="header-progress">
+            <div class="progress"></div>
+        </div>
+    </header>
+
+
+    <!-- Main -->
+    <main class="practice-layout">
+
+        <section class="answer-area">
+            <div class="question-card">
+                <h2>Q4. 왜 우리 회사를 선택했나요?</h2>
+            </div>
+
+            <textarea
                 class="answer-input"
-                placeholder="답변을 입력하세요. (텍스트 기반 모의 면접)"
-        ></textarea>
-    </section>
-
-    <!-- Right: PSAR + AI Coach -->
-    <aside class="guide-area">
-
-        <!-- PSAR Guide -->
-        <div class="psar-box">
-            <h3>🧩 답변 구조 가이드 (PSAR)</h3>
-            <ul>
-                <li class="active">P · 문제 / 상황</li>
-                <li>S · 당시 맥락</li>
-                <li>A · 나의 행동</li>
-                <li>R · 결과 / 성과</li>
-            </ul>
-        </div>
-
-        <!-- AI Signal -->
-        <div class="ai-signal">
-            ⚠️ 지금 상황 설명이 길어지고 있어요.<br/>
-            본인의 <b>해결 행동(Action)</b>으로 넘어가 보세요!
-        </div>
-
-    </aside>
+                placeholder="답변을 입력하세요. (텍스트 기반 모의 면접)"></textarea>
+        </section>
 
 
-</main>
+        <aside class="guide-area">
 
-<!-- Bottom Actions -->
-<footer class="action-bar">
-    <button class="sub">🔍 키워드 보기</button>
-    <button class="sub">🧩 PSAR 가이드</button>
-    <a href="/interview001/simulation/practice/start_mode/result/in_p_result.html" class="result-btn">결과 보기 →</a>
-</footer>
- </div>
+            <div class="psar-box">
+                <h3>🧩 답변 구조 가이드 (PSAR)</h3>
 
+                <div class="step"><span class="step-num">1</span><div class="active">P · 문제 / 상황</div></div>
+                <div class="step"><span class="step-num">2</span>S · 당시 맥락</div>
+                <div class="step"><span class="step-num">3</span>A · 나의 행동</div>
+                <div class="step"><span class="step-num">4</span>R · 결과 / 성과</div>
+            </div>
+
+            <div class="ai-signal">
+                ⚠️ 지금 상황 설명이 길어지고 있어요.<br/>
+                본인의 <b>해결 행동(Action)</b>으로 넘어가 보세요!
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <footer class="action-bar">
+        <button class="sub">🔍 키워드 보기</button>
+        <button class="sub">🧩 PSAR 가이드</button>
+        <a href="/interview001/simulation/practice/start_mode/result/in_p_result.html" class="next-btn">결과 보기 →</a>
+    </footer>
+
+</div>
+
+
+<!-- 헤더 -->
 <script>
-    fetch("/interview001/header/in_header.html")
-       .then(res => res.text())
-       .then(data => {
-           document.getElementById("header").innerHTML = data;
-       });
+fetch("/interview001/header/in_header.html")
+.then(res => res.text())
+.then(data => {
+
+    const headerEl = document.getElementById("header");
+    headerEl.innerHTML = data;
+
+    /* 햄버거 */
+    const hamburger = headerEl.querySelector('.hamburger');
+    const menu = headerEl.querySelector('.menu');
+
+    if(hamburger){
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
+
+    /* =========================
+       ACTIVE 표시 (폴더 기준)
+    ========================= */
+
+    const currentPath = window.location.pathname;
+
+    headerEl.querySelectorAll(".menu a").forEach(link => {
+
+        const linkPath = new URL(link.href).pathname;
+
+        // 폴더 기준 포함 비교
+        const linkFolder = linkPath.substring(0, linkPath.lastIndexOf("/"));
+
+        if(currentPath.startsWith(linkFolder)){
+            link.classList.add("active_attach");
+        }
+
+    });
+
+});
+
 </script>
-<!--<script src="/interview001/simulation/practice/inj_practice.js"></script>-->
+
+<!-- ✅ 면접관 표시 JS -->
+<script src="/interview001/simulation/practice/start_mode/start/inj_p_start.js"></script>
+
 </body>
 </html>

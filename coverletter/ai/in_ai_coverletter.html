@@ -16,26 +16,110 @@
     <aside id="sidebar" class="sidebar">
         <ul>
             <li><a href="/interview001/coverletter/input/in_input_resume.html">이력서 보기/수정</a></li>
-            <li><a href="/interview001/coverletter/ai/in_ai_coverletter.html">AI 자소서 피드백</a></li>
+            <li><a href="/interview001/coverletter/ai/in_ai_coverletter.html" class="active">AI 자소서 피드백</a></li>
         </ul>
     </aside>
 
     <!-- 오른쪽 콘텐츠 -->
-    <div class="content">
-      <h2>AI 자소서 피드백</h2>
-      <p>피드백 출력</p>
+    <main class="container">
+        <!-- 페이지 헤더 -->
+        <div class="title-badge">
+            <h1>AI 자소서 피드백</h1>
+            <div class="mode-badge">COVER LETTER FEEDBACK</div>
+        </div>
+
+        <p class="desc">자기소개서를 입력하면 AI가 구조 · 논리 · 표현력을 분석하여
+            자기소개서를 개선하여 제공합니다.</p>
 
 
-    </div>
+        <!-- 입력 카드 -->
+        <section class="card input-card">
+            <h3>자기소개서 입력</h3>
 
+            <textarea
+                    id="coverInput"
+                    placeholder="자기소개서를 붙여넣으세요..."
+            ></textarea>
+            <div class="cover-btn">
+            <button class="btn primary" id="analyzeBtn">
+                AI 분석 시작
+            </button></div>
+        </section>
+
+
+        <!-- 로딩 -->
+        <section class="card loading-card" id="loadingBox" style="display:none;">
+            <div class="skeleton title"></div>
+            <div class="skeleton line"></div>
+            <div class="skeleton line"></div>
+            <div class="skeleton line"></div>
+        </section>
+
+
+        <!-- 결과 영역 -->
+        <section class="result-area" id="resultArea" style="display:none;">
+
+            <!-- 점수 -->
+            <div class="card score-card">
+                <div class="score-ring">
+                    <svg viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="52" class="bg"></circle>
+                        <circle cx="60" cy="60" r="52" class="progress" id="scoreCircle"></circle>
+                    </svg>
+                    <div class="score-text" id="scoreText">85</div>
+                </div>
+                <div class="score-label">종합 점수</div>
+            </div>
+
+            <!-- 피드백 -->
+            <div class="card feedback-card">
+                <h3>AI 피드백</h3>
+                <ul id="feedbackList"></ul>
+            </div>
+
+        </section>
+</main>
 </div>
+
+
 </body>
 <script>
-        fetch("/interview001/header/in_header.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("header").innerHTML = data;
-            });
-    </script>
+    fetch("/interview001/header/in_header.html")
+        .then(res => res.text())
+        .then(data => {
+
+            const headerEl = document.getElementById("header");
+            headerEl.innerHTML = data;
+
+            // 햄버거 메뉴
+            const hamburger = headerEl.querySelector('.hamburger');
+            const menu = headerEl.querySelector('.menu');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+
+              // ⭐⭐⭐ 현재 페이지 active 표시 (핵심)
+        const currentPath = window.location.pathname;
+
+headerEl.querySelectorAll(".menu a").forEach(link => {
+
+    const linkPath = new URL(link.href).pathname;
+
+    // coverletter 폴더 전체 활성화
+    if(currentPath.includes("/coverletter/") && linkPath.includes("/coverletter/")){
+        link.classList.add("active_attach");
+    }
+
+    // 일반 페이지
+    else if(currentPath === linkPath){
+        link.classList.add("active_attach");
+    }
+});
+
+        });
+</script>
 <script src="inj_ai_coverletter.js"></script>
 </html>

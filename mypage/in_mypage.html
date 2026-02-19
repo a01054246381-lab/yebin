@@ -1,94 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>나의 페이지</title>
+
     <link rel="stylesheet" href="/interview001/header/ins_header.css">
     <link rel="stylesheet" href="ins_mypage.css">
-
 </head>
+
 <body>
+
+<!-- 헤더 -->
 <div id="header"></div>
 
 <div class="layout">
 
-    <!-- 왼쪽 사이드바 -->
+    <!-- ===================== -->
+    <!-- 사이드바 -->
+    <!-- ===================== -->
     <aside id="sidebar" class="sidebar">
         <ul>
-            <li><a href="/interview001/mypage/in_mypage.html">나의 정보</a></li>
+            <li><a href="/interview001/mypage/in_mypage.html" class="active">나의 정보</a></li>
             <li><a href="/interview001/mypage/in_alarm.html">알림 설정</a></li>
+            <li><a href="/interview001/mypage/final_report/in_final_report.html">종합 결과</a></li>
         </ul>
     </aside>
 
-    <!-- 오른쪽 콘텐츠 -->
+    <!-- ===================== -->
+    <!-- 메인 콘텐츠 -->
+    <!-- ===================== -->
     <div class="content">
 
-        <!-- 개인정보 표시 영역 -->
-        <div class="profile-box">
-            <h2>나의 정보</h2>
-            <label>
-                이름
-                <input type="text" id="name" value="홍길동" disabled>
-            </label>
-            <label>
-                생년월일
-                <input type="text" id="birth" value="20260205" disabled>
-            </label>
-            <label>
-                전화번호
-                <input type="text" id="phone" value="010-1234-5678" disabled>
-            </label>
-            <label>
-                아이디
-                <input type="text" id="id" value="hong123" disabled>
-            </label>
-            <label>
-                비밀번호
-                <input type="password" id="pw" value="hong123@" disabled>
-            </label>
-            <label>
-                비밀번호 재확인
-                <input type="password" id="pw_re" value="hong123@" disabled>
-            </label>
-            <label>
-                성별
-                <input type="text" id="gender" value="남성" disabled>
-            </label>
-            <label>
-                학력
-                <input type="text" id="education" value="대학교 졸업" disabled>
-            </label>
-            <label>
-                전공
-                <input type="text" id="major" value="컴퓨터공학" disabled>
-            </label>
-            <label>
-                이메일
-                <input type="email" id="email" value="hong@test.com" disabled>
-            </label>
-            <label>
-                경력
-                <input type="text" id="career" value="인턴 경험" disabled>
-            </label>
+        <div class="page">
+
+            <!-- 페이지 헤더 -->
+            <div class="page-header">
+                <div>
+                    <h1>나의 정보</h1>
+                    <p>개인 정보와 계정 설정을 관리할 수 있습니다.</p>
+                </div>
+            </div>
+
+            <!-- 프로필 카드 -->
+            <div class="profile-card">
+
+                <!-- ===================== -->
+                <!-- 왼쪽 프로필 -->
+                <!-- ===================== -->
+                <div class="profile-left">
+
+                    <div class="profile-image">
+                        <img src="/interview001/user.png" alt="프로필">
+                    </div>
+
+                    <div class="profile-name">
+                        <strong>홍길동</strong>
+                        <span>AI Interview Candidate</span>
+                    </div>
+
+                </div>
+
+                <!-- ===================== -->
+                <!-- 오른쪽 정보 -->
+                <!-- ===================== -->
+                <div class="profile-right">
+
+                    <div class="section">
+                        <div class="section-title">Personal Information</div>
 
 
+                        <div class="form-grid">
 
-            <button type="button" id="editBtn">변경</button>
-            <button type="button" id="saveBtn" style="display:none;">저장</button>
+                            <label>
+                                이름
+                                <input type="text" id="name" value="홍길동" disabled>
+                            </label>
+
+                            <label>
+                                생년월일
+                                <input type="text" id="birth" value="20260205" disabled>
+                            </label>
+
+                            <label>
+                                전화번호
+                                <input type="text" id="phone" value="010-1234-5678" disabled>
+                            </label>
+
+                            <label>
+                                아이디
+                                <input type="text" id="id" value="hong123" disabled>
+                            </label>
+
+                            <label>
+                                비밀번호
+                                <input type="password" id="pw" value="hong123@" disabled>
+                            </label>
+
+                            <label>
+                                비밀번호 재확인
+                                <input type="password" id="pw_re" value="hong123@" disabled>
+                            </label>
+
+                            <label>
+                                성별
+                                <input type="text" id="gender" value="남성" disabled>
+                            </label>
+
+                            <label>
+                                학력
+                                <input type="text" id="education" value="대학교 졸업" disabled>
+                            </label>
+
+                            <label>
+                                전공
+                                <input type="text" id="major" value="컴퓨터공학" disabled>
+                            </label>
+
+                            <label>
+                                이메일
+                                <input type="email" id="email" value="hong@test.com" disabled>
+                            </label>
+
+                            <label>
+                                경력
+                                <input type="text" id="career" value="인턴 경험" disabled>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <!-- 버튼 -->
+                    <div class="profile-actions">
+                        <button type="button" id="editBtn" class="btn primary">변경</button>
+                        <button type="button" id="saveBtn" class="btn secondary" style="display:none;">저장</button>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="profile-image">
-            <img src="/interview001/user.png" alt="프로필">
-        </div>
+
     </div>
-
+</div>
+<!-- 저장 성공 Toast -->
+<div id="toast" class="toast">
+    ✔ 저장되었습니다.
 </div>
 </body>
+
+<!-- ===================== -->
+<!-- 헤더 로드 -->
+<!-- ===================== -->
 <script>
-        fetch("/interview001/header/in_header.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("header").innerHTML = data;
+fetch("/interview001/header/in_header.html")
+    .then(res => res.text())
+    .then(data => {
+
+        const headerEl = document.getElementById("header");
+        headerEl.innerHTML = data;
+
+        // 햄버거 메뉴
+        const hamburger = headerEl.querySelector('.hamburger');
+        const menu = headerEl.querySelector('.menu');
+
+        if(hamburger){
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
             });
-    </script>
+        }
+
+        // ⭐⭐⭐ 현재 페이지 active 표시 (핵심)
+        const currentPage = window.location.pathname.split("/").pop();
+
+        headerEl.querySelectorAll(".menu a").forEach(link => {
+            const linkPage = link.getAttribute("href").split("/").pop();
+            if(currentPage === linkPage){
+                link.classList.add("active_attach");
+            }
+        });
+
+    });
+</script>
+
+<!-- 기존 JS 유지 -->
 <script src="inj_mypage.js"></script>
+
 </html>

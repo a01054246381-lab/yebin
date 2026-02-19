@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>AI 종합 평가 레포트</title>
+
+<link rel="stylesheet" href="/interview001/header/ins_header.css">
+<link rel="stylesheet" href="/interview001/mypage/final_report/ins_final_report.css">
+
+</head>
+<body>
+
+<!-- 헤더 -->
+<div id="header"></div>
+
+<div class="layout">
+
+<!-- ===================== -->
+<!-- 사이드바 -->
+<!-- ===================== -->
+<aside class="sidebar">
+    <ul>
+        <li><a href="/interview001/mypage/in_mypage.html">나의 정보</a></li>
+        <li><a href="/interview001/mypage/in_alarm.html">알림 설정</a></li>
+        <li><a href="/interview001/mypage/final_report/in_final_report.html" class="active">종합 결과</a></li>
+    </ul>
+</aside>
+
+<!-- ===================== -->
+<!-- 메인 -->
+<!-- ===================== -->
+<div class="content">
+  <div class="page">
+
+<div class="card header-card">
+    <h1>AI 종합 평가 레포트</h1>
+    <p>경력 · 역량 · 태도 통합 분석</p>
+</div>
+
+
+<!-- ===================== -->
+<!-- 점수 -->
+<!-- ===================== -->
+<div class="card score-card">
+
+<div class="gauge">
+<svg width="220" height="220">
+<circle class="bg" cx="110" cy="110" r="80"></circle>
+<circle class="progress" cx="110" cy="110" r="80"></circle>
+</svg>
+
+<div class="score-center">
+<div id="totalScore">0</div>
+<div id="gradeText"></div>
+</div>
+</div>
+
+<div class="score-bars">
+
+<div class="bar-row">
+<div class="bar-label">
+<span>경력 평가 (40%)</span>
+<span id="careerLabel"></span>
+</div>
+<div class="bar"><div id="careerBar" class="fill"></div></div>
+</div>
+
+<div class="bar-row">
+<div class="bar-label">
+<span>역량 평가 (30%)</span>
+<span id="skillLabel"></span>
+</div>
+<div class="bar"><div id="skillBar" class="fill"></div></div>
+</div>
+
+<div class="bar-row">
+<div class="bar-label">
+<span>태도 평가 (30%)</span>
+<span id="attLabel"></span>
+</div>
+<div class="bar"><div id="attBar" class="fill"></div></div>
+</div>
+
+</div>
+</div>
+
+
+<!-- ===================== -->
+<!-- 분석 -->
+<!-- ===================== -->
+<div class="card">
+
+<div class="analysis-grid">
+
+<div class="box good">
+<h3>강점</h3>
+<ul id="strengthList"></ul>
+</div>
+
+<div class="box bad">
+<h3>개선 필요</h3>
+<ul id="weakList"></ul>
+</div>
+
+</div>
+
+<div id="summaryText" class="summary"></div>
+
+</div>
+
+
+<!-- ===================== -->
+<!-- 기업 분석 -->
+<!-- ===================== -->
+<div class="card">
+<h2>기업 맞춤 분석</h2>
+<div id="companyAnalysis"></div>
+</div>
+
+
+<!-- ===================== -->
+<!-- AI 심층 분석 -->
+<!-- ===================== -->
+<div class="card">
+<h2>AI 심층 분석</h2>
+
+<p id="careerSummary"></p>
+<p id="skillSummary"></p>
+<p id="attitudeSummary"></p>
+
+<hr>
+
+<p><b>종합 강점</b></p>
+<p id="strength"></p>
+
+<p><b>종합 약점</b></p>
+<p id="weakness"></p>
+
+<div class="grade-final">
+최종 등급 : <span id="totalGrade"></span>
+</div>
+</div>
+      <section class="action-section">
+
+  <div class="action-title">
+    <h2>다음 면접 시작</h2>
+    <p>원하는 모드를 선택하고 AI 면접을 시작하세요.</p>
+  </div>
+
+  <div class="action-grid">
+    <a href="/interview001/mypage/final_report/in_final_report.html"
+       class="action-card resume">
+
+        <!--<div class="action-icon">🧠</div>-->
+        <div class="action-name">이력서 평가</div>
+        <div class="action-desc">
+          이력서를 기반으로<br>직무적합성을 평가합니다.<br>
+          AI가 점수와 분석결과를 제공합니다.
+        </div>
+
+        <div class="action-button">
+          이력서 평가 시작 →
+        </div>
+
+    </a>
+    <!-- 모의 모드 -->
+    <a href="/interview001/simulation/practice/in_practice.html"
+       class="action-card outline">
+
+        <!--<div class="action-icon">📊</div>-->
+        <div class="action-name">역량 평가</div>
+        <div class="action-desc">
+          편하게 연습하면서<br> AI 피드백을 받아보세요.<br>
+          역량 강화를 위한 모의 면접 모드입니다.
+        </div>
+
+        <div class="action-button">
+          모의 모드 시작 →
+        </div>
+
+    </a>
+
+
+    <!-- 실전 면접 -->
+    <a href="/interview001/simulation/real/in_real.html"
+       class="action-card main">
+
+        <!--<div class="action-icon">🚀</div>-->
+        <div class="action-name">태도 평가</div>
+        <div class="action-desc">
+          실제 면접처럼 진행되는<br> 면접 실전 모드입니다.<br>
+          긴장감 있는 환경에서 테스트하세요.
+        </div>
+
+        <div class="action-button">
+          실전 면접 시작 →
+        </div>
+
+    </a>
+    <!--AI 종합 평가 결과-->
+
+  </div>
+      </section>
+<!-- ===================== -->
+<!-- 버튼 -->
+<!-- ===================== -->
+<div class="card next-btn">
+    <button class="btn main prev">저번 분석 결과  ←</button>
+<button class="btn outline download" onclick="downloadVideo()">🎥 태도 영상 다운로드</button>
+
+
+<button class="btn main next">다음 분석 결과  →</button>
+
+</div>
+</div>
+</div>
+</div>
+
+<script>
+fetch("/interview001/header/in_header.html")
+.then(res => res.text())
+.then(data => {
+
+    const headerEl = document.getElementById("header");
+    headerEl.innerHTML = data;
+
+    /* 햄버거 */
+    const hamburger = headerEl.querySelector('.hamburger');
+    const menu = headerEl.querySelector('.menu');
+
+    if(hamburger){
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
+
+    /* =========================
+       ACTIVE 표시 (폴더 기준)
+    ========================= */
+
+    const currentPath = window.location.pathname;
+
+    headerEl.querySelectorAll(".menu a").forEach(link => {
+
+        const linkPath = new URL(link.href).pathname;
+
+        // 폴더 기준 포함 비교
+        const linkFolder = linkPath.substring(0, linkPath.lastIndexOf("/"));
+
+        if(currentPath.startsWith(linkFolder)){
+            link.classList.add("active_attach");
+        }
+
+    });
+
+});
+</script>
+<script src="/interview001/mypage/final_report/inj_final_report.js"></script>
+
+</body>
+</html>

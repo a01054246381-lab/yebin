@@ -1,146 +1,340 @@
-html, body {
-    height: 100%;
+/* =========================
+   기본
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
     margin: 0;
+    padding: 0;
+    font-family: "Pretendard","Noto Sans KR", Arial, sans-serif;
+    background: #f6f7fb;
+    color: #1f2937;
 }
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
+.menu a{
+    position:relative;
+    color:#374151;
+    text-decoration:none;
+    transition:.25s;
 }
-#header {
-    flex-shrink: 0; /* 헤더 높이 고정 */
+
+.menu a.active_attach{
+    color:#6366f1;
+    font-weight:600;
 }
+/* =========================
+   레이아웃
+========================= */
 
 .layout {
-     flex: 1;               /* 🔥 여기 핵심 */
     display: flex;
-    min-height: 0;         /* 스크롤 깨짐 방지 */
+    min-height: calc(100vh - 60px);
 }
 
-/* 사이드바 */
+/* =========================
+   사이드바
+========================= */
+
 .sidebar {
-    margin:0;
-    width: 140px;
-    height: 100%;
-    background: #f5f6f8;
-    padding: 20px;
-    transition: transform 0.3s ease;
+    width: 180px;
+    background: #fff;
+    border-right: 1px solid #eef0f4;
+    padding: 24px 18px;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .sidebar li {
-    padding: 10px;
-    cursor: pointer;
-
+    margin-bottom: 8px;
 }
 
-.sidebar li a {
-    color: black;
-    text-decoration: none;
-}
-
-.sidebar li:hover {
-    background: #ddd;
-}
-
-/* 숨김 상태 */
-.sidebar.closed {
-    transform: translateX(-100%);
-}
-
-/* 콘텐츠 */
-.content {
-    /*align-items: center;      !* 세로 가운데 *!*/
-    display: flex;
-    gap: 20px;
-    flex: 1;
-
-    margin:0;
-    padding-left: 30px;
-
-    height: calc(100vh - 120px); /* 🔥 헤더 높이만큼 빼기 */
-    overflow-y: auto;
-    /*!* 화면 중앙 정렬 *!*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*height: 100vh;*/
-}
-
-
-.profile-box {
-    width: 300px;
-    background: white;
-    padding: 20px;
+.sidebar a {
+    display: block;
+    padding: 10px 14px;
     border-radius: 10px;
-
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+    transition: all .2s ease;
 }
 
-.profile-box label {
+.sidebar a:hover {
+    background: rgba(99,102,241,0.08);
+    color: #6366f1;
+}
+
+.sidebar a.active {
+    background: rgba(99,102,241,0.08);
+    color: #6366f1;
+}
+
+/* =========================
+   콘텐츠 영역
+========================= */
+
+.content {
+    flex: 1;
+    padding: 40px 40px;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* =========================
+   페이지 헤더
+========================= */
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+}
+
+.page-header p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 15px;
+}
+
+/* =========================
+   프로필 카드
+========================= */
+
+.profile-card {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
+    gap: 40px;
+
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+
+    border: 1px solid #eef0f4;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.04),
+        0 2px 6px rgba(0,0,0,0.03);
 }
 
-input:disabled {
-    background: #f3f3f3;
-    border: 1px solid #ccc;
-}
+/* =========================
+   왼쪽 프로필
+========================= */
 
-input {
-    margin-top: 12px;
-    padding: 6px;
-}
-
-.profile-box input {
-    border: 1px solid #ccc;
-    padding: 8px;
-    border-radius: 6px;
-    transition: border 0.2s, box-shadow 0.2s;
-}
-
-.profile-box input.editing {
-    border: 2px solid #4a6cf7;
-    box-shadow: 0 0 6px rgba(74,108,247,0.4);
-}
-
-/* 버튼 */
-button {
-    width: 100%;
-    height: 42px;
-    background-color: #222;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #444;
+.profile-left {
+    width: 240px;
+    text-align: center;
 }
 
 .profile-image {
-    /*background: url("");*/
-    flex-shrink: 0;           /* 줄어들지 않게 */
-    position: relative;   /* 기준 */
-    width: 300px;
-    height: 300px;
-
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(99,102,241,0.12);
 }
 
 .profile-image img {
-    position: absolute;
-    top: 180px;    /* ↓ 아래로 */
-    left: 400px;   /* → 오른쪽으로 */
-
-    width: 240px;
-    /*!* 화면 중앙 정렬 *!*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
+.profile-name strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 4px;
+    color: #1f2937;
+}
+
+.profile-name span {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* =========================
+   오른쪽 정보
+========================= */
+
+.profile-right {
+    flex: 1;
+}
+
+/* 섹션 */
+.section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    color: #6366f1;
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   입력 그리드
+========================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 26px;
+}
+
+.form-grid label {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.form-grid input {
+    margin-top: 6px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #fafafa;
+    font-size: 14px;
+    transition: all .2s ease;
+}
+
+/* disabled */
+input:disabled {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+/* edit 상태 */
+/*input.editing {
+    background: #fff;
+    border: 1px solid rgba(99,102,241,0.5);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+}*/
+
+input.editing {
+    border: 1px solid #9ca3af;
+    box-shadow: 0 0 0 1px rgba(99,102,241,0.15);
+}
+input {
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+}
+
+
+/* =========================
+   버튼
+========================= */
+
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+/* 메인 버튼 */
+.btn.primary {
+    background: #818cf8;
+    color: white;
+}
+
+.btn.primary:hover {
+    background: #6d70f2;
+    transform: translateY(-1px);
+}
+
+/* 서브 버튼 */
+.btn.secondary {
+    background: #eef2ff;
+    color: #6d70f2;
+}
+
+.btn.secondary:hover {
+    background: #e0e7ff;
+}
+
+/* =========================
+   반응형
+========================= */
+
+@media (max-width: 900px) {
+
+    .profile-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-left {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content {
+        padding: 30px 20px;
+    }
+}
+/* =========================
+   Toast 알림
+========================= */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+
+    background: #6b7280;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all .35s ease;
+}
+
+/* 보일 때 */
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+

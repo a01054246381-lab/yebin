@@ -1,69 +1,27 @@
-* {
-  box-sizing: border-box;
+
+.sidebar a.active {
+    background: rgba(99, 102, 241, 0.12);
+    color: #6366f1;
+}
+.menu a{
+    position:relative;
+    color:#374151;
+    text-decoration:none;
+    transition:.25s;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+.menu a.active_attach{
+    color:#6366f1;
+    font-weight:600;
 }
+/* =========================
+   제목
+========================= */
 
-.layout {
+.title-badge {
     display: flex;
-    height: calc(100vh - 60px);
-}
-
-/* 사이드바 */
-.sidebar {
-    margin:0;
-    width: 140px;
-    height: auto;
-    background: #f5f6f8;
-    padding: 20px;
-    transition: transform 0.3s ease;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar li {
-    padding: 10px;
-    cursor: pointer;
-
-}
-
-.sidebar li a {
-    color: black;
-    text-decoration: none;
-}
-
-.sidebar li:hover {
-    background: #ddd;
-}
-
-/* 숨김 상태 */
-.sidebar.closed {
-    transform: translateX(-100%);
-}
-
-/* 콘텐츠 */
-.content {
-    overflow-y: auto;
-    flex: 1;
-   margin:0;
-    padding-left: 10px;
-    height: 100%;
-}
-
-/* 전체 */
-.board-main {
-    max-width: 900px;
-    margin: 50px auto;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-   /* overflow-y: auto;*/
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* 제목 */
@@ -71,16 +29,31 @@ body {
     margin: 0;
 }
 
+/* 작은 라벨 */
+.mode-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #4f46e5;
+    background: rgba(79, 70, 229, 0.08);
+    border-radius: 999px;
+}
+
 .board-title p {
     margin: 6px 0 20px;
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
 }
 
-/* 검색 */
+/* =========================
+   검색
+========================= */
+
 .board-search {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 16px;
 }
 
@@ -91,20 +64,81 @@ body {
 }
 
 .board-search button {
+    border-radius: 3px;
     padding: 6px 12px;
     background: #333;
     color: white;
     border: none;
     cursor: pointer;
 }
+.board-search button:hover {
+    padding: 6px 12px;
+    background: #090909;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.resource-btn {
+   padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #e5eaf2;
+    background: #fafbfe;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+.resource-btn:hover {
+    background: #dbdde6;
+    border-color: #dbe2ff;
+}
 
-/* 게시글 목록 */
+/* =========================
+   버튼 (연한 브랜드)
+========================= */
+
+.primary-btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: none;
+    background: #818cf8; /* 연한 브랜드 */
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.primary-btn:hover {
+    background: #6366f1;
+    transform: translateY(-1px);
+}
+
+.ghost-btn {
+    /*width: 100%;*/
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e5eaf2;
+    background: #fafbfe;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.ghost-btn:hover {
+    background: #dbdde6;
+    border-color: #dbe2ff;
+}
+
+/* =========================
+   게시글 리스트
+========================= */
+
 .board-list {
-    list-style: none;
+     list-style: none;
     padding: 0;
     margin: 0;
     border-top: 2px solid #333;
     overflow-y: auto;
+    overflow-x: auto;
 }
 
 .board-list li {
@@ -114,13 +148,24 @@ body {
     padding: 12px 6px;
     border-bottom: 1px solid #ddd;
     font-size: 14px;
-    align-items: center;
 }
+.num { text-align: center; }
+.title { text-align: left; }
+.writer,
+.date,
+.view { text-align: center; }
 
 .board-list li:hover {
     background: #f9f9f9;
 }
+.title {
+    text-align: left;
+    cursor: pointer;
+}
 
+.title:hover {
+    text-decoration: underline;
+}
 .board-list .subject {
     cursor: pointer;
     overflow-y: auto;
@@ -132,148 +177,343 @@ body {
     font-weight: 600;
 }
 
-.board-list .title {
+.title-header {
+    text-align: center;
     background: #f0f2f5;
     font-weight: 600;
 }
-
 /* 하단 */
 .board-bottom {
     text-align: right;
     margin-top: 12px;
 }
 
-.write-btn {
-    padding: 8px 14px;
-    background: #4a6cf7;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+/* =========================
+   글쓰기
+========================= */
+
+.board-bottom {
+    margin-top: 20px;
+    text-align: right;
 }
 
-/* 페이지 */
+/* =========================
+   페이지네이션 (블랙 모던 네모)
+========================= */
+
 .pagination {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 20px;
+    margin-top: 32px;
 }
 
-.pagination span {
-    padding: 6px 10px;
-    border: 1px solid #ccc;
+/* 기본 버튼 */
+.pagination span,
+.page-btn,
+.page-nav {
+    min-width: 30px;
+    height: 30px;
+    padding: 0 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 4px;          /* 네모 느낌 */
+    border: 1px solid #e5e5e5;
+    background: white;
+
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+
     cursor: pointer;
+    transition: all .15s ease;
 }
 
-.pagination .active {
+/* hover */
+.pagination span:hover,
+.page-btn:hover,
+.page-nav:hover {
+    border-color: #111;
+    color: #111;
+}
+
+/* 현재 페이지 */
+.pagination .active,
+.page-btn.active {
     background: #333;
     color: white;
+    border-color: #333;
 }
 
-/* 게시판 + 사이드바 */
-.board-layout {
-    display: flex;
-    gap: 20px;
+/* 화살표 */
+.page-nav {
+    font-size: 16px;
+    font-weight: 700;
 }
 
-/* 메인 게시판 */
-.board-main {
-    flex: 1;
+/* 클릭감 */
+.pagination span:active {
+    transform: scale(0.95);
 }
 
-/* 사이드바 */
-.board-side {
-    margin-top: 40px;
-    margin-right: 40px;
-    width: 260px;
-    overflow-y: auto;
+/* =========================
+   오른쪽 사이드
+========================= */
+
+.page-side {
+    width: 300px;
+    flex-shrink: 0;   /* ⭐ 이거 추가 */
+
 }
 
-/* 공통 박스 */
-.practice-btn {
-  display: flex;
-  text-decoration: none;
-  width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 6px;
-    background: #4a6cf7;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 8px;
-    justify-content: center;
-  align-items: center;
+/* =========================
+   새 side 카드 디자인
+========================= */
+
+.side-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fafbff 100%);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #edf1f7;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.05);
+    transition: .25s;
+    overflow: hidden;
 }
 
-.btn {
-  display: flex;
-  text-decoration: none;
-  width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 6px;
-    background: #555;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 8px;
-    justify-content: center;
-  align-items: center;
+.side-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(99, 102, 241, 0.12);
 }
 
-/* 안내 */
-.side-box ul {
-    padding-left: 18px;
-    margin: 0;
-    font-size: 13px;
-    color: #555;
+.side-card h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    font-weight: 700;
 }
-
-/* 인기 게시글 */
+.side-card p {
+    margin: 0 0 12px;
+    font-size: 15px;
+    font-weight: 500;
+}
+/* 리스트 */
+.side-card ul,
 .rank-list {
     padding-left: 18px;
     margin: 0;
-    font-size: 13px;
+    color: #7c8798;
+    font-size: 15px;
 }
 
 .rank-list li {
     margin-bottom: 6px;
     cursor: pointer;
+    transition: .15s;
 }
 
-/* 면접 버튼 */
-.side-box button {
+.rank-list li:hover {
+    color: #6366f1;
+    transform: translateX(3px);
+}
+.sidebar a,
+.board-list span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 공통 버튼 */
+.practice-btn,
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 6px;
-    background: #4a6cf7;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 8px;
-}
+    padding: 10px 14px;
 
-.side-box button.sub {
-    background: #555;
-}
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
 
-/* 일정 */
-.schedule {
-    font-size: 13px;
-    margin: 6px 0;
-}
-
-/* 한마디 */
-.quote {
-    text-align: center;
+    background: white;
+    color: #111;
     font-size: 14px;
-    color: #333;
-    background: #f5f6f8;
+    font-weight: 600;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all .18s ease;
 }
 
-.board-main,
-.board-side,
-.content {
+/* 메인 버튼 (블랙 강조) */
+.practice-btn {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    background: #818cf8; /* 연한 브랜드 */
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+    margin-bottom: 10px;
+}
+
+/* hover */
+.practice-btn:hover {
+    background: #6366f1;
+    transform: translateY(-1px);
+}
+
+.btn:hover {
+    background: #dbdde6;
+    border-color: #dbe2ff;
+    transform: translateY(-2px);
+}
+
+/* 클릭감 */
+.practice-btn:active,
+.btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* 포커스 접근성 */
+.practice-btn:focus,
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
+}
+.sidebar a,
+.board-list span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =========================
+   side-box 깨짐 방지
+========================= */
+
+.page-side {
     min-width: 0;
 }
 
+/* 박스 내부 모든 요소 줄바꿈 허용 */
+.side-card * {
+    min-width: 0;
+    max-width: 100%;
+    word-break: break-word;
+}
+.side-card h3,
+.side-card p,
+.side-card a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 제목 줄바꿈 */
+.side-card h3 {
+    line-height: 1.4;
+}
+
+/* 리스트 넘침 방지 */
+.side-card ul,
+.rank-list {
+    padding-left: 18px;
+    margin: 0;
+}
+
+/* 버튼 박스 넘침 방지 */
+.practice-btn,
+.btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 긴 일정 텍스트 */
+.schedule {
+    word-break: break-word;
+}
+
+/* quote 줄바꿈 */
+.quote {
+    word-break: keep-all; line-height: 1.5;
+}
+/* =========================
+   모바일 안전
+========================= */
+
+@media (max-width: 600px) {
+
+    .side-card {
+        padding: 14px;
+    }
+
+    .side-card h3 {
+        font-size: 14px;
+    }
+
+    .side-card p,
+    .side-card li {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================
+   태블릿
+========================= */
+
+@media (max-width: 1000px) {
+
+    .page-side {
+        width: 100%;
+    }
+}
+
+/* =========================
+   버튼 (연한 브랜드)
+========================= */
+
+.primary-btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    background: #818cf8; /* 연한 브랜드 */
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+    margin-right: 5px;
+}
+.primary-btn a{
+    text-decoration: none;
+    color: white;
+}
+.primary-btn:hover {
+    background: #6366f1;
+    transform: translateY(-1px);
+}
+
+.ghost-btn {
+    /*width: 100%;*/
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid #e5eaf2;
+    background: #fafbfe;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+.ghost-btn a{
+    text-decoration: none;
+    color: black;
+}
+.ghost-btn:hover {
+    background: #dbdde6;
+    border-color: #dbe2ff;
+}

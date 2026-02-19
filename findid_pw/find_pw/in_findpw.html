@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>비밀번호 찾기</title>
-    <link rel="stylesheet" href="ins_findpw.css">
+<meta charset="UTF-8">
+<title>비밀번호 찾기</title>
+<link rel="stylesheet" href="ins_findpw.css">
 </head>
-<body>
-<div class="find-pw-container">
 
-    <h2>비밀번호 찾기</h2>
+<body class="findpw-page">
+
+<div class="findpw-card">
+
+    <div class="logo">INTERVIEW</div>
+
+    <h2 class="title">비밀번호 찾기</h2>
+    <p class="sub">회원 정보를 입력해주세요.</p>
+
     <form action="pw/in_pw.html" method="post">
-        <div class="form-group">
+
+        <div class="input-group">
             <label>이름</label>
-            <input type="text" placeholder="이름을 입력하세요">
+            <input type="text" placeholder="이름을 입력하세요" required>
         </div>
 
-        <div class="form-group">
+        <div class="input-group">
             <label>생년월일</label>
-            <input type="text" placeholder="ex)20260203">
+            <input type="text" placeholder="예) 20260203" required>
         </div>
 
-        <div class="form-group">
+        <div class="input-group">
             <label>연락처</label>
-            <input type="text" placeholder="ex)01077777777">
+            <input type="text" placeholder="예) 01012345678" required>
         </div>
 
-        <button type="submit" class="find-pw-btn">비밀번호 찾기</button>
-
+        <button type="submit" class="submit-btn">
+            비밀번호 찾기
+        </button>
 
     </form>
+
+    <div class="find-links">
+        <a href="/interview001/login/in_login.html">로그인</a>
+        <a href="/interview001/findid_pw/find_pw/in_findpw.html">비밀번호 찾기</a>
+        <a href="/interview001/signup/in_signup.html">회원가입</a>
+    </div>
+
 </div>
+
 <script src="inj_findpw.js"></script>
-
-
 </body>
 </html>

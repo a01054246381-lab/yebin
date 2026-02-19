@@ -9,31 +9,212 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/interview001/header/ins_header.css">
-  <link rel="stylesheet" href="ins_mypage.css">
+  <link rel="stylesheet" href="ins_alarm.css">
 
   <title>알림 설정</title>
-
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
 
 <div id="header"></div>
 
-<main class="container mt-4">
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-    <label class="form-check-label" for="switchCheckDefault">
-      AI 면접 비서 알림 설정을 켜주세요. 일정을 알려드립니다.
-    </label>
-  </div>
-</main>
+<div class="layout">
+
+    <!-- ===================== -->
+    <!-- 사이드바 -->
+    <!-- ===================== -->
+    <aside class="sidebar">
+        <ul>
+            <li><a href="/interview001/mypage/in_mypage.html">나의 정보</a></li>
+            <li><a href="/interview001/mypage/in_alarm.html" class="active">알림 설정</a></li>
+            <li><a href="/interview001/mypage/final_report/in_final_report.html">종합 결과</a></li>
+        </ul>
+    </aside>
+
+    <!-- ===================== -->
+    <!-- 콘텐츠 -->
+    <!-- ===================== -->
+    <main class="content">
+
+        <div class="alarm-card">
+
+            <div class="card-title">
+                <div class="title-badge">
+                <h2>알림 설정</h2>
+                    <div class="mode-badge">ALARM SETUP</div>
+                            </div>
+                <p>면접 일정과 중요한 안내를 놓치지 않도록 알림을 설정하세요.</p>
+            </div>
+
+            <div class="alarm-group">
+
+                <div class="alarm-item">
+                    <div>
+                        <strong>AI 면접 일정 알림</strong>
+                        <span>예정된 면접 시간을 미리 알려드립니다.</span>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox">
+                    </div>
+                </div>
+
+                <div class="alarm-item">
+                    <div>
+                        <strong>이메일 알림</strong>
+                        <span>중요 공지 및 결과를 이메일로 받습니다.</span>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox">
+                    </div>
+                </div>
+
+                <div class="alarm-item">
+                    <div>
+                        <strong>문자 알림</strong>
+                        <span>면접 시작 전 문자로 안내합니다.</span>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox">
+                    </div>
+                </div>
+
+            </div>
+
+          <!-- ===================== -->
+<!-- 방해금지 시간 -->
+<!-- ===================== -->
+<div class="alarm-section">
+    <div class="section-title">방해 금지 시간</div>
+
+    <div class="time-setting">
+        <label>시작 시간</label>
+        <input type="time" value="22:00">
+
+        <label>종료 시간</label>
+        <input type="time" value="07:00">
+    </div>
+
+    <small class="help-text">
+        해당 시간에는 알림이 전송되지 않습니다.
+    </small>
+</div>
+
+
+<!-- ===================== -->
+<!-- 캘린더 연동 -->
+<!-- ===================== -->
+<div class="alarm-section">
+    <div class="section-title">캘린더 연동</div>
+
+    <div class="alarm-item">
+        <div>
+            <strong>Google Calendar 연동</strong>
+            <span>면접 일정이 자동으로 캘린더에 추가됩니다.</span>
+        </div>
+        <button class="link-btn">연동하기</button>
+    </div>
+</div>
+
+
+<!-- ===================== -->
+<!-- 긴급 공지 -->
+<!-- ===================== -->
+<div class="alarm-section">
+    <div class="section-title">긴급 공지</div>
+
+    <div class="alarm-item">
+        <div>
+            <strong>서비스 긴급 안내</strong>
+            <span>시스템 점검 및 중요 공지를 즉시 전달합니다.</span>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" checked>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== -->
+<!-- 알림 테스트 -->
+<!-- ===================== -->
+<div class="alarm-section">
+    <div class="section-title">알림 테스트</div>
+
+    <p class="help-text">설정이 제대로 작동하는지 테스트 알림을 받아볼 수 있습니다.</p>
+
+    <button class="test-btn">테스트 알림 보내기</button>
+</div>
+
+
+<!-- ===================== -->
+<!-- 최근 알림 기록 -->
+<!-- ===================== -->
+<div class="alarm-section">
+    <div class="section-title">최근 알림 기록</div>
+
+    <ul class="history-list">
+        <li>
+            <span>AI 면접 일정 알림</span>
+            <em>2026-02-13 09:00</em>
+        </li>
+
+        <li>
+            <span>면접 결과 안내</span>
+            <em>2026-02-12 18:20</em>
+        </li>
+
+        <li>
+            <span>서비스 공지</span>
+            <em>2026-02-10 14:00</em>
+        </li>
+    </ul>
+</div>
+
+
+            <button class="save-btn">설정 저장</button>
+
+        </div>
+
+    </main>
+</div>
 
 <script>
 fetch("/interview001/header/in_header.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("header").innerHTML = data;
-  });
+    .then(res => res.text())
+    .then(data => {
+
+        const headerEl = document.getElementById("header");
+        headerEl.innerHTML = data;
+
+        // 햄버거 메뉴
+        const hamburger = headerEl.querySelector('.hamburger');
+        const menu = headerEl.querySelector('.menu');
+
+        if(hamburger){
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        }
+
+        // ⭐⭐⭐ 현재 페이지 active 표시 (핵심)
+        const currentPath = window.location.pathname;
+
+headerEl.querySelectorAll(".menu a").forEach(link => {
+
+    const linkPath = new URL(link.href).pathname;
+
+    // mypage 폴더 전체 활성화
+    if(currentPath.includes("/mypage/") && linkPath.includes("/mypage/")){
+        link.classList.add("active_attach");
+    }
+
+    // 일반 페이지
+    else if(currentPath === linkPath){
+        link.classList.add("active_attach");
+    }
+});
+    });
 </script>
 
 </body>

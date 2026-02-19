@@ -1,0 +1,580 @@
+/* ===== 폰트 렌더링 개선 ===== */
+*{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ===== 배경 ===== */
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;
+  color:#1f2937;
+  min-height:100vh;
+
+  /* 부드러운 움직이는 배경 */
+    background:
+  radial-gradient(circle at 20% 20%,#eef2ff 0%,transparent 40%),
+  radial-gradient(circle at 80% 0%,#e0e7ff 0%,transparent 40%),
+  linear-gradient(180deg,#f8fafc,#eef2ff);
+}
+
+/* subtle noise 질감 */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  opacity:.04;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+.menu a{
+    position:relative;
+    color:#374151;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.menu a.active_attach{
+    color:#6366f1;
+    font-weight:600;
+}
+/* ===== 레이아웃 ===== */
+.container{
+  max-width:1100px;
+  margin:60px auto;
+  padding:30px;
+}
+/* 작은 라벨 */
+.mode-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+
+    color: #4f46e5;
+    background: rgba(79,70,229,0.08);
+    border-radius: 999px;
+
+    margin-bottom: 18px;
+}
+/* =========================
+   헤더
+   ========================= */
+
+.form-header {
+    margin-bottom: 35px;
+}
+
+.form-header h2 {
+    margin: 0 0 15px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.form-header p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 16px;
+}
+/* ===== 카드 (glass effect) ===== */
+/* ===== 카드 ===== */
+.card{
+  position:relative;
+  background:white;
+  backdrop-filter:blur(14px);
+  border-radius:24px;
+  padding:38px;
+  margin-bottom:30px;
+
+  border:1px solid rgba(255,255,255,0.6);
+
+  box-shadow:
+  0 10px 25px rgba(99,102,241,0.08),
+  0 20px 60px rgba(0,0,0,0.06);
+
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
+}
+
+/* 카드 hover 떠오르는 효과 */
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:
+  0 25px 60px rgba(99,102,241,0.18),
+  0 10px 40px rgba(0,0,0,0.08);
+}
+
+/* 상단 gradient 라인 */
+/*.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,#6366f1,#8b5cf6,#a78bfa);
+}*/
+
+/* 내부 soft glow */
+/*.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  background:radial-gradient(
+    circle at 20% 0%,
+    rgba(99,102,241,0.12),
+    transparent 40%
+  );
+  pointer-events:none;
+}*/
+
+
+.card-title{
+  font-size:21px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+/* ===== 헤더 ===== */
+.top-grid{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:28px;
+}
+
+/* ===== 게이지 ===== */
+.gauge-box{
+  text-align:center;
+}
+
+.gauge{
+  width:220px;
+  height:220px;
+  margin:auto;
+  position:relative;
+}
+
+svg{
+  transform:rotate(-90deg);
+}
+
+circle{
+  fill:none;
+  stroke-width:16;
+}
+
+.bg{
+  stroke:#eef2ff;
+}
+
+.progress{
+  stroke:url(#gradient);
+  stroke-linecap:round;
+  stroke-dasharray:440;
+  stroke-dashoffset:440;
+  transition:stroke-dashoffset 1.8s cubic-bezier(.65,.05,.36,1);
+
+  /* glow */
+  filter:drop-shadow(0 0 8px rgba(99,102,241,.35));
+}
+
+.score-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.score-text span{
+  font-size:50px;
+  font-weight:750;
+}
+
+.grade{
+  margin-top:12px;
+  font-weight:700;
+  color:#6366f1;
+}
+
+.pass-rate{
+  margin-top:6px;
+  font-size:14px;
+  color:#6b7280;
+}
+
+/* ===== 요약 ===== */
+.summary{
+  line-height:1.75;
+  font-size:15px;
+}
+
+/* ===== 막대 그래프 ===== */
+.bar-row{
+  margin-bottom:20px;
+}
+
+.bar-label{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.bar{
+  width:100%;
+  height:12px;
+  background:#eef2ff;
+  border-radius:30px;
+  overflow:hidden;
+  position:relative;
+}
+
+.fill{
+  height:100%;
+  width:0%;
+  border-radius:30px;
+  background:linear-gradient(90deg,#6366f1,#8b5cf6);
+  transition:width 1.4s ease;
+  position:relative;
+}
+
+/* 빛나는 애니메이션 */
+/*
+.fill::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
+  animation:shine 2.5s infinite;
+}
+*/
+
+@keyframes shine{
+  0%{ transform:translateX(-100%); }
+  100%{ transform:translateX(200%); }
+}
+
+/* ===== 분석 카드 ===== */
+.analysis-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.badge{
+  font-weight:700;
+  margin-bottom:12px;
+  font-size:15px;
+}
+
+.strength{
+  color:#10b981;
+  font-size: 18px;
+}
+.weak{
+  color:#ef4444;
+  font-size: 18px;
+}
+
+ul{
+  margin:0;
+  padding-left:18px;
+  line-height:1.8;
+}
+
+/* ===== 매칭 ===== */
+.match-item{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 0;
+  border-bottom:1px solid #f1f5f9;
+  transition:.25s;
+}
+
+.match-item:hover{
+  background:#f8fafc;
+  padding-left:8px;
+}
+
+.ok{ color:#10b981; font-weight:700; }
+.no{ color:#ef4444; font-weight:700; }
+
+/* ===== 개선 ===== */
+.improve li{
+  margin-bottom:10px;
+}
+
+/* ===== 액션 ===== */
+.actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.btn-box {
+    display: flex;
+    gap:10px;
+
+}
+.btn{
+  padding:14px 26px;
+  border-radius:14px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  transition:.25s;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ripple */
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle,rgba(255,255,255,.5) 10%,transparent 10%);
+  transform:scale(0);
+  opacity:0;
+  transition:.4s;
+}
+
+.btn:active::after{
+  transform:scale(4);
+  opacity:.3;
+  transition:0s;
+}
+
+.btn-main{
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:white;
+  box-shadow:0 10px 20px rgba(99,102,241,.3);
+}
+
+.btn-main:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 30px rgba(99,102,241,.35);
+}
+
+.btn-outline{
+  background:white;
+  border:2px solid #6366f1;
+  color:#6366f1;
+}
+
+.btn-outline:hover{
+  background:#eef2ff;
+}
+
+/* ===== 스크롤바 ===== */
+::-webkit-scrollbar{
+  width:8px;
+}
+::-webkit-scrollbar-thumb{
+  background:#c7d2fe;
+  border-radius:10px;
+}
+::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+
+
+/* ===== 반응형 ===== */
+@media(max-width:900px){
+  .top-grid{ grid-template-columns:1fr; }
+  .analysis-grid{ grid-template-columns:1fr; }
+}
+
+
+/* ===== 섹션 ===== */
+.action-section{
+  margin-top:30px;
+  padding:70px 30px 50px;
+  border-radius:30px;
+
+  background:
+  radial-gradient(circle at 20% 0%, rgba(99,102,241,0.15), transparent 40%),
+  radial-gradient(circle at 80% 100%, rgba(139,92,246,0.15), transparent 40%),
+  white;
+
+  text-align:center;
+  box-shadow:0 25px 70px rgba(0,0,0,0.07);
+}
+
+/* 제목 */
+.action-title h2{
+  margin:0;
+  font-size:30px;
+  font-weight:900;
+}
+
+.action-title p{
+  margin-top:10px;
+  color:#6b7280;
+  font-size:16px;
+}
+
+
+/* =========================
+   GRID → 3개 한 줄
+========================= */
+.action-grid{
+  margin-top:45px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:15px;
+}
+
+
+/* =========================
+   카드 공통
+========================= */
+.action-card{
+  text-decoration:none;
+  color:inherit;
+  padding:50px 20px;
+  border-radius:24px;
+  position:relative;
+  overflow:hidden;
+
+  backdrop-filter:blur(8px);
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+}
+
+/* hover */
+.action-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 40px 90px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   아이콘
+========================= */
+.action-icon{
+  font-size:44px;
+  margin-bottom:14px;
+}
+
+
+/* =========================
+   이름
+========================= */
+.action-name{
+  font-size:27px;
+  font-weight:900;
+  margin-bottom:18px;
+}
+
+
+/* =========================
+   설명
+========================= */
+.action-desc{
+  font-size:15px;
+  line-height:1.7;
+  margin-bottom:28px;
+  color:#6b7280;
+}
+
+
+/* =========================
+   버튼 느낌
+========================= */
+.action-button{
+  font-weight:800;
+  font-size:16px;
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:12px;
+  background:rgba(0,0,0,0.04);
+}
+
+
+/* =========================
+   모의 모드
+========================= */
+.action-card.outline{
+  background:white;
+  border:2px solid #6366f1;
+}
+
+.action-card.outline .action-button{
+  color:#6366f1;
+  background:#eef2ff;
+}
+
+
+/* =========================
+   실전 면접
+========================= */
+.action-card.main{
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:white;
+}
+
+.action-card.main .action-desc{
+  color:rgba(255,255,255,0.9);
+}
+
+.action-card.main .action-button{
+  background:rgba(255,255,255,0.2);
+}
+
+
+/* =========================
+   ⭐ AI 결과 (특별 강조)
+========================= */
+.action-card.result{
+  background:linear-gradient(135deg,#0ea5e9,#6366f1);
+  color:white;
+}
+
+.action-card.result .action-desc{
+  color:rgba(255,255,255,0.9);
+}
+
+.action-card.result .action-button{
+  background:rgba(255,255,255,0.2);
+}
+
+
+/* glow 효과 */
+.action-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:.4s;
+  background:radial-gradient(circle at 30% 0%, rgba(255,255,255,0.25), transparent 40%);
+}
+
+.action-card:hover::after{
+  opacity:1;
+}
+
+
+/* =========================
+   반응형
+========================= */
+@media (max-width:1000px){
+  .action-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width:600px){
+  .action-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ===== 반응형 ===== */
+@media(max-width:800px){
+  .action-grid{
+    grid-template-columns:1fr;
+  }
+}

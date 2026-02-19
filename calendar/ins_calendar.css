@@ -1,137 +1,581 @@
-html, body {
-    height: 100%;
-    margin: 0;
+/* =========================
+   RESET
+========================= */
+* {
+    box-sizing: border-box;
 }
+
 body {
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
+    margin: 0;
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Noto Sans KR",
+    sans-serif;
+   background:#f3f4f6;
 }
-#header {
-    flex-shrink: 0; /* 헤더 높이 고정 */
+.menu a{
+    position:relative;
+    color:#374151;
+    text-decoration:none;
+    transition:.25s;
 }
 
-/*.top-nav {*/
-/*    width: 130px;*/
-/*    height: 50px;*/
-/*    background: #222;*/
-/*    color: white;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    padding: 0 20px;*/
-/*}*/
-
-/*#menuBtn {*/
-/*    margin-right: 15px;*/
-/*    font-size: 20px;*/
-/*    background: none;*/
-/*    color: white;*/
-/*    border: none;*/
-/*    cursor: pointer;*/
-/*}*/
+.menu a.active_attach{
+    color:#6366f1;
+    font-weight:600;
+}
+/* =========================
+   전체 레이아웃 (고정)
+========================= */
 
 .layout {
-    flex: 1;               /* 🔥 여기 핵심 */
     display: flex;
-    min-height: 0;         /* 스크롤 깨짐 방지 */
+    min-height: calc(100vh - 60px);
 }
 
-/* 사이드바 */
+/* =========================
+   왼쪽 사이드바 (모든 페이지 동일)
+========================= */
+
 .sidebar {
-    margin:0;
-    width: 140px;
-    height: 100%;
-    background: #f5f6f8;
-    padding: 20px;
-    transition: transform 0.3s ease;
+    width: 200px;
+    background: white;
+    border-right: 1px solid #e5e7eb;
+    padding: 24px 16px;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.sidebar li {
-    padding: 10px;
-    cursor: pointer;
-
-}
-
-.sidebar li a {
-    color: black;
+.sidebar a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
     text-decoration: none;
+    color: #374151;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    font-weight: 580;
 }
 
-.sidebar li:hover {
-    background: #ddd;
+.sidebar a:hover {
+    background: rgba(99, 102, 241, 0.08);
+    color: #6366f1;
 }
 
-/* 숨김 상태 */
-.sidebar.closed {
-    transform: translateX(-100%);
+/* =========================
+   콘텐츠 영역 (완전 고정)
+========================= */
+
+
+.sidebar a.active {
+    background: rgba(99,102,241,0.08);
+    color: #6366f1;
 }
 
-/* 콘텐츠 */
-.content {
-    flex: 1;
-   margin:0;
-    padding-left: 30px;
-    height: 100%;
-    overflow-y: auto;
+:root{
+    --primary:#6366f1;
+    --primary-soft: #e9edfb;
+    --text:#1f2937;
+    --text-soft:#6b7280;
+    --border: #999ea8;
+    --radius:14px;
 }
+/* ===== 레이아웃 ===== */
+.app{
+    flex:1;
+    display:flex;
+    min-width:900px;
+    max-width:1200px;
+    margin:40px auto;
+    border-radius:20px;
+    overflow:hidden;
+    background:white;
 
-.calendar {
-    width: 360px;
-    background: #fff;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.08),
+        0 6px 18px rgba(0,0,0,0.05);
 }
-
-.calendar-header {
+.calendar-title{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.calendar-header button {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.calendar-days,
-.calendar-dates {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    /*justify-content: space-between;*/
     text-align: center;
+    justify-content: center;
+}
+.today-btn button{
+    padding:10px 18px;
+    border-radius:10px;
+    border:none;
+
+    background:linear-gradient(135deg,#6366f1,#818cf8);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+
+    box-shadow:0 6px 14px rgba(99,102,241,0.25);
+    transition:.2s;
 }
 
-.calendar-days div {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 8px;
+.today-btn button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(99,102,241,0.35);
 }
 
-.calendar-dates div {
-    padding: 10px 0;
-    cursor: pointer;
-    border-radius: 6px;
+
+
+.main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding: 8px 40px 30px;
 }
 
-.calendar-dates div:hover {
-    background: #f0f4ff;
+.topbar{
+    width:100%;
+    max-width:1200px;
+    margin:5px auto 10px;
+    padding:20px 10px;
+
+    border-radius:16px;
+    background:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08);
 }
 
-.calendar-dates .today {
-    background: #4a6cf7;
-    color: white;
+.topbar-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.calendar-dates .selected {
-    border: 2px solid #4a6cf7;
+.month-title{
+    font-size:21px;
+    font-weight:700;
+    color:#111827;
 }
 
+
+.topbar-left button{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:none;
+
+    background:#f3f4f6;
+    color:#6b7280;
+
+    font-size:14px;
+    cursor:pointer;
+}
+
+.topbar-left button:hover{
+    background:#e5e7eb;
+}
+
+
+.topbar-left button:hover{
+    background: #999da5;
+    color:white;
+    transform:translateY(-1px);
+}
+
+/* ===== 요일 ===== */
+.week{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    background:#fafbff;
+    /*border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);*/
+
+    color:#9aa0b4;
+    font-weight:600;
+    font-size:13px;
+}
+
+.week div{
+    text-align:center;
+    padding:6px 0;
+    font-weight:600;
+
+    font-size:14px;
+    color:var(--text-soft);
+}
+
+
+/* ===== 달력 ===== */
+.calendar{
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    grid-auto-rows:160px;
+    background:white;
+    margin-bottom: 0;
+
+    position: relative;
+    overflow: hidden;   /* ← 이거 반드시 추가 */
+}
+.day{
+    /*border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);*/
+    min-height:150px;
+    background:white;
+
+    overflow:auto;
+    cursor:pointer;
+    position: relative;
+    padding:8px;
+    margin:5px;
+  z-index: 5;   /* 날짜 셀 클릭 우선 */
+
+    border-radius:14px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+
+    transition:0.2s;
+
+
+}
+
+.day:hover{
+    border: 2px solid #acb4bf;
+    /*background: white;*/
+    /*transform:translateY(-2px);*/
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    z-index:10;
+}
+/* hover는 바닥 느낌 */
+.day::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:white;
+    opacity:0;
+    transition:.15s;
+    z-index:0;
+}
+.day:hover::before{
+    opacity:1;
+}
+.day:nth-child(7n){border-right:none;}
+
+.date{
+    font-size:14px;
+
+    margin-bottom:6px;
+    font-weight:600;
+    color:#4b5563;
+    position:relative;
+    z-index:2;
+}
+
+.today{
+    background:linear-gradient(135deg,#eef2ff,#e0e7ff);
+    /*border:2px solid #6366f1;*/
+
+   /* box-shadow:
+        0 0 0 4px rgba(99,102,241,0.15),
+        0 10px 25px rgba(99,102,241,0.18);*/
+
+    /*transform:translateY(-2px);*/
+}
+
+/*
+
+.today:hover{
+    z-index:25;
+}
+*/
+
+
+.event{
+     height:22px;
+    border-radius:6px;
+    color:white;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    white-space:nowrap;
+    font-size:13px;
+    padding:7px 8px;
+
+    margin-top:5px;
+    font-weight:600;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #818cf8
+    );
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    position:relative;
+    z-index:3;
+}
+.event-bar {
+    position:absolute;
+    z-index:10;
+    box-sizing:border-box;
+    margin-top:13px;
+  height:25px;
+  /*line-height:25px;   !* 글자 세로 중앙 *!*/
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+    font-weight:500;
+  padding: 1px 6px;
+  display: flex;
+  align-items: center;
+  justify-content:center;  /* 가로 가운데 */
+
+  text-align:center;
+  overflow: hidden;
+  white-space: nowrap;
+    cursor:pointer;
+
+  text-overflow:ellipsis;
+}
+.event:hover{
+    transform:translateY(-1px);
+}
+/* 하루 일정 → 왼쪽 정렬 */
+.event-bar.single-day{
+  justify-content:flex-start;
+  padding-left:8px;
+}
+/* ===== 모달 ===== */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,0.35);
+    backdrop-filter:blur(8px);
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    animation:fadeIn .25s ease;
+    z-index: 11;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.modal-box{
+    background:white;
+    padding:26px;
+    border-radius:18px;
+    width:320px;
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.2),
+        0 8px 20px rgba(0,0,0,0.08);
+
+    animation:modalPop .25s ease;
+}
+
+@keyframes modalPop{
+    from{
+        transform:scale(.85) translateY(20px);
+        opacity:0;
+    }
+    to{
+        transform:scale(1) translateY(0);
+        opacity:1;
+    }
+}
+.modalTitle{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:5px;
+    color:#1f2937;
+}
+
+
+.modal input,
+.modal select{
+    width:100%;
+    margin-top:12px;
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    outline:none;
+    transition:.15s;
+}
+
+.modal input:focus,
+.modal select:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(99,102,241,0.15);
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.modal-buttons button{
+    flex:1;
+    padding:11px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.15s;
+}
+
+.save{
+    background:var(--primary);
+    color:white;
+}
+
+.save:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 12px rgba(99,102,241,0.3);
+}
+
+.delete{
+    background:#fb7185;
+    color:white;
+}
+
+.delete:hover{
+    transform:translateY(-1px);
+}
+
+.cancel{
+    background:#f1f5f9;
+}
+
+.cancel:hover{
+    background:#e2e8f0;
+}
+.modal label{
+    font-size:13px;
+    font-weight:600;
+    color:#6b7280;
+    margin-top:14px;
+    display:block;
+}
+
+.modal-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    cursor:pointer;
+    font-size:18px;
+    color:#9ca3af;
+}
+.modal-form{
+  display:block;
+}
+.modal-form.hide{
+  display:none;
+}
+
+.day-events{
+  margin-top:10px;
+  max-height:200px;
+  overflow:auto;
+}
+.day-events-item{
+  padding:8px;
+  border-radius:8px;
+  margin-bottom:6px;
+  color:white;
+  font-size:13px;
+  font-weight:600;
+}
+.day-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.day-header-buttons {
+    display:flex;
+    gap:8px;
+}
+.day-view{
+    position:relative;
+}
+/*
+.add-circle {
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    border:none;
+    background:#6366f1;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}*/
+
+.add-circle{
+    /*position:absolute;
+    right:12px;
+    bottom:12px;*/
+
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border: 1px solid #ecf1f8;
+
+    background:white;
+    backdrop-filter:blur(12px);
+
+    font-size:20px;
+    font-weight:700;
+    cursor:pointer;
+
+    box-shadow:
+    0 15px 20px rgba(105, 105, 108, 0.2);
+
+    transition:.25s;
+
+    /*display:flex;
+    align-items:center;
+    justify-content:center;*/
+
+    /*transition:all .2s ease;*/
+    z-index:50;
+}
+
+.add-circle:hover{
+    background:white;
+    transform:translateY(-3px);
+    box-shadow:
+    0 15px 20px rgba(105, 105, 108, 0.4);
+}
+
+.add-circle:active{
+    transform:scale(0.96);
+}
+
+
+.close-day {
+    border:none;
+    background:transparent;
+    font-size:18px;
+    cursor:pointer;
+}

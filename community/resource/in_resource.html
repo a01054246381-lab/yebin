@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>자료실</title>
+
+    <!-- 공통 레이아웃 -->
+    <link rel="stylesheet" href="/interview001/layout.css">
+
+    <!-- 기존 유지 -->
     <link rel="stylesheet" href="/interview001/header/ins_header.css">
     <link rel="stylesheet" href="ins_resource.css">
 </head>
@@ -11,142 +16,210 @@
 <div id="header"></div>
 
 <div class="layout">
+
     <!-- 왼쪽 사이드바 -->
     <aside id="sidebar" class="sidebar">
-    <ul>
-        <li><a href="/interview001/community/commu_main/in_commu_main.html">자유게시판</a></li>
-        <li><a href="/interview001/community/mentor/in_mentor.html">멘토멘티</a></li>
-        <li><a href="/interview001/community/resource/in_resource.html">자료실</a></li>
-        <li><a href="/interview001/community/qna/in_qna.html">문의사항</a></li>
-        <li><a href="/interview001/community/job/in_job.html">채용공고</a></li>
-    </ul>
+        <ul>
+            <li><a href="/interview001/community/commu_main/in_commu_main.html">자유게시판</a></li>
+            <li><a href="/interview001/community/mentor/in_mentor.html">멘토멘티</a></li>
+            <li><a href="/interview001/community/resource/in_resource.html" class="active">자료실</a></li>
+            <li><a href="/interview001/community/qna/in_qna.html">문의사항</a></li>
+            <li><a href="/interview001/community/job/in_job.html">채용공고</a></li>
+        </ul>
     </aside>
 
-    <!-- 오른쪽 콘텐츠 -->
-    <div class="content">
-        <div class="board-layout">
-        <div class="board-main">
+    <!-- 콘텐츠 -->
+    <main class="content">
 
+        <div class="page-container">
+            <div class="page-layout">
 
-            <!-- 게시판 제목 -->
-            <div class="board-title">
-                <h2>자료실</h2>
-                <p>면접 준비 자료실입니다.</p>
+                <!-- 메인 영역 -->
+                <section class="page-main">
+
+                    <div class="card">
+
+                        <div class="board-title">
+                        <div class="title-badge">
+                            <h2>자료실</h2>
+                            <div class="mode-badge">DATA ROOM</div>
+                        </div>
+                        <p>면접 준비 자료를 다운로드하세요.</p></div>
+                        <!-- 검색 -->
+                        <div class="board-search">
+                            <select>
+                                <option>제목</option>
+                                <option>작성자</option>
+                            </select>
+                            <input type="text" placeholder="검색어 입력">
+                            <button>검색</button>
+                        </div>
+
+                        <!-- 게시글 -->
+                        <ul class="board-list">
+
+                            <li class="title-header">
+                                <span class="num">번호</span>
+                                <span>자료 제목</span>
+                                <span class="writer">작성자</span>
+                                <span class="date">날짜</span>
+                                <span class="view">조회수</span>
+                            </li>
+
+                            <li class="notice">
+                                <span class="num">공지</span>
+                                <span class="title">[필독] 자료실 이용 안내</span>
+                                <span class="writer">관리자</span>
+                                <span class="date">2026-02-01</span>
+                                <span class="view">120</span>
+                            </li>
+
+                            <li>
+                                <span class="num">10</span>
+                                <span class="title">📄 자소서 기본 양식 (한글 / 워드)</span>
+                                <span class="writer">관리자</span>
+                                <span class="date">02-12</span>
+                                <span class="view">245</span>
+                            </li>
+
+                            <li>
+                                <span class="num">9</span>
+                                <span class="title">📑 이력서 템플릿 무료 다운로드</span>
+                                <span class="writer">관리자</span>
+                                <span class="date">02-11</span>
+                                <span class="view">198</span>
+                            </li>
+
+                            <li>
+                                <span class="num">8</span>
+                                <span class="title">🎤 AI 면접 예상 질문 50선</span>
+                                <span class="writer">관리자</span>
+                                <span class="date">02-10</span>
+                                <span class="view">321</span>
+                            </li>
+
+                            <li>
+                                <span class="num">7</span>
+                                <span class="title">💡 면접 자기소개 예시 모음</span>
+                                <span class="writer">관리자</span>
+                                <span class="date">02-09</span>
+                                <span class="view">187</span>
+                            </li>
+
+                            <li>
+                                <span class="num">6</span>
+                                <span class="title">📘 직무별 면접 질문 정리 (PDF)</span>
+                                <span class="writer">관리자</span>
+                                <span class="date">02-08</span>
+                                <span class="view">156</span>
+                            </li>
+
+                        </ul>
+
+                        <div class="board-bottom">
+                            <button class="resource-btn">자료 업로드</button>
+                        </div>
+
+                        <!-- 페이지네이션 -->
+                        <div class="pagination">
+                            <button class="page-nav">‹</button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-nav">›</button>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- 오른쪽 사이드 -->
+                <aside class="page-side">
+
+                    <div class="side-card">
+                        <h3>📚 자료실 안내</h3>
+                        <ul>
+                            <li>면접 자료 자유 다운로드</li>
+                            <li>매주 신규 자료 업데이트</li>
+                            <li>회원만 다운로드 가능</li>
+                        </ul>
+                    </div>
+
+                    <div class="side-card">
+                        <h3>🔥 인기 다운로드</h3>
+                        <ol class="rank-list">
+                            <li>AI 면접 질문 50선</li>
+                            <li>합격자 자소서 샘플</li>
+                            <li>이력서 템플릿</li>
+                        </ol>
+                    </div>
+
+                    <div class="side-card">
+                        <h3>🚀 빠른 실행</h3>
+                        <button class="primary-btn"><a href="/interview001/simulation/pracice/in_practice.html">모의 면접 시작</a></button>
+                        <button class="ghost-btn"><a href="/interview001/simulation/real/in_real.html">실전 면접 시작</a></button>
+                    </div>
+
+                    <div class="side-card">
+                        <h3>📥 AI 면접 결과 레포트</h3>
+                        <a href="/interview001/simulation/in_user_info.html" class="practice-btn">모의 모드 결과 레포트</a>
+                        <a href="/interview001/simulation/in_user_info.html" class="btn">실전 모드 결과 레포트</a>
+                    </div>
+
+                    <div class="side-card">
+                        <h3>📅 나의 면접 일정</h3>
+                        <p class="schedule">02/10 · 삼성전자</p>
+                        <p class="schedule">02/15 · 네이버</p>
+                    </div>
+
+                </aside>
+
             </div>
-
-            <!-- 검색 -->
-            <div class="board-search">
-                <select>
-                    <option>제목</option>
-                    <option>작성자</option>
-                </select>
-                <input type="text" placeholder="검색어를 입력하세요">
-                <button>검색</button>
-            </div>
-
-            <!-- 게시글 목록 -->
-            <ul class="board-list">
-                <li class="title">
-                    <span class="no">게시글</span>
-                    <span class="subject">게시글 제목</span>
-                    <span class="writer">작성자</span>
-                    <span class="date">날짜</span>
-                    <span class="view">조회수</span>
-                </li>
-                <li class="notice">
-                    <span class="no">공지</span>
-                    <span class="subject">[필독] 자료실 이용 안내</span>
-                    <span class="writer">관리자</span>
-                    <span class="date">2026-02-01</span>
-                    <span class="view">120</span>
-                </li>
-
-                <li>
-                    <span class="no">1</span>
-                    <span class="subject">자소서 양식</span>
-                    <span class="writer">관리자</span>
-                    <span class="date">2026-02-06</span>
-                    <span class="view">23</span>
-                </li>
-
-                <li>
-                    <span class="no">2</span>
-                    <span class="subject">이력서 양식</span>
-                    <span class="writer">관리자</span>
-                    <span class="date">2026-02-05</span>
-                    <span class="view">18</span>
-                </li>
-            </ul>
-
-<!--            &lt;!&ndash; 글쓰기 &ndash;&gt;-->
-<!--            <div class="board-bottom">-->
-<!--                <button class="write-btn">글쓰기</button>-->
-<!--            </div>-->
-
-            <!-- 페이지네이션 -->
-            <div class="pagination">
-                <span class="active">1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>›</span>
-            </div>
-
         </div>
 
-        <aside class="board-side">
+    </main>
 
-            <!-- 커뮤니티 안내 -->
-            <div class="side-box">
-                <h3>📢 커뮤니티 안내</h3>
-                <ul>
-                    <li>욕설·비방 금지</li>
-                    <li>광고 글 삭제</li>
-                    <li>신고 누적 시 이용 제한</li>
-                </ul>
-            </div>
-
-            <!-- 인기 게시글 -->
-            <div class="side-box">
-                <h3>🔥 인기 게시글</h3>
-                <ol class="rank-list">
-                    <li>AI 면접 후기 공유</li>
-                    <li>면접 질문 정리</li>
-                    <li>실전 모드 후기</li>
-                </ol>
-            </div>
-
-            <!-- AI 면접 바로가기 -->
-            <div class="side-box highlight">
-                <h3>🎤 AI 면접</h3>
-                <a href="/interview001/simulation/in_user_info.html" class="practice-btn">모의 면접 시작</a>
-                <a href="/interview001/simulation/in_user_info.html" class="btn">실전 면접 시작</a>
-            </div>
-
-            <!-- 일정 요약 -->
-            <div class="side-box">
-                <h3>📅 나의 면접 일정</h3>
-                <p class="schedule">02/10 · 삼성 SDI</p>
-                <p class="schedule">02/15 · 네이버</p>
-            </div>
-
-            <!-- 오늘의 한마디 -->
-            <div class="side-box quote">
-                <p>“답변보다 중요한 건 태도입니다.”</p>
-            </div>
-
-        </aside>
-        </div>
-    </div>
 </div>
+
 
 <script>
 fetch("/interview001/header/in_header.html")
     .then(res => res.text())
     .then(data => {
-        document.getElementById("header").innerHTML = data;
+
+        const headerEl = document.getElementById("header");
+        headerEl.innerHTML = data;
+
+        // 햄버거 메뉴
+        const hamburger = headerEl.querySelector('.hamburger');
+        const menu = headerEl.querySelector('.menu');
+
+        if(hamburger){
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        }
+
+        // ⭐⭐⭐ 현재 페이지 active 표시 (핵심)
+        const currentPath = window.location.pathname;
+
+headerEl.querySelectorAll(".menu a").forEach(link => {
+
+    const linkPath = new URL(link.href).pathname;
+
+    // community 폴더 전체 활성화
+    if(currentPath.includes("/community/") && linkPath.includes("/community/")){
+        link.classList.add("active_attach");
+    }
+
+    // 일반 페이지
+    else if(currentPath === linkPath){
+        link.classList.add("active_attach");
+    }
+});
+
     });
 </script>
 
 </body>
 </html>
-

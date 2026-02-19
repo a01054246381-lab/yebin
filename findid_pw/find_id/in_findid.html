@@ -5,33 +5,44 @@
     <title>아이디 찾기</title>
     <link rel="stylesheet" href="ins_findid.css">
 </head>
-<body>
-<div class="find-id-container">
 
-    <h2>아이디 찾기</h2>
+<body class="find-page">
+
+<div class="find-card">
+    <div class="logo">INTERVIEW</div>
+
+    <h2 class="find-title">아이디 찾기</h2>
+    <p class="find-sub">가입 시 입력한 정보로 아이디를 찾을 수 있습니다.</p>
+
     <form action="id/in_id.html" method="post">
+
         <div class="form-group">
             <label>이름</label>
-            <input type="text" placeholder="이름을 입력하세요">
+            <input type="text" placeholder="이름을 입력하세요" required>
         </div>
 
         <div class="form-group">
             <label>생년월일</label>
-            <input type="text" placeholder="ex)20260203">
+            <input type="text" placeholder="ex) 20260203" required>
         </div>
 
         <div class="form-group">
             <label>연락처</label>
-            <input type="text" placeholder="ex)01077777777">
+            <input type="text" placeholder="ex) 01012345678" required>
         </div>
 
-        <button type="submit" class="find-id-btn">아이디 찾기</button>
-
+        <button type="submit" class="find-btn">아이디 찾기</button>
 
     </form>
+
+    <div class="find-links">
+        <a href="/interview001/login/in_login.html">로그인</a>
+        <a href="/interview001/findid_pw/find_pw/in_findpw.html">비밀번호 찾기</a>
+        <a href="/interview001/signup/in_signup.html">회원가입</a>
+    </div>
+
 </div>
+
 <script src="inj_findid.js"></script>
-
-
 </body>
 </html>

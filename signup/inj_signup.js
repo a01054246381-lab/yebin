@@ -44,3 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "/interview001/login/in_login.html";
     });
 });
+
+document.querySelectorAll(".toggle").forEach(btn => {
+
+  btn.addEventListener("click", () => {
+
+    const input = btn.previousElementSibling;
+
+    input.type = input.type === "password" ? "text" : "password";
+
+  });
+
+});
+
+

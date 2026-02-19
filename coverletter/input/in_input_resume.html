@@ -15,13 +15,16 @@
     <!-- 왼쪽 사이드바 -->
     <aside id="sidebar" class="sidebar">
         <ul>
-            <li><a href="/interview001/coverletter/input/in_input_resume.html">이력서 보기/수정</a></li>
-            <li><a href="/interview001/coverletter/ai/in_ai_coverletter.html">ai 자소서 피드백</a></li>
+            <li><a href="/interview001/coverletter/input/in_input_resume.html" class="active">이력서 보기/수정</a></li>
+            <li><a href="/interview001/coverletter/ai/in_ai_coverletter.html">AI 자소서 피드백</a></li>
         </ul>
     </aside>
-  <div class="container">
+  <main class="container">
+  <div class="title-badge">
     <h1>이력서 입력</h1>
-    <p class="desc">학력 사항 + 경력 사항 + 자격증 + 자기소개서를 한 번에 저장합니다.</p>
+    <div class="mode-badge">RESUME / COVER LETTER</div>
+  </div>
+    <p class="desc">학력 사항, 경력 사항, 자격증, 자기소개서를 한 번에 저장합니다.</p>
 
     <!-- 기본 정보 -->
     <section class="card">
@@ -29,7 +32,7 @@
       <div class="row">
         <div class="field col-3">
           <label for="userId">사용자 ID</label>
-          <input id="userId" type="number" value="1" min="1" />
+          <input id="userId" type="text" placeholder="hong123" />
         </div>
       </div>
     </section>
@@ -203,16 +206,39 @@
       </div>
       <div id="status" class="status" aria-live="polite"></div>
     <!--</section>-->
-       </div>
+       </main>
 
 </div>
 </body>
 <script>
-    fetch("/interview001/header/in_header.html")
-        .then(res => res.text())
-        .then(data => {
-            document.getElementById("header").innerHTML = data;
+fetch("/interview001/header/in_header.html")
+    .then(res => res.text())
+    .then(data => {
+
+        const headerEl = document.getElementById("header");
+        headerEl.innerHTML = data;
+
+        // 햄버거 메뉴
+        const hamburger = headerEl.querySelector('.hamburger');
+        const menu = headerEl.querySelector('.menu');
+
+        if(hamburger){
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        }
+
+        // ⭐⭐⭐ 현재 페이지 active 표시 (핵심)
+        const currentPage = window.location.pathname.split("/").pop();
+
+        headerEl.querySelectorAll(".menu a").forEach(link => {
+            const linkPage = link.getAttribute("href").split("/").pop();
+            if(currentPage === linkPage){
+                link.classList.add("active_attach");
+            }
         });
+
+    });
 </script>
-<script src="inj_input_resume.js"></script>
+<script type="module" src="inj_input_resume.js"></script>
 </html>

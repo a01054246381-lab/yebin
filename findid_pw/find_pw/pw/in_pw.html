@@ -5,18 +5,29 @@
     <title>비밀번호 찾기</title>
     <link rel="stylesheet" href="ins_pw.css">
 </head>
-<body>
-   <div class="result-box">
-    <h2>비밀번호 찾기</h2>
-    <p class="title">비밀번호 찾기가 완료되었습니다.</p>
-        <p class="result">
-            <span id="userName"></span> 회원님의 비밀번호는
-            <strong id="userPw"></strong> 입니다.
+<body class="result-page">
+
+<div class="result-card">
+
+    <div class="logo">INTERVIEW</div>
+
+    <h2 class="result-title">비밀번호 찾기 완료</h2>
+    <p class="result-sub">회원 정보를 확인했습니다.</p>
+
+    <div class="result-box">
+        <p>
+            <span id="userName">홍길동</span> 회원님의 비밀번호는
         </p>
 
-        <a href="../../../login/in_login.html" class="btn">로그인 하러 가기</a>
-  </div>
-  <script src="inj_pw.js"></script>
+        <div class="user-pw" id="userPw">hong1234</div>
+    </div>
 
+    <a href="../../../login/in_login.html" class="login-btn">
+        로그인 하러 가기
+    </a>
+
+</div>
+
+<script src="inj_pw.js"></script>
 </body>
 </html>

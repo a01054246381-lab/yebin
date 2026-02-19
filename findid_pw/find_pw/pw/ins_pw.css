@@ -1,34 +1,123 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+/* =========================
+   전체 배경
+========================= */
+
+body.result-page {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f6f7fb;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+
+
+/* =========================
+   카드
+========================= */
+
+.result-card {
+    width: 460px;
+    padding: 55px 45px;
+
+    background: white;
+    border-radius: 20px;
+
+    border: 1px solid rgba(99,102,241,0.18);
+
+    box-shadow:
+        0 20px 60px rgba(99,102,241,0.18),
+        0 6px 20px rgba(0,0,0,0.05);
+
+    text-align: center;
+}
+
+
+/* =========================
+   로고
+========================= */
+
+.logo {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    color: #6366f1;
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   제목
+========================= */
+
+.result-title {
+    font-size: 26px;
+    font-weight: 750;
+    margin-bottom: 6px;
+}
+
+.result-sub {
+    color: #6b7280;
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   결과 영역
+========================= */
 
 .result-box {
-    width: 400px;
-    margin: 100px auto;
-    padding: 30px;
-    background: #fff;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 28px 20px;
+    border-radius: 14px;
+    background: #f8f9ff;
+    border: 1px solid #e0e7ff;
+    margin-bottom: 35px;
 }
 
-.title {
-    margin-top: 20px;
-    font-size: 16px;
-}
-
-.result {
-    margin-top: 10px;
+.result-box p {
+    margin: 0;
     font-size: 15px;
+    color: #374151;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 10px 20px;
-    background: #333;
-    color: #fff;
+/* 아이디 강조 */
+.user-pw {
+    margin-top: 12px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #6366f1;
+    letter-spacing: .03em;
+}
+
+
+/* =========================
+   버튼
+========================= */
+
+.login-btn {
+    display: block;
+    width: 100%;
+    height: 52px;
+    line-height: 52px;
+
+    border-radius: 12px;
     text-decoration: none;
-    border-radius: 4px;
+    border: none;
+
+    background: #6366f1;
+    color: white;
+    font-weight: 600;
+
+    transition: .2s;
+}
+
+.login-btn:hover {
+    background: #5850e4;
+    transform: translateY(-1px);
+}
+
+.login-btn:active {
+    transform: translateY(0);
 }

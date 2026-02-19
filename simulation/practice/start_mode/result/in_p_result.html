@@ -9,8 +9,44 @@
 <body>
 <div id="header"></div>
 <div class="practice-report">
-  <h1>면접 결과 리포트</h1>
+  <header class="result-header">
 
+    <!-- 상단 모드 라벨 -->
+    <div class="mode-badge">INTERVIEW SIMULATION</div>
+
+    <!-- 메인 헤더 -->
+    <div class="result-main">
+
+        <!-- 면접관 프로필 -->
+      <div class="interviewer-bar">
+        <div class="interviewer-list" id="interviewerList"></div>
+        <!-- JS 에러 방지용 (화면에는 안 보임) -->
+  <div style="display:none;">
+    <div id="interviewerName"></div>
+    <div id="interviewerRole"></div>
+  </div>
+      </div>
+
+        <!-- 결과 텍스트 -->
+        <div class="result-text">
+
+            <h1 class="result-title">
+                모의 면접 결과 분석
+            </h1>
+
+            <div class="result-status">
+                AI 평가 완료
+            </div>
+
+            <div class="result-score">
+                총점 <span class="highlight">87</span> / 100
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
 
 <main class="result-layout">
 
@@ -115,21 +151,81 @@
 </main>
 
 <!-- 하단 액션 -->
-<footer class="action-bar">
-  <button class="sub">🔁 다시 연습</button>
-  <button class="sub">🎯 약점 집중 훈련</button>
-  <button class="sub">📌 답변 저장</button>
-  <a href="/interview001/simulation/practice/in_practice.html" class="restart-btn">▶ 모의 모드 다시 시작</a>
-  <a href="/interview001/simulation/real/in_real.html" class="real-btn">▶ 실전 모드 도전</a>
+<footer class="result-action-bar">
+
+  <div class="action-left">
+    <div class="action-label">NEXT STEP</div>
+    <div class="action-text">
+      분석 결과를 기반으로 다음 면접 전략을 선택하세요.
+    </div>
+  </div>
+
+  <div class="action-right">
+
+    <div class="action-secondary">
+      <button class="btn subtle">다시 연습</button>
+      <button class="btn subtle">약점 집중 훈련</button>
+      <button class="btn subtle">답변 저장</button>
+    </div>
+
+    <div class="action-primary">
+      <a href="/interview001/simulation/practice/in_practice.html"
+         class="btn outline">
+         모의 모드
+      </a>
+
+      <a href="/interview001/simulation/real/in_real.html"
+         class="btn main">
+         🚀 실전 면접 시작
+      </a>
+    </div>
+
+  </div>
+
 </footer>
+
 </div>
 <script>
 fetch("/interview001/header/in_header.html")
-   .then(res => res.text())
-   .then(data => {
-       document.getElementById("header").innerHTML = data;
-   });
+.then(res => res.text())
+.then(data => {
+
+    const headerEl = document.getElementById("header");
+    headerEl.innerHTML = data;
+
+    /* 햄버거 */
+    const hamburger = headerEl.querySelector('.hamburger');
+    const menu = headerEl.querySelector('.menu');
+
+    if(hamburger){
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
+
+    /* =========================
+       ACTIVE 표시 (폴더 기준)
+    ========================= */
+
+    const currentPath = window.location.pathname;
+
+    headerEl.querySelectorAll(".menu a").forEach(link => {
+
+        const linkPath = new URL(link.href).pathname;
+
+        // 폴더 기준 포함 비교
+        const linkFolder = linkPath.substring(0, linkPath.lastIndexOf("/"));
+
+        if(currentPath.startsWith(linkFolder)){
+            link.classList.add("active_attach");
+        }
+
+    });
+
+});
+
 </script>
-<!--<script src="/interview001/simulation/practice/inj_practice.js"></script>-->
+<script src="/interview001/simulation/practice/start_mode/start/inj_p_start.js"></script>
+<!--<script src="inj_p_result.js"></script>-->
 </body>
 </html>

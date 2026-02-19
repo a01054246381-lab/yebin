@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>채용공고</title>
+
+    <!-- 공통 레이아웃 -->
+    <link rel="stylesheet" href="/interview001/layout.css">
+
+    <!-- 기존 유지 -->
     <link rel="stylesheet" href="/interview001/header/ins_header.css">
     <link rel="stylesheet" href="ins_job.css">
 </head>
@@ -11,6 +16,7 @@
 <div id="header"></div>
 
 <div class="layout">
+
     <!-- 왼쪽 사이드바 -->
     <aside id="sidebar" class="sidebar">
         <ul>
@@ -18,174 +24,245 @@
             <li><a href="/interview001/community/mentor/in_mentor.html">멘토멘티</a></li>
             <li><a href="/interview001/community/resource/in_resource.html">자료실</a></li>
             <li><a href="/interview001/community/qna/in_qna.html">문의사항</a></li>
-            <li><a href="/interview001/community/job/in_job.html">채용공고</a></li>
+            <li><a href="/interview001/community/job/in_job.html" class="active">채용공고</a></li>
         </ul>
     </aside>
 
-    <!-- 오른쪽 콘텐츠 -->
-    <div class="content">
-        <h2>채용공고</h2>
-        <p>채용공고 목록</p>
-        <div class="content-inner">
-        <div class="job-grid">
+    <!-- 콘텐츠 -->
+    <main class="content">
 
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="/interview001/NAVER_Logo.png" alt="회사 로고">
-                </div>
+        <div class="page-container">
+            <div class="page-layout">
 
-                <div class="card-bottom">
-                    <h3 class="company">네이버</h3>
-                    <p class="position">프론트엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
+                <!-- 메인 영역 -->
+                <section class="page-main">
+
+                    <div class="card">
+
+                        <div class="board-title">
+                            <div class="title-badge">
+                                <h2>채용공고</h2>
+                                <div class="mode-badge">JOB POSTING</div>
+                            </div>
+                            <p>채용공고와 기업 정보를 확인하세요.</p>
+                        </div>
+
+                        <!-- 채용 카드 -->
+                        <div class="job-grid">
+
+                            <div class="job-card">
+                                <!-- ⭐ 북마크 버튼 -->
+                                <button class="bookmark-btn">☆</button>
+                                <div class="card-top">
+                                    <img src="/interview001/NAVER_Logo.png">
+                                </div>
+                                <div class="card-bottom">
+                                    <h3 class="company">네이버</h3>
+                                    <p class="position">프론트엔드 개발자</p>
+                                    <button>자세히 보기</button>
+                                </div>
+                            </div>
+
+                            <div class="job-card">
+                                <button class="bookmark-btn">☆</button>
+                                <div class="card-top">
+                                    <img src="/interview001/kakao.png">
+                                </div>
+                                <div class="card-bottom">
+                                    <h3 class="company">카카오</h3>
+                                    <p class="position">백엔드 개발자</p>
+                                    <button>자세히 보기</button>
+                                </div>
+                            </div>
+
+                            <div class="job-card">
+                                <button class="bookmark-btn">☆</button>
+                                <div class="card-top">
+                                    <img src="/interview001/Samsung_logo.png">
+                                </div>
+                                <div class="card-bottom">
+                                    <h3 class="company">삼성전자</h3>
+                                    <p class="position">백엔드 개발자</p>
+                                    <button>자세히 보기</button>
+                                </div>
+                            </div>
+
+                            <div class="job-card">
+                                <button class="bookmark-btn">☆</button>
+                                <div class="card-top">
+                                    <img src="/interview001/Google.png">
+                                </div>
+                                <div class="card-bottom">
+                                    <h3 class="company">구글</h3>
+                                    <p class="position">AI 개발자</p>
+                                    <button>자세히 보기</button>
+                                </div>
+                            </div>
+
+                            <div class="job-card">
+                                <button class="bookmark-btn">☆</button>
+                                <div class="card-top">
+                                    <img src="/interview001/NAVER_Logo.png">
+                                </div>
+                                <div class="card-bottom">
+                                    <h3 class="company">네이버</h3>
+                                    <p class="position">프론트엔드 개발자</p>
+                                    <button>자세히 보기</button>
+                                </div>
+                            </div>
+
+                            <div class="job-card">
+                                <button class="bookmark-btn">☆</button>
+                                <div class="card-top">
+                                    <img src="/interview001/kakao.png">
+                                </div>
+                                <div class="card-bottom">
+                                    <h3 class="company">카카오</h3>
+                                    <p class="position">백엔드 개발자</p>
+                                    <button>자세히 보기</button>
+                                </div>
+                            </div>
+
+                            <div class="job-card">
+                                <button class="bookmark-btn">☆</button>
+                                <div class="card-top">
+                                    <img src="/interview001/Samsung_logo.png">
+                                </div>
+                                <div class="card-bottom">
+                                    <h3 class="company">삼성전자</h3>
+                                    <p class="position">백엔드 개발자</p>
+                                    <button>자세히 보기</button>
+                                </div>
+                            </div>
+
+                            <div class="job-card">
+                                <button class="bookmark-btn">☆</button>
+                                <div class="card-top">
+                                    <img src="/interview001/Google.png">
+                                </div>
+                                <div class="card-bottom">
+                                    <h3 class="company">구글</h3>
+                                    <p class="position">AI 개발자</p>
+                                    <button>자세히 보기</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 페이지네이션 -->
+                        <div class="pagination">
+                            <button class="page-nav">‹</button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-nav">›</button>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- 오른쪽 사이드 -->
+                <aside class="page-side">
+
+                    <!-- 안내 -->
+                    <div class="side-card info-card">
+                        <div class="side-icon">💡</div>
+                        <div>
+                            <h3>채용공고 안내</h3>
+                            <p>
+                                최신 기업 채용 정보를 확인하고<br>
+                                지원 전략을 준비해보세요.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 인기 기업 -->
+                    <div class="side-card process-card">
+                        <h3>⭐ 인기 기업 순위 ⭐</h3>
+                        <div class="step">
+                            <span class="step-num">1</span>
+                            <p>구글</p>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-num">2</span>
+                            <p>삼성 전자</p>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-num">3</span>
+                            <p>카카오</p>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="side-card cta-card">
+                        <h3>채용 알림 받기</h3>
+                        <p>관심 기업 채용을 놓치지 마세요.</p>
+                        <button class="side-cta">알림 신청</button>
+                    </div>
+
+                </aside>
+
             </div>
-
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="/interview001/kakao.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">카카오</h3>
-                    <p class="position">백엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="/interview001/Samsung_logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">삼성전자</h3>
-                    <p class="position">백엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="/interview001/Google.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">구글</h3>
-                    <p class="position">AI 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">네이버</h3>
-                    <p class="position">프론트엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">카카오</h3>
-                    <p class="position">백엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">카카오</h3>
-                    <p class="position">백엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">카카오</h3>
-                    <p class="position">백엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="NAVER_Logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">네이버</h3>
-                    <p class="position">프론트엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">카카오</h3>
-                    <p class="position">백엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">카카오</h3>
-                    <p class="position">백엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-            <div class="job-card">
-                <div class="card-top">
-                    <img src="logo.png" alt="회사 로고">
-                </div>
-
-                <div class="card-bottom">
-                    <h3 class="company">카카오</h3>
-                    <p class="position">백엔드 개발자</p>
-                    <button>자세히 보기</button>
-                </div>
-            </div>
-
         </div>
- <!-- 페이지네이션 -->
-            <div class="pagination">
-<!--                <span><</span>-->
-                <span class="active">1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>›</span>
-            </div>
-    </div>
-    </div>
+
+    </main>
+
 </div>
 
 <script>
-    fetch("/interview001/header/in_header.html")
-        .then(res => res.text())
-        .then(data => {
-            document.getElementById("header").innerHTML = data;
-        });
+fetch("/interview001/header/in_header.html")
+    .then(res => res.text())
+    .then(data => {
+
+        const headerEl = document.getElementById("header");
+        headerEl.innerHTML = data;
+
+        // 햄버거 메뉴
+        const hamburger = headerEl.querySelector('.hamburger');
+        const menu = headerEl.querySelector('.menu');
+
+        if(hamburger){
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        }
+
+        // ⭐⭐⭐ 현재 페이지 active 표시 (핵심)
+        const currentPath = window.location.pathname;
+
+headerEl.querySelectorAll(".menu a").forEach(link => {
+
+    const linkPath = new URL(link.href).pathname;
+
+    // community 폴더 전체 활성화
+    if(currentPath.includes("/community/") && linkPath.includes("/community/")){
+        link.classList.add("active_attach");
+    }
+
+    // 일반 페이지
+    else if(currentPath === linkPath){
+        link.classList.add("active_attach");
+    }
+});
+
+
+    });
+</script>
+<script>
+document.querySelectorAll('.bookmark-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        btn.classList.toggle('active');
+
+        // 별 모양 변경
+        btn.textContent = btn.classList.contains('active') ? '★' : '☆';
+
+    });
+});
 </script>
 
 </body>
 </html>
-
