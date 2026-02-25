@@ -32,7 +32,9 @@
 
   <!-- AI 면접관 -->
   <div class="interviewer-panel ai">
-    <div class="avatar-circle"></div>
+    <video class="ai-video" autoplay muted loop playsinline>
+    <source src="/interview001/interviewer2.mp4" type="video/mp4">
+  </video>
   </div>
 
   <!-- 웹캠 -->
@@ -59,15 +61,16 @@
         <div class="mic-status">
             🎤 음성 인식 중...
         </div>
-        <div class="stt-text">
+       <!-- <div class="stt-text">
             <p>“저는 컴퓨터공학과에 재학 중이며...”</p>
-        </div>
+        </div>-->
     </section>
 
     <!-- 하단 버튼 -->
     <footer class="control-section">
         <button class="control-btn primary">답변 시작</button>
 <!--        <button class="control-btn">일시정지</button>-->
+        <button class="control-btn result" id="modalConfirm">결과 확인 →</button>
     </footer>
 
 </div>
