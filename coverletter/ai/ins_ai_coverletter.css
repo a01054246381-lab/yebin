@@ -356,3 +356,12 @@ textarea:focus{
     margin-bottom:10px;
     line-height:1.6;
 }
+
+.rewrite-card {
+background:#fafbff;
+    padding:20px;
+    border-radius:10px;
+    border:1px solid #6366f1;
+    margin:15px 0 10px;
+
+}

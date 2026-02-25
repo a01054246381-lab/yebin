@@ -144,7 +144,8 @@ body {
     padding:20px 10px;
 
     border-radius:16px;
-    background:white;
+    background: rgba(99, 102, 241, 0.08);
+
 
     display:flex;
     justify-content:center;
@@ -174,15 +175,11 @@ body {
     border-radius:50%;
     border:none;
 
-    background:#f3f4f6;
+    background:#e5e7eb;
     color:#6b7280;
 
     font-size:14px;
     cursor:pointer;
-}
-
-.topbar-left button:hover{
-    background:#e5e7eb;
 }
 
 

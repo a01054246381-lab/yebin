@@ -7,12 +7,16 @@ const eduList = document.getElementById("eduList");
     const addCertBtn = document.getElementById("addCertBtn");
 
     const saveBtn = document.getElementById("saveBtn");
-    const statusEl = document.getElementById("status");
+    const eduStatus = document.getElementById("eduStatus");
+const expStatus = document.getElementById("expStatus");
+const certStatus = document.getElementById("certStatus");
+    const MAX_ITEMS = 5;
+    function setStatus(target, msg, type = ""){
+  if(!target) return;   // 안전장치
 
-    function setStatus(msg, type = "") {
-      statusEl.textContent = msg || "";
-      statusEl.className = "status" + (type ? ` ${type}` : "");
-    }
+  target.textContent = msg || "";
+  target.className = "status" + (type ? ` ${type}` : "");
+}
 
     function createItem(templateId, target) {
       const tpl = document.getElementById(templateId);
@@ -28,21 +32,35 @@ const eduList = document.getElementById("eduList");
         const obj = {};
         item.querySelectorAll("[data-k]").forEach((el) => {
           const key = el.dataset.k;
-          let val = el.value;
+          let val;
 
-          if (val === "") val = null;
-          if (key === "is_current" || key === "last_edu" || key === "display_order" || key === "career_month") {
-            val = val === null ? 0 : Number(val);
-          }
-          if (key === "gpa" || key === "gpa_scale") {
-            val = val === null ? null : Number(val);
-          }
+          /* =========================
+         checkbox 처리 ⭐ 추가
+      ========================= */
+      if (el.type === "checkbox") {
+        val = el.checked ? 1 : 0;   // DB용 (boolean이면 true/false도 가능)
+      } else {
+        val = el.value;
+        if (val === "") val = null;
+      }
 
-          obj[key] = val;
-        });
-        return obj;
-      });
-    }
+      /* =========================
+         숫자 변환
+      ========================= */
+      if (["display_order", "career_month"].includes(key)) {
+        val = val === null ? 0 : Number(val);
+      }
+
+      if (["gpa", "gpa_scale"].includes(key)) {
+        val = val === null ? null : Number(val);
+      }
+
+      obj[key] = val;
+    });
+
+    return obj;
+  });
+}
 
     function seedDefaultData() {
       // 학력 기본 2개
@@ -51,8 +69,8 @@ const eduList = document.getElementById("eduList");
       e1.querySelector('[data-k="degree_level"]').value = "고등학교";
       e1.querySelector('[data-k="start_date"]').value = "2013-03-01";
       e1.querySelector('[data-k="end_date"]').value = "2016-02-29";
-      e1.querySelector('[data-k="is_current"]').value = "0";
-      e1.querySelector('[data-k="last_edu"]').value = "0";
+      e1.querySelector('[data-k="is_current"]').checked = false;
+      e1.querySelector('[data-k="last_edu"]').checked = false;
       e1.querySelector('[data-k="display_order"]').value = "1";
 
       const e2 = createItem("eduTemplate", eduList);
@@ -63,7 +81,7 @@ const eduList = document.getElementById("eduList");
       e2.querySelector('[data-k="gpa_scale"]').value = "4.5";
       e2.querySelector('[data-k="start_date"]').value = "2018-03-01";
       e2.querySelector('[data-k="end_date"]').value = "2022-02-28";
-      e2.querySelector('[data-k="is_current"]').value = "0";
+      e1.querySelector('[data-k="is_current"]').checked = false;
       e2.querySelector('[data-k="last_edu"]').value = "1";
       e2.querySelector('[data-k="display_order"]').value = "2";
 
@@ -74,7 +92,7 @@ const eduList = document.getElementById("eduList");
       x1.querySelector('[data-k="start_date"]').value = "2025-04-01";
       x1.querySelector('[data-k="end_date"]').value = "2025-07-01";
       x1.querySelector('[data-k="career_month"]').value = "3";
-      x1.querySelector('[data-k="is_current"]').value = "0";
+      e1.querySelector('[data-k="is_current"]').checked = false;
       x1.querySelector('[data-k="location"]').value = "서울";
       x1.querySelector('[data-k="display_order"]').value = "1";
 
@@ -85,9 +103,23 @@ const eduList = document.getElementById("eduList");
       c1.querySelector('[data-k="credential_id"]').value = "1234";
     }
 
-    addEduBtn.addEventListener("click", () => createItem("eduTemplate", eduList));
-    addExpBtn.addEventListener("click", () => createItem("expTemplate", expList));
-    addCertBtn.addEventListener("click", () => createItem("certTemplate", certList));
+  addEduBtn.addEventListener("click", () => {
+  if(canAdd(eduList, "학력", eduStatus)){
+    createItem("eduTemplate", eduList);
+  }
+});
+
+addExpBtn.addEventListener("click", () => {
+  if(canAdd(expList, "경력", expStatus)){
+    createItem("expTemplate", expList);
+  }
+});
+
+addCertBtn.addEventListener("click", () => {
+  if(canAdd(certList, "자격증", certStatus)){
+    createItem("certTemplate", certList);
+  }
+});
 
     saveBtn.addEventListener("click", async () => {
       const userId = Number(document.getElementById("userId").value);
@@ -137,3 +169,15 @@ const eduList = document.getElementById("eduList");
     });
 
     seedDefaultData();
+
+    function canAdd(container, label, statusEl){
+  const count = container.children.length;
+
+  if(count >= MAX_ITEMS){
+    setStatus(statusEl, `${label}은 최대 ${MAX_ITEMS}개까지 추가 가능합니다.`, "err");
+    return false;
+  }
+
+  setStatus(statusEl, "");
+  return true;
+}

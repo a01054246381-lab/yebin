@@ -295,15 +295,25 @@ h1{
     font-weight:600;
 }
 
-.status.ok{ color:#16a34a; }
-.status.err{ color:#dc2626; }
 
+.status{
+  min-height:20px;
+  margin-top:8px;
+  font-size:14px;
+}
 
+.status.err{
+  color:#6366f1;
+}
+
+.status.ok{
+  color:#16a34a;
+}
 /* =========================
    MOBILE
 ========================= */
 
-@media(max-width:900px){
+@media(max-width:1300px){
     .col-6,
     .col-4,
     .col-3{
@@ -367,4 +377,26 @@ body{
 /* 버튼 영역 */
 .actions{
     margin-top:20px;
+}
+.checks{
+   display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;   /* 🔥 이거 없으면 깨짐 */
+}
+
+.checks label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:500;
+    word-break: keep-all;   /* 한글 단어 쪼개지지 않음 */
+  flex-wrap:wrap;
+}
+.checks input{
+  width:18px;
+  height:18px;
+  accent-color:#6366f1;
+  cursor:pointer;
+
 }

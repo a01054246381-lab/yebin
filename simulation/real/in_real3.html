@@ -32,9 +32,11 @@
 
   <!-- AI 면접관 -->
   <div class="interviewer-panel ai">
-    <video class="ai-video" autoplay muted loop playsinline>
-    <source src="/interview001/interviewer3.mp4" type="video/mp4">
-  </video>
+    <video class="ai-video" id="aiVideo" muted loop playsinline>
+  <source src="/interview001/interviewer3.mp4" type="video/mp4">
+</video>
+
+<button id="startBtn" class="video-play-btn"></button>
   </div>
 
   <!-- 웹캠 -->
@@ -44,7 +46,7 @@
         src="http://127.0.0.1:5000/video_feed"
         alt="내 모습"
     />
-    <div class="webcam-label">내 모습</div>
+
 </div>
 
 
@@ -70,7 +72,8 @@
     <footer class="control-section">
         <button class="control-btn primary">답변 시작</button>
 <!--        <button class="control-btn">일시정지</button>-->
-        <button class="control-btn result" id="modalConfirm">결과 확인 →</button>
+        <a href="/interview001/simulation/real/in_real4.html">
+            <button class="control-btn result">다음 질문 →</button></a>
     </footer>
 
 </div>
@@ -79,7 +82,8 @@
     <div class="modal">
         <h3>답변 종료</h3>
         <p>답변 시간이 종료되었습니다.</p>
-        <button id="modalConfirm">결과 확인 →</button>
+        <a href="/interview001/simulation/real/in_real4.html">
+            <button>다음 질문 →</button></a>
     </div>
 </div>
 <!--<script>-->

@@ -2,35 +2,47 @@
 * {
   box-sizing: border-box;
 }
-body {
-  margin: 0;
-  font-family: "Noto Sans KR", sans-serif;
-  background: #0f1220;
-  color: #fff;
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",sans-serif;
+  color:#fff;
+
+  background:
+    radial-gradient(circle at 20% 20%, #1d2248 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, #1a1f3d 0%, transparent 40%),
+    #0b0e1a;
 }
 
 /* ===== 전체 컨테이너 ===== */
-.real-container {
-  display: grid;
-  grid-template-rows: auto 1fr auto auto auto;
-  height: 100vh;
-  padding: 16px;
-  gap: 14px;
+.real-container{
+  display:grid;
+  grid-template-rows:auto 1fr auto auto auto;
+  height:100vh;
+  padding:24px;
+  gap:18px;
+  max-width:none;
+  margin:0 auto;
 }
 
 /* ===== 상단 바 ===== */
-.real-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #1b1f3b;
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-size: 14px;
+.real-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:14px 20px;
+  border-radius:14px;
+
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.08);
+
+  box-shadow:0 8px 30px rgba(0,0,0,0.4);
 }
 
 .real-header .mode {
   font-weight: bold;
+  font-size: 18px;
 }
 
 .real-header .timer {
@@ -74,38 +86,64 @@ body {
 }
 
 /* ===== 질문 텍스트 ===== */
-.question-section {
-  background: #1b1f3b;
-  padding: 16px;
-  border-radius: 10px;
-}
+.question-section{
+   display:flex;
+  border-radius:14px;
+  padding:18px;
 
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.07);
+  backdrop-filter:blur(10px);
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
 .question-section h2 {
   margin: 0 0 6px;
   font-size: 18px;
 }
 
 .question-section p {
-  margin: 0;
-  font-size: 15px;
+  margin: 0 10px;
+  font-size: 18px;
   color: #ddd;
 }
 
 /* ===== 음성 인식 영역 ===== */
-.stt-section {
-  background: #161a32;
-  padding: 16px;
-  border-radius: 10px;
+.stt-section{
+  border-radius:14px;
+  padding:18px;
+
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.05);
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
 }
 
 .mic-status {
-  font-size: 13px;
+  font-size: 16px;
   color: #4a6cf7;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+    color:#4a6cf7;
+  font-weight:600;
+}
+.mic-status::after{
+  content:"";
+  display:inline-block;
+  width:6px;
+  height:6px;
+  margin-left:8px;
+  border-radius:50%;
+  background:#4a6cf7;
+  animation:pulse 1s infinite;
 }
 
+@keyframes pulse{
+  0%{transform:scale(1);opacity:1;}
+  70%{transform:scale(2);opacity:0;}
+  100%{opacity:0;}
+}
 .stt-text {
-  font-size: 14px;
+  font-size: 17px;
   color: #eee;
   line-height: 1.5;
   min-height: 40px;
@@ -115,28 +153,46 @@ body {
 .control-section {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.control-btn {
-  min-width: 220px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 999px;
-  background: #2a2f55;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
+.control-btn{
+  min-width:200px;
+  height:54px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:600;
+
+  border:none;
+  cursor:pointer;
+
+  transition:all .25s ease;
+
+  background:rgba(255,255,255,0.06);
+  color:#fff;
+
+  backdrop-filter:blur(10px);
 }
 
 .control-btn.primary {
-  background: #4a6cf7;
+   background:linear-gradient(135deg,#4a6cf7,#7c8fff);
+ /* box-shadow:
+    0 8px 25px rgba(74,108,247,0.4);*/
+}
+
+.control-btn.result {
+   background:#009900;
+ /* box-shadow:
+    0 8px 25px rgba(74,108,247,0.4);*/
 }
 
 .control-btn:hover {
-  opacity: 0.9;
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
-
+.control-btn:active{
+  transform:translateY(0);
+}
 /* ===== 타이머 경고 색상 ===== */
 .timer.warning {
   color: #ff4d4f;
@@ -222,6 +278,23 @@ color: white;
   color: #4caf50;
 }
 
+.recording::before{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#ff4d4f;
+  margin-right:8px;
+  animation:recBlink 1s infinite;
+}
+
+@keyframes recBlink{
+  0%{opacity:1;}
+  50%{opacity:0.2;}
+  100%{opacity:1;}
+}
+
 /* 버튼 상태 */
 .control-btn.answering {
   background: #ff4d4f;
@@ -248,66 +321,91 @@ color: white;
 }
 
 /* ===== 면접관 + 웹캠 영역 (반반 레이아웃) ===== */
-.interviewer-section {
-  background: #161a32;
-  border-radius: 14px;
+.interviewer-section{
+  border-radius:18px;
+  padding:18px;
+  gap:18px;
+
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
 }
 
 /* 반반 레이아웃 */
 .interviewer-section.split {
   display: flex;
   gap: 16px;
-  padding: 16px;
-flex: 1;             /* 부모 컨테이너 높이에 맞춰 유연하게 확장 */
-  min-height: 320px;
+  flex: 1;
+  min-height: 0;
+   height: 100%;   /* 🔥 이거 추가 */
 }
-
 /* 좌/우 공통 패널 */
 .interviewer-panel {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-width: 0;
+
+  position: relative;
   border-radius: 12px;
   overflow: hidden;
-  position: relative;
-  height: 100%;       /* 부모 flex 높이에 맞춤 */
+  background: #000;
+
+   height: 100%;   /* 🔥 이거 중요 */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.7),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
 }
+
 
 /* ===== AI 면접관 이미지 ===== */
 .interviewer-panel.ai {
   display: flex;
   align-items: center;
   justify-content: center;
+  background:linear-gradient(180deg,#111 0%,#000 100%);
+  flex: 4;
+
 }
 
 /* 실제 이미지 박스 */
-.avatar-circle {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  background-image: url("/interview001/interviewer3.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain; /* cover → contain으로 변경하면 이미지 전체가 보임 */
-  border-radius: 10px;
-}
+.ai-video{
+  width:100%;
 
+    object-fit: contain;   /* 비율 유지 */
+  height: 115%;     /* 🔥 아래로 넘치게 */
+  /* 이제 안 과하게 잘림 */
+     /* 🔥 가로 덜 자르게 */
+
+
+  border-radius:12px;
+   position: absolute;
+   inset: 0;
+
+}
 
 /* 텍스트 */
 .interviewer-text {
   flex: 1;
+}
+.interviewer-panel.ai{
+  background:radial-gradient(circle at center,#1a1f3d,#000);
+   aspect-ratio: 3 / 5;   /* 🔥 세로 영상 전용 */
 }
 
 /* ===== 웹캠 ===== */
 .interviewer-panel.webcam {
     position: relative;
     width: 100%;
-    height: 100%;
     background: #000;
     border-radius: 12px;
     overflow: hidden;
+    border:2px solid rgba(74,108,247,0.4);
+  box-shadow:
+    0 0 25px rgba(74,108,247,0.25),
+    0 10px 40px rgba(0,0,0,0.8);
+    flex: 6;
 }
 
 #flaskWebcam {
@@ -325,13 +423,12 @@ flex: 1;             /* 부모 컨테이너 높이에 맞춰 유연하게 확장
 
 .interviewer-panel.webcam video,
 .interviewer-panel.webcam canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  transform: scaleX(-1);
 }
-
 /* canvas 오버레이 */
 #webcamCanvas {
   position: absolute;
@@ -340,17 +437,54 @@ flex: 1;             /* 부모 컨테이너 높이에 맞춰 유연하게 확장
 }
 
 /* 웹캠 라벨 */
-.webcam-label {
-  position: absolute;
-  bottom: 10px;
-  right: 12px;
-  background: rgba(0,0,0,0.6);
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-}
+.webcam-label{
+  bottom:12px;
+  right:14px;
 
+  padding:5px 12px;
+  font-size:12px;
+
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.1);
+}
 .interviewer-panel.ai,
 .interviewer-panel.webcam {
-  aspect-ratio: 16 / 9; /* 가로:세로 비율 */
+ aspect-ratio:unset;
+}
+
+.video-play-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s ease;
+}
+
+.video-play-btn::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 14px solid white;   /* ▶ 삼각형 */
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  margin-left: 3px; /* 가운데 정렬 보정 */
+}
+
+.video-play-btn:hover {
+  background: #000;
+  transform: scale(1.08);
 }

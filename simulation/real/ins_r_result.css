@@ -1,0 +1,766 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family: "Pretendard", -apple-system, sans-serif;
+
+  /* 핵심: 전체 톤 통일 */
+  background:
+    radial-gradient(circle at 20% 10%, rgba(99,102,241,0.08), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(99,102,241,0.06), transparent 40%),
+    #f6f7fb;
+
+  color:#1f2937;
+}
+.menu a{
+    position:relative;
+    color:#374151;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.menu a.active_attach{
+    color:#6366f1;
+    font-weight:600;
+}
+/* =========================
+   PAGE TITLE
+========================= */
+
+.practice-report h1{
+  margin:5px 0 10px;
+  text-align:center;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:-0.3px;
+}
+
+.interviewer-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px 20px 10px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(12px);
+  /*border-bottom: 1px solid #eee;*/
+}
+/* 프로필 목록 */
+.interviewer-list {
+  display: flex;
+  gap: 10px;
+}
+/* 면접관 이미지 */
+.interviewer-photo{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    object-fit:cover;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+/* JS에서 쓰는 클래스 이름 맞춤 */
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: .2s;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+/*.avatar.active {
+  border-color: #6366f1;
+}*/
+
+/* =========================
+   SLIDE LAYOUT
+========================= */
+
+  .result-layout{
+  display:flex;
+  gap:24px;
+
+  overflow-x:auto;
+  /*overflow-y:hidden;*/
+
+  padding:20px 40px 80px;
+
+  scroll-snap-type:x mandatory;
+  scroll-padding-left:40px;
+  scroll-behavior:smooth;
+
+  min-height:600px;
+  height:auto; /* 헤더 + 액션바 제외 */
+
+  /* 핵심 추가 */
+  width:100%;
+}
+
+.result-layout::-webkit-scrollbar{
+  height:8px;
+}
+
+.result-layout::-webkit-scrollbar-thumb{
+  background:#c7d2fe;
+  border-radius:4px;
+}
+
+.result-layout::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+
+/* =========================
+   CARD BASE (핵심 디자인)
+========================= */
+
+.card{
+  width:500px;
+  flex-shrink:0;
+  padding:28px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(99,102,241,0.18);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.05),
+    0 6px 14px rgba(99,102,241,0.08);
+  transition:.25s ease;
+  scroll-snap-align:start;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:
+    0 18px 42px rgba(0,0,0,0.08),
+    0 10px 22px rgba(99,102,241,0.12);
+}
+
+.card h2{
+  margin:0 0 18px;
+  font-size:22px;
+  font-weight:700;
+}
+
+/* =========================
+   HERO SUMMARY CARD
+========================= */
+
+.summary{
+position:relative;
+  overflow:hidden;
+  /*background:#eef1ff; *//* 기존보다 살짝 진하게 *//*
+  border:1px solid rgba(99,102,241,0.28);*/
+  background:rgba(99,102,241,0.08);
+  border:1px solid rgba(99,102,241,0.28);
+  box-shadow:0 10px 28px rgba(99,102,241,0.10);
+  transition:.25s ease;
+
+}
+
+/* 부드러운 빛 효과 */
+.summary::after{
+    content:"";
+    position:absolute;
+
+    top:-40%;
+    right:-20%;
+
+    width:300px;
+    height:300px;
+
+    background:radial-gradient(
+        circle,
+        rgba(255,255,255,0.25),
+        transparent 70%
+    );
+
+    transform:rotate(20deg);
+}
+
+.summary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(99,102,241,0.14);
+}
+
+.summary h2{
+    margin:0 0 14px;
+    font-size:23px;
+    font-weight:700;
+    letter-spacing:-0.3px;
+}
+
+
+.summary-list{
+  list-style:none;
+  padding:0;
+  margin-top:12px;
+  line-height: 2.0;
+}
+
+.summary-list li{
+    font-size:17px;
+  margin-bottom:10px;
+  opacity:.95;
+
+}
+.summary b{
+  color:#6366f1;
+  font-weight:600;
+}
+/* ===== 점수 시각화 ===== */
+.score-visual{
+  margin:40px 20px;
+}
+
+.score-label{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:6px;
+  color:dark gray;
+}
+
+.score-bar{
+  width:100%;
+  height:10px;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.score-fill{
+  height:100%;
+  background:linear-gradient(90deg,#6366f1,#818cf8);
+  border-radius:20px;
+  transition:0.6s ease;
+}
+
+.score-caption{
+  font-size:15px;
+  margin-top:6px;
+  color:#6b7280;
+}
+
+/* =========================
+   PSAR SCORE BARS
+========================= */
+
+.psar-analysis{
+  list-style:none;
+  padding:0;
+}
+
+.psar-analysis li{
+  display:flex;              /* 핵심 */
+  align-items:flex-start;    /* 세로 정렬 */
+  gap:10px;                  /* 번호와 텍스트 간격 */
+  padding:14px;
+}
+
+/* 시각 바 */
+.psar-analysis span{
+  float:right;
+  font-weight:600;
+  color:#2563eb;
+}
+
+/* =========================
+   QUOTE BOX
+========================= */
+
+.quote{
+  margin-top:20px;
+  padding:16px;
+  border-radius:12px;
+  background:rgba(99,102,241,0.06);
+  font-size:18px;
+  line-height:1.6;
+}
+
+
+/* =========================
+   INTERVIEWER COMMENT
+========================= */
+
+.interviewer-view{
+  margin-top:12px;
+  padding:16px;
+  border-radius:12px;
+  background:#fff1f2;
+  font-style:italic;
+}
+
+
+
+/* =========================
+   ACTION BAR (하단 고정 느낌)
+========================= */
+
+/* ============================= */
+/* RESULT ACTION BAR */
+/* ============================= */
+
+.result-action-bar{
+    position:sticky;
+    bottom:0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px 30px;
+
+    background:rgba(255,255,255,0.82);
+    backdrop-filter:blur(18px);
+
+    border-top:1px solid rgba(0,0,0,0.05);
+
+    box-shadow:
+        0 -8px 30px rgba(0,0,0,0.06);
+
+    z-index:50;
+}
+
+/* 상단 그라데이션 라인 */
+.result-action-bar::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:3px;
+
+    background:linear-gradient(
+        90deg,
+        #6366f1,
+        #8b5cf6,
+        #06b6d4
+    );
+}
+
+/* ============================= */
+/* LEFT INFO */
+/* ============================= */
+
+.action-left{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.action-label{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    color:#6366f1;
+}
+
+.action-text{
+    font-size:14px;
+    color:#374151;
+}
+
+/* ============================= */
+/* RIGHT CONTROL AREA */
+/* ============================= */
+
+.action-right{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+/* 보조 버튼 */
+.action-secondary{
+    display:flex;
+    gap:8px;
+}
+
+/* 주요 버튼 */
+.action-primary{
+    display:flex;
+    gap:12px;
+}
+
+/* ============================= */
+/* BUTTON BASE */
+/* ============================= */
+button,
+a.btn{
+  border:none;
+  border-radius:12px;
+  padding:10px 18px;
+  font-size:12px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+/* 기본 */
+.sub{
+  background:#eef1ff;
+  color:#4f46e5;
+}
+
+/* 주요 버튼 */
+.main{
+  background:#6366f1;
+  color:white;
+}
+
+.main:hover{
+  background:#5558e3;
+}
+
+.btn{
+    padding:11px 18px;
+    border-radius:10px;
+    font-size:12px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .2s ease;
+    text-decoration:none;
+    border:none;
+}
+
+/* 보조 */
+.btn.subtle{
+    background:#f3f4f6;
+    color:#374151;
+}
+
+.btn.subtle:hover{
+    background:#e5e7eb;
+}
+
+/* outline */
+.btn.outline{
+    border:1px solid #d1d5db;
+    background:white;
+    color:#111827;
+}
+
+.btn.outline:hover{
+    background:#f9fafb;
+}
+
+/* 메인 CTA */
+.btn.main{
+    background:linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+    color:white;
+    box-shadow:
+        0 8px 20px rgba(99,102,241,0.25);
+}
+
+.btn.main:hover{
+    transform:translateY(-2px);
+    box-shadow:
+        0 12px 28px rgba(99,102,241,0.35);
+}
+
+/* 전체 강조 영역 */
+.result-header{
+    padding:30px;
+    border-radius:20px;
+    background:white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.06);
+    margin-bottom:40px;
+}
+
+/* 작은 라벨 */
+.mode-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+
+    color: #4f46e5;
+    background: rgba(79,70,229,0.08);
+    border-radius: 999px;
+
+    margin-bottom: 15px;
+    margin-left: 14px;
+}
+
+/* 메인 가로 정렬 */
+.result-main{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+
+
+/* 텍스트 묶음 */
+.result-text{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+/* 제목 */
+.result-title{
+    font-size:28px;
+    font-weight:800;
+    color:#111827;
+    margin:0;
+}
+
+/* 상태 */
+.result-status{
+    font-size:14px;
+    color:#6b7280;
+}
+
+/* 점수 */
+.result-score{
+    font-size:18px;
+    font-weight:600;
+    color:#374151;
+}
+
+/* 점수 숫자 강조 */
+.result-score span{
+    font-size:28px;
+    font-weight:800;
+    color:#4f46e5;
+    margin-left:5px;
+    margin-right:5px;
+}
+.highlight{
+  color:#6366f1;
+  font-weight:600;
+}
+
+ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+ul li{
+  margin-bottom:8px;
+
+  position:relative;
+}
+
+
+
+html, body {
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/*
+.practice-report {
+  min-height: 100vh;
+}
+*/
+
+.summary{
+  background:linear-gradient(
+    145deg,
+    rgba(99,102,241,0.12),
+    rgba(255,255,255,0.7)
+  );
+  border:1px solid rgba(99,102,241,0.3);
+}
+
+.summary-list{
+  list-style:none;
+  padding:20px;
+  margin:0;
+  line-height:1.9;
+}
+
+.summary-list li{
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+.summary b{
+  color:#6366f1;
+}
+
+/* =========================
+   SCORE BAR (업그레이드)
+========================= */
+.score-visual{
+  margin-top:30px;
+}
+
+.score-label{
+  font-size:17px;
+  font-weight:600;
+  margin-bottom:8px;
+  color:#4f46e5;
+}
+
+.score-bar{
+  width:100%;
+  height:14px;
+  background:#e5e7eb;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.score-fill{
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    #6366f1,
+    #8b5cf6,
+    #06b6d4
+  );
+  box-shadow:0 0 15px rgba(99,102,241,0.5);
+  transition:width 0.8s ease;
+}
+
+.score-caption{
+  margin-top:8px;
+  font-size:15px;
+  color:#6b7280;
+}
+
+/* =========================
+   CONTENT BOX
+========================= */
+/*
+.quote,
+.interviewer-view{
+  margin-top:14px;
+  padding:18px;
+  border-radius:16px;
+  background:rgba(99,102,241,0.05);
+
+  font-size:16px;
+  line-height:1.7;
+}
+*/
+
+/*.strong{
+    background:#fef2f2;
+}*/
+
+/* =========================
+   LIST STYLE
+========================= */
+/* =========================
+   ATTITUDE LIST UPGRADE
+========================= */
+
+.psar-analysis{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.psar-analysis li{
+  position:relative;
+  padding:14px 14px 14px 18px;
+  margin-bottom:12px;
+
+  border-radius:12px;
+
+  background:rgba(255,255,255,0.6);
+  border:1px solid rgba(99,102,241,0.15);
+
+  font-size:14px;
+  line-height:1.6;
+
+  transition:.2s ease;
+  overflow:hidden;
+}
+
+/* hover 효과 */
+.psar-analysis li:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(99,102,241,0.12);
+}
+
+/* 번호 강조 */
+/*.psar-analysis li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:4px;
+  border-radius:4px;
+  background:linear-gradient(to bottom,#6366f1,#8b5cf6);
+  overflow:hidden;
+}*/
+
+/* 화살표 줄 스타일 개선 */
+.psar-analysis li br{
+  margin-bottom:6px;
+}
+
+.card:nth-of-type(1) .psar-analysis li{
+  background:rgba(34,197,94,0.06);
+  border:1px solid rgba(34,197,94,0.18);
+}
+
+
+.card:nth-of-type(2) .psar-analysis li{
+  background:rgba(255, 240, 242, 0.8);
+  border:1px solid rgba(239,68,68,0.18);
+}
+
+
+.interviewer-view{
+  background:rgba(59,130,246,0.06);
+  border:1px solid rgba(59,130,246,0.18);
+  font-style:normal;
+}
+
+.analysis-badge{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:6px 10px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+
+  color:#6366f1;
+  background:rgba(99,102,241,0.08);
+  border-radius:999px;
+}
+
+.psar-analysis .strong-num{
+  font-weight:700;
+  font-size:18px;
+  margin-right:10px;
+  color:red;
+}
+.psar-analysis .step-num{
+  min-width:22px;
+  height:22px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:700;
+  background:#6366f1;
+  color:white;
+}
+
+.psar-analysis .num {
+    font-weight:700;
+  font-size:18px;
+  margin-right:10px;
+  color:#6366f1;
+}

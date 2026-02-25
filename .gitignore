@@ -24,3 +24,8 @@ Thumbs.db
 .env
 
 yolov5-face/
+
+venv/
+venv310/
+.venv/
+captures/

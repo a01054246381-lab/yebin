@@ -136,7 +136,7 @@ if (modalConfirm) {
     fetch("/capture/stop", {
       method: "POST"
     }).finally(() => {
-      location.href = "/interview001/simulation/practice/start_mode/result/in_p_result.html";
+      location.href = "/interview001/simulation/real/in_r_result.html";
     });
   });
 }
@@ -162,4 +162,11 @@ if (modalConfirm) {
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => video.srcObject = stream)
     .catch(err => console.error("웹캠 연결 실패:", err));
+});
+
+const video = document.getElementById("aiVideo");
+const startBtn = document.getElementById("startBtn");
+
+startBtn.addEventListener("click", () => {
+    video.play();
 });

@@ -9,7 +9,7 @@
 body{
   margin:0;
   font-family: "Pretendard", -apple-system, sans-serif;
-    min-height:100vh;
+
   /* 핵심: 전체 톤 통일 */
   background:
     radial-gradient(circle at 20% 10%, rgba(99,102,241,0.08), transparent 40%),
@@ -89,7 +89,7 @@ body{
   overflow-x:auto;
   /*overflow-y:hidden;*/
 
-  padding:20px 40px 70px;
+  padding:20px 40px 80px;
 
   scroll-snap-type:x mandatory;
   scroll-padding-left:40px;
@@ -585,6 +585,8 @@ html, body {
   overflow-y: auto;
 }
 
+/*
 .practice-report {
   min-height: 100vh;
 }
+*/

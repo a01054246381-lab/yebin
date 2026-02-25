@@ -5,7 +5,8 @@
     <title>모의 모드</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet" href="/interview001/header/ins_header.css">
     <link rel="stylesheet" href="/interview001/simulation/practice/start_mode/start/ins_p_start.css">
@@ -50,35 +51,85 @@
             </div>
 
             <textarea
-                class="answer-input"
-                placeholder="답변을 입력하세요. (텍스트 기반 모의 면접)"></textarea>
+                    class="answer-input"
+                    placeholder="답변을 입력하세요. (텍스트 기반 모의 면접)"></textarea>
         </section>
 
 
         <aside class="guide-area">
 
-            <div class="psar-box">
-                <h3>🧩 답변 구조 가이드 (PSAR)</h3>
 
-                <div class="step"><span class="step-num">1</span><div class="active">P · 문제 / 상황</div></div>
-                <div class="step"><span class="step-num">2</span>S · 당시 맥락</div>
-                <div class="step"><span class="step-num">3</span>A · 나의 행동</div>
-                <div class="step"><span class="step-num">4</span>R · 결과 / 성과</div>
-            </div>
+            <div class="psar-container">
 
-            <div class="ai-signal">
+                <h2>🧩 PSAR 가이드 시스템</h2>
+
+                <!-- STEP BAR -->
+                <div class="psar-steps">
+                    <div class="psar-progress" id="psarProgress"></div>
+                    <div class="step active">P</div>
+                    <div class="step">S</div>
+                    <div class="step">A</div>
+                    <div class="step">R</div>
+                </div>
+
+                <!-- CONTENT -->
+                <div class="psar-card" id="psarContent">
+                    1. 문제를 정의하세요.
+                </div>
+
+                <button class="btn-outline" onclick="nextPSAR()">다음 단계 →</button>
+                <hr class="hr-pulse">
+                <div class="ai-signal">
                 ⚠️ 지금 상황 설명이 길어지고 있어요.<br/>
                 본인의 <b>해결 행동(Action)</b>으로 넘어가 보세요!
             </div>
+            </div>
+
 
         </aside>
+        <div id="wingmanModal" class="wingman-modal">
+
+            <div class="wingman-card">
+
+                <!-- 헤더 -->
+                <div class="wingman-header">
+                    <div class="ai-pulse"></div>
+                    <div>
+                        <h2>핵심 키워드 힌트</h2>
+                        <p class="status">논리 힌트 생성 완료</p>
+                    </div>
+                    <button class="close-btn" onclick="closeWingman()">✕</button>
+                </div>
+
+                <!-- 뉴스 -->
+                <div class="wingman-block">
+                    <div class="label">📰 최신 산업 신호</div>
+                    <p class="content">
+                        삼성전자 HBM3E 양산 본격화 — AI 메모리 경쟁 심화
+                    </p>
+                </div>
+
+                <!-- 전공 연결 -->
+                <div class="wingman-block highlight">
+                    <div class="label">🧠 연결할 핵심 개념</div>
+                    <p class="content">
+                        메모리 대역폭 증가 → 병렬 처리 성능 향상 → 시스템 최적화 전략
+                    </p>
+                </div>
+
+                <!-- 사고 유도 -->
+                <div class="wingman-guide">
+                    💡 위 산업 변화와 당신의 경험을 연결해 다시 설명해보세요
+                </div>
+            </div>
+        </div>
 
     </main>
 
 
     <footer class="action-bar">
-        <button class="sub">🔍 키워드 보기</button>
-        <button class="sub">🧩 PSAR 가이드</button>
+        <button class="sub" onclick="openWingman()">🔍 키워드 보기</button>
+        <button class="sub" onclick="togglePSAR()">🧩 PSAR 가이드</button>
         <a href="/interview001/simulation/practice/start_mode/end/in_p_end.html" class="next-btn">다음 질문 →</a>
     </footer>
 
@@ -87,43 +138,43 @@
 
 <!-- 헤더 -->
 <script>
-fetch("/interview001/header/in_header.html")
-.then(res => res.text())
-.then(data => {
+    fetch("/interview001/header/in_header.html")
+    .then(res => res.text())
+    .then(data => {
 
-    const headerEl = document.getElementById("header");
-    headerEl.innerHTML = data;
+        const headerEl = document.getElementById("header");
+        headerEl.innerHTML = data;
 
-    /* 햄버거 */
-    const hamburger = headerEl.querySelector('.hamburger');
-    const menu = headerEl.querySelector('.menu');
+        /* 햄버거 */
+        const hamburger = headerEl.querySelector('.hamburger');
+        const menu = headerEl.querySelector('.menu');
 
-    if(hamburger){
-        hamburger.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-    }
-
-    /* =========================
-       ACTIVE 표시 (폴더 기준)
-    ========================= */
-
-    const currentPath = window.location.pathname;
-
-    headerEl.querySelectorAll(".menu a").forEach(link => {
-
-        const linkPath = new URL(link.href).pathname;
-
-        // 폴더 기준 포함 비교
-        const linkFolder = linkPath.substring(0, linkPath.lastIndexOf("/"));
-
-        if(currentPath.startsWith(linkFolder)){
-            link.classList.add("active_attach");
+        if(hamburger){
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
         }
 
-    });
+        /* =========================
+           ACTIVE 표시 (폴더 기준)
+        ========================= */
 
-});
+        const currentPath = window.location.pathname;
+
+        headerEl.querySelectorAll(".menu a").forEach(link => {
+
+            const linkPath = new URL(link.href).pathname;
+
+            // 폴더 기준 포함 비교
+            const linkFolder = linkPath.substring(0, linkPath.lastIndexOf("/"));
+
+            if(currentPath.startsWith(linkFolder)){
+                link.classList.add("active_attach");
+            }
+
+        });
+
+    });
 
 </script>
 
