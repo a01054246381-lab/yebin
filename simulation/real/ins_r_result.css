@@ -57,16 +57,16 @@ body{
 }
 /* 면접관 이미지 */
 .interviewer-photo{
-    width:20px;
-    height:20px;
+    width:25px;
+    height:25px;
     border-radius:50%;
     object-fit:cover;
     box-shadow:0 6px 18px rgba(0,0,0,0.12);
 }
 /* JS에서 쓰는 클래스 이름 맞춤 */
 .avatar {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
@@ -89,13 +89,13 @@ body{
   overflow-x:auto;
   /*overflow-y:hidden;*/
 
-  padding:20px 40px 80px;
+  padding:20px 40px 70px;
 
   scroll-snap-type:x mandatory;
   scroll-padding-left:40px;
   scroll-behavior:smooth;
 
-  min-height:600px;
+  min-height:580px;
   height:auto; /* 헤더 + 액션바 제외 */
 
   /* 핵심 추가 */

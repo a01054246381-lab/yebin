@@ -10,13 +10,13 @@
 <body>
 <!--<div id="header"></div>-->
 <!-- 실전 모드 시작 모달 -->
-<div class="modal-overlay" id="practiceStartModal">
+<!--<div class="modal-overlay" id="practiceStartModal">
     <div class="modal">
         <h3>실전 모드 시작</h3>
         <p>잠시 후 질문이 시작됩니다</p>
         <div class="countdown" id="practiceCountdown">3</div>
     </div>
-</div>
+</div>-->
 <div class="real-container">
 
     <!-- 상단 바 -->
@@ -32,11 +32,13 @@
 
   <!-- AI 면접관 -->
   <div class="interviewer-panel ai">
-    <video class="ai-video" id="aiVideo" muted loop playsinline>
-  <source src="/interview001/interviewer2.mp4" type="video/mp4">
+    <video class="ai-video" id="aiVideo" playsinline>
+ <source src="../../interviewer2.mp4" type="video/mp4">
 </video>
 
-<button id="startBtn" class="video-play-btn"></button>
+
+<button id="playBtn" class="video-play-btn"></button>
+
   </div>
 
   <!-- 웹캠 -->

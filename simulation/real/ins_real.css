@@ -456,35 +456,53 @@ color: white;
 }
 
 .video-play-btn {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
+ position: absolute;
+ bottom: 16px;
+ right: 16px;
 
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
 
-  background: rgba(0,0,0,0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ width: 54px;
+ height: 54px;
+ border-radius: 50%;
+ border: none;
+ cursor: pointer;
 
-  transition: 0.2s ease;
+
+ background: rgba(0,0,0,0.75);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+
+ transition: 0.2s ease;
 }
+
 
 .video-play-btn::before {
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 14px solid white;   /* ▶ 삼각형 */
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  margin-left: 3px; /* 가운데 정렬 보정 */
+ content: "";
+ width: 0;
+ height: 0;
+ border-left: 14px solid white;   /* ▶ 삼각형 */
+ border-top: 9px solid transparent;
+ border-bottom: 9px solid transparent;
+ margin-left: 3px; /* 가운데 정렬 보정 */
 }
 
+
 .video-play-btn:hover {
-  background: #000;
-  transform: scale(1.08);
+ background: #000;
+
+
+}
+.video-play-btn.playing::before {
+ content: "";
+ width: 4px;
+ height: 16px;
+ background: white;
+ border: none;
+
+
+ box-shadow: 8px 0 0 white;
+ transform: translateX(-4px);
+ margin-left: 0;
 }

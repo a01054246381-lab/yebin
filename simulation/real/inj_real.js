@@ -165,8 +165,32 @@ if (modalConfirm) {
 });
 
 const video = document.getElementById("aiVideo");
-const startBtn = document.getElementById("startBtn");
+const playBtn = document.getElementById("playBtn");
 
-startBtn.addEventListener("click", () => {
-    video.play();
+
+playBtn.addEventListener("click", () => {
+
+
+ if(video.paused){
+
+
+   video.play();
+   playBtn.classList.add("playing");
+
+
+ } else {
+
+
+   video.pause();
+   playBtn.classList.remove("playing");
+
+
+ }
+
+
+});
+
+
+video.addEventListener("ended", ()=>{
+ playBtn.classList.remove("playing");
 });
